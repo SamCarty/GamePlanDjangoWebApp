@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e38eafcc-dce6-4a11-98a7-3ff01e46304d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gameplan_project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/gameplan_project/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recommender_libraries/recommend.py" beforeDir="false" afterPath="$PROJECT_DIR$/recommender_libraries/recommend.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,15 +40,15 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.django.DjangoModulesConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="S:\Repos\Games Recommender Files\gameplan\recommender" />
-      <recent name="S:\Repos\Games Recommender Files\gameplan\gameplan" />
-      <recent name="S:\Repos\Games Recommender Files\gameplan" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="S:\Repos\Games Recommender Files\gameplan\recommender_libraries" />
       <recent name="S:\Repos\Games Recommender Files\gameplan" />
       <recent name="S:\Repos\Games Recommender Files\GR_App" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="S:\Repos\Games Recommender Files\gameplan\recommender" />
+      <recent name="S:\Repos\Games Recommender Files\gameplan\gameplan" />
+      <recent name="S:\Repos\Games Recommender Files\gameplan" />
     </key>
   </component>
   <component name="RunManager" selected="Python.import_games">
@@ -129,7 +129,8 @@
       <workItem from="1578304570229" duration="1296000" />
       <workItem from="1578305879294" duration="37922000" />
       <workItem from="1578358359102" duration="180000" />
-      <workItem from="1578359103946" duration="52000" />
+      <workItem from="1578359103946" duration="209000" />
+      <workItem from="1578359388913" duration="153000" />
     </task>
     <servers />
   </component>
@@ -185,6 +186,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="781" y="343" key="SettingsEditor/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578309127154" />
+    <state x="561" y="514" key="com.intellij.ide.util.TipDialog" timestamp="1578359388518">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="561" y="514" key="com.intellij.ide.util.TipDialog/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578359388518" />
     <state x="561" y="376" width="944" height="966" key="find.popup" timestamp="1578358449090">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
