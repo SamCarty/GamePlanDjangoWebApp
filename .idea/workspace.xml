@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e38eafcc-dce6-4a11-98a7-3ff01e46304d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/GR_App.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gameplan/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gameplan/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gameplan/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gameplan/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gameplan/migrations/0002_game_storyline.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gameplan/migrations/0003_game_ordered_keywords.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gameplan/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gameplan/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gameplan/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gameplan/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gameplan/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gameplan_project/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gameplan_project/settings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gameplan_project/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gameplan_project/wsgi.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/games_v3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/import_games.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/recommender/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/recommender/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/recommender/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/recommender/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/recommender/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/recommender/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/recommender/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/recommender/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/recommender_libraries/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/recommender_libraries/recommend.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/gameplan/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/gameplan/index.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="gameplan" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1W15HtgGRVE3AY5LiAKnNOdflkn" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.django.DjangoModulesConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="S:\Repos\Games Recommender Files\gameplan\recommender" />
+      <recent name="S:\Repos\Games Recommender Files\gameplan\gameplan" />
+      <recent name="S:\Repos\Games Recommender Files\gameplan" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="S:\Repos\Games Recommender Files\gameplan\recommender_libraries" />
+      <recent name="S:\Repos\Games Recommender Files\gameplan" />
+      <recent name="S:\Repos\Games Recommender Files\GR_App" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.import_games">
+    <configuration name="import_games" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="GR_App" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/import_games.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="recommend" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="GR_App" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="S:\Repos\Games Recommender Files\gameplan\recommender_libraries\recommend.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.import_games" />
+        <item itemvalue="Python.recommend" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e38eafcc-dce6-4a11-98a7-3ff01e46304d" name="Default Changelist" comment="" />
+      <created>1578304175420</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1578304175420</updated>
+      <workItem from="1578304177546" duration="358000" />
+      <workItem from="1578304570229" duration="1296000" />
+      <workItem from="1578305879294" duration="37922000" />
+      <workItem from="1578358359102" duration="91000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1039" y="503" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1578306357441">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1039" y="503" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578306357441" />
+    <state x="1010" y="447" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1578314122016">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1010" y="447" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578314122016" />
+    <state x="1059" y="455" key="FileChooserDialogImpl" timestamp="1578309125947">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1059" y="455" key="FileChooserDialogImpl/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578309125947" />
+    <state width="2517" height="492" key="GridCell.Tab.0.bottom" timestamp="1578358206535">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578358206535" />
+    <state width="2517" height="492" key="GridCell.Tab.0.center" timestamp="1578358206535">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578358206535" />
+    <state width="2517" height="492" key="GridCell.Tab.0.left" timestamp="1578358206535">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578358206535" />
+    <state width="2517" height="492" key="GridCell.Tab.0.right" timestamp="1578358206535">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578358206535" />
+    <state width="2517" height="492" key="GridCell.Tab.1.bottom" timestamp="1578358206535">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.1.bottom/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578358206535" />
+    <state width="2517" height="492" key="GridCell.Tab.1.center" timestamp="1578358206535">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.1.center/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578358206535" />
+    <state width="2517" height="492" key="GridCell.Tab.1.left" timestamp="1578358206535">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.1.left/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578358206535" />
+    <state width="2517" height="492" key="GridCell.Tab.1.right" timestamp="1578358206535">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.1.right/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578358206535" />
+    <state x="781" y="343" key="SettingsEditor" timestamp="1578309127154">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="781" y="343" key="SettingsEditor/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578309127154" />
+    <state x="561" y="376" width="944" height="966" key="find.popup" timestamp="1578358449090">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="561" y="376" width="944" height="966" key="find.popup/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578358449090" />
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1578358373294">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578358373294" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/gameplan$recommend.coverage" NAME="recommend Coverage Results" MODIFIED="1578341437050" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/gameplan$import_games.coverage" NAME="import_games Coverage Results" MODIFIED="1578349129752" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>

@@ -1,0 +1,6 @@
+django
+numpy
+pandas
+scikit-learn
+google-cloud-storage
+nltk

@@ -1,0 +1,68 @@
+{% extends "gameplan/base.html" %}
+
+{% block head %}
+    <script>
+        $(document).ready(function () {
+
+        });
+
+        function getContentRecommendations(gameName) {
+            url = '/recommender/content-based/' + gameName + '/';
+            queryName = 'contentRec';
+            fetchRecommendations(url, queryName);
+        }
+
+        function fetchRecommendations(url, queryName) {
+            $.getJSON(url, function (result) {
+                removeGames(queryName);
+                if (result != null && result.length > 0) {
+                    results = document.getElementById(queryName);
+                    results.style.display = 'block';
+
+                    $('#similarHeading').text("Similar to " + $('#inputDatabaseName').val())
+                    result.forEach(function (element, index, array) {
+                        addGame(element, results)
+                    });
+                }
+            });
+        }
+
+        function addGame(name, results) {
+            itemDiv = document.createElement('div');
+            itemDiv.setAttribute('class', "col-sm-2 img-responsive item");
+
+            itemLink = document.createElement('a');
+            itemLink.setAttribute('href', '/games/game/' + name);
+
+            itemImage = document.createElement('img');
+            itemImage.setAttribute('class', "img-responsive");
+            itemImage.setAttribute('title', name);
+            itemLink.appendChild(itemImage);
+
+            itemDiv.appendChild(itemLink);
+
+            results.appendChild(itemDiv);
+        }
+
+        function removeGames(queryName) {
+            document.getElementById(queryName).style.display = 'None';
+            $('.item').remove()
+        }
+    </script>
+{% endblock head %}
+
+{% block content %}
+    <h1>Type a game name to get recommendations:</h1>
+    <form>
+        <input id="inputDatabaseName"/>
+    </form>
+    <div id="contentRec" class="row" style="display: none">
+        <h2 id="similarHeading">Similar to </h2>
+    </div>
+
+    <script type="text/javascript">
+        $('#inputDatabaseName').on('input', function () {
+            getContentRecommendations($('#inputDatabaseName').val())
+        });
+    </script>
+{% endblock content %}
