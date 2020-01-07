@@ -1,14 +1,9 @@
-import json
 import os
-import sys
 
 import django
-from django.core import serializers
-from django.core.serializers.json import DjangoJSONEncoder
 from django.db import connection
 import numpy
 import pandas
-from django.http import JsonResponse
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from recommender_libraries.lib.rake import Rake
@@ -60,7 +55,7 @@ class Similarity(object):
         recommended_titles = list(scores.iloc[1:n + 1].index)
 
         predictions = dict()
-        for i in range(0, len(recommended_titles) - 1):
+        for i in range(0, len(recommended_titles)):
             predictions[i] = (matrix.loc[recommended_titles[i]]).to_dict()
 
         return predictions

@@ -19,5 +19,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('gameplan.urls')),
-    path('recommender/', include('recommender.urls'))
+    path('recommender/', include('recommender.urls')),
+    path('genres/', include('genres.urls'))  # for generic tasks (e.g. loading genres to dropdown)
 ]

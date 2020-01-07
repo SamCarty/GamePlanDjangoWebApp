@@ -10,3 +10,17 @@ h1 {
   font-weight: 800;
   font-size: 3em;
 }
+
+.remove-padding {
+  padding: 0;
+}
+
+.nav-item {
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+#brand-name {
+  font-weight: 600;
+  font-size: 2em;
+}
