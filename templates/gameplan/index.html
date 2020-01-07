@@ -15,28 +15,28 @@
         function fetchRecommendations(url, queryName) {
             $.getJSON(url, function (result) {
                 removeGames(queryName);
-                if (result != null && result.length > 0) {
-                    results = document.getElementById(queryName);
-                    results.style.display = 'block';
+                if (result.data != null && result.data.length > 0) {
+                    recommendations = document.getElementById(queryName);
+                    recommendations.style.display = 'block';
 
-                    $('#similarHeading').text("Similar to " + $('#inputDatabaseName').val())
-                    result.forEach(function (element, index, array) {
-                        addGame(element, results)
+                    $('#similarHeading').text("Similar to " + $('#inputGameName').val());
+                    result.data.forEach(function (element, index, array) {
+                        addGame(element, recommendations)
                     });
                 }
             });
         }
 
-        function addGame(name, results) {
+        function addGame(game, results) {
             itemDiv = document.createElement('div');
             itemDiv.setAttribute('class', "col-sm-2 img-responsive item");
 
             itemLink = document.createElement('a');
-            itemLink.setAttribute('href', '/games/game/' + name);
+            itemLink.setAttribute('href', '/games/game/' + game['game_id']);
 
             itemImage = document.createElement('img');
             itemImage.setAttribute('class', "img-responsive");
-            itemImage.setAttribute('title', name);
+            itemImage.setAttribute('title', game['title']);
             itemLink.appendChild(itemImage);
 
             itemDiv.appendChild(itemLink);
@@ -46,23 +46,31 @@
 
         function removeGames(queryName) {
             document.getElementById(queryName).style.display = 'None';
+            document.getElementById('similarHeading').style.display = 'None';
             $('.item').remove()
         }
     </script>
 {% endblock head %}
 
 {% block content %}
-    <h1>Type a game name to get recommendations:</h1>
+    <h1>Game Recommender</h1>
+
     <form>
-        <input id="inputDatabaseName"/>
+        <div class="form-group">
+            <label for="inputGameName">Game name</label>
+            <input type="text" class="form-control input-lg" id="inputGameName" aria-describedby="gameHelp"
+                   placeholder="Enter game name">
+            <small id="gameHelp" class="form-text text-muted">We'll generate some recommendations as you type.</small>
+        </div>
     </form>
+
     <div id="contentRec" class="row" style="display: none">
         <h2 id="similarHeading">Similar to </h2>
     </div>
 
     <script type="text/javascript">
-        $('#inputDatabaseName').on('input', function () {
-            getContentRecommendations($('#inputDatabaseName').val())
+        $('#inputGameName').on('input', function () {
+            getContentRecommendations($('#inputGameName').val())
         });
     </script>
 {% endblock content %}

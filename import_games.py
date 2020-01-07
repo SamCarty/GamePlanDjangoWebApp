@@ -11,13 +11,14 @@ from recommender_libraries.lib.rake import Rake
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'gameplan_project.settings')
 django.setup()
 
-from gameplan.models import Game, Genre
+from gameplan.models import Game, Genre, Image
 
 
 def clear_database():
     print("Purging all Game entries in database.")
     Game.objects.all().delete()
     Genre.objects.all().delete()
+    Image.objects.all().delete()
     print("Purge complete.")
 
 
@@ -27,7 +28,7 @@ def import_file(filename):
 
         game_data = data['games']
         games = list()
-        for i in range(0, len(game_data)-1):
+        for i in range(0, len(game_data) - 1):  #
             game = game_data[i]
             print("Adding game: " + game['name'])
 
@@ -38,6 +39,13 @@ def import_file(filename):
 
             if 'storyline' in game:
                 game_object.storyline = game['storyline']
+
+            if 'cover' in game:
+                if not isinstance(game['cover'], int):
+                    if 'url' in game['cover']:
+                        url = game['cover']['url']
+                        url = str(url).strip('/').replace('t_thumb', 't_cover_big')
+                        game_object.cover = url
 
             if 'genres' in game:
                 for genre in game['genres']:

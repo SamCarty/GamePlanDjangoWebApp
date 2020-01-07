@@ -1,10 +1,14 @@
 import json
 import os
+import sys
+
 import django
+from django.core import serializers
+from django.core.serializers.json import DjangoJSONEncoder
 from django.db import connection
-from functools import reduce
 import numpy
 import pandas
+from django.http import JsonResponse
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from recommender_libraries.lib.rake import Rake
@@ -19,19 +23,21 @@ class Similarity(object):
     def __init__(self):
         self.rake = Rake()
 
-    def recalculate_model(self):
-        data_matrix = self.import_data()
-        cosine_matrix = self.make_model(data_matrix)
+    def generate_model(self):
+        data_matrix = self.__import_data()
+        cosine_matrix = self.__make_model(data_matrix)
         return cosine_matrix, data_matrix
 
-    def import_data(self):
+    @staticmethod
+    def __import_data():
         """ Imports the dataset and returns the resulting DataFrame matrix. """
         print("Importing data...")
         query = str(Game.objects.all().query)
         games = pandas.read_sql_query(query, connection)
         return games
 
-    def make_model(self, matrix):
+    @staticmethod
+    def __make_model(matrix):
         """ Generates a model based on the dataset using the cosine similarity.
          :return Matrix containing the cosine similarity model. """
         print("Creating model...")
@@ -51,20 +57,21 @@ class Similarity(object):
             return list()
 
         scores = pandas.Series(cos_mat[matching_index]).sort_values(ascending=False)
-
         recommended_titles = list(scores.iloc[1:n + 1].index)
-        return recommended_titles
+
+        predictions = dict()
+        for i in range(0, len(recommended_titles) - 1):
+            predictions[i] = (matrix.loc[recommended_titles[i]]).to_dict()
+
+        return predictions
 
 
 def generate_recommendations(title, n):
     sim = Similarity()
-    cos, data = sim.recalculate_model()
-    prediction_ids = sim.make_predictions(title, data, cos, n)
-    prediction_names = list()
-    for item in prediction_ids:
-        prediction_names.append(data["title"].loc[item])
+    cos, data = sim.generate_model()
+    predictions = sim.make_predictions(title, data, cos, n)
 
-    return prediction_names
+    return predictions
 
 
 if __name__ == '__main__':
