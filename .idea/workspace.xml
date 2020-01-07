@@ -2,44 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e38eafcc-dce6-4a11-98a7-3ff01e46304d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/GR_App.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gameplan/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gameplan/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gameplan/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gameplan/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gameplan/migrations/0002_game_storyline.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gameplan/migrations/0003_game_ordered_keywords.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gameplan/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gameplan/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gameplan/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gameplan/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gameplan/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gameplan_project/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gameplan_project/settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gameplan_project/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gameplan_project/wsgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/games_v3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/import_games.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/recommender/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/recommender/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/recommender/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/recommender/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/recommender/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/recommender/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/recommender/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/recommender/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/recommender_libraries/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/recommender_libraries/recommend.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/gameplan/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/gameplan/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gameplan_project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/gameplan_project/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +128,8 @@
       <workItem from="1578304177546" duration="358000" />
       <workItem from="1578304570229" duration="1296000" />
       <workItem from="1578305879294" duration="37922000" />
-      <workItem from="1578358359102" duration="91000" />
+      <workItem from="1578358359102" duration="180000" />
+      <workItem from="1578359103946" duration="52000" />
     </task>
     <servers />
   </component>
