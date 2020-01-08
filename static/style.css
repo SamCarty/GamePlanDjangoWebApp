@@ -14,11 +14,10 @@ h1 {
 }
 
 #search-overlay {
-    position: absolute; /* Sit on top of the page content */
-    display: inherit; /* Hidden by default */
+    position: absolute;
+    display: inherit;
     top: 38px;
-    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-    cursor: pointer; /* Add a pointer on hover */
+    z-index: 2;
 }
 
 #brand-name {
