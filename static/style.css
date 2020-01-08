@@ -2,7 +2,6 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    color: white;
 }
 
 h1 {
@@ -10,13 +9,27 @@ h1 {
     font-size: 3rem;
 }
 
+.navbar {
+    background-color: #323A45;
+}
+
 #brand-name {
     font-weight: 600;
-    font-size: 2.5rem;
+    font-size: 1.5rem;
 }
 
 .nav-item {
     margin: 4px;
+}
+
+#search-button {
+    margin-right: 1px;
+    margin-left: -2px;
+    z-index: 1;
+}
+
+.carousel {
+    margin-top: 16px;
 }
 
 .carousel-inner {
@@ -32,6 +45,7 @@ h1 {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    font-size: 3vw;
+    font-size: 2.5rem;
+    color: white;
     text-shadow: 0 0 30px black;
 }

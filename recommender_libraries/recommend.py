@@ -45,7 +45,7 @@ class Similarity(object):
         """ Generates predictions given a film title, dataset matrix and cosine similarity matrix.
          :return List containing the index of each recommended game in descending order of relevance. """
         print("Making predictions...")
-        indices = pandas.Series(matrix["title"])
+        indices = pandas.Series(matrix["title"]).str.lower()
         if len(indices[indices == title]) >= 1:
             matching_index = indices[indices == title].index[0]
         else:
@@ -64,6 +64,8 @@ class Similarity(object):
 def generate_recommendations(title, n):
     sim = Similarity()
     cos, data = sim.generate_model()
+
+    title = title.lower()
     predictions = sim.make_predictions(title, data, cos, n)
 
     return predictions

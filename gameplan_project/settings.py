@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'gameplan'
+    'gameplan',
+    'accounts.apps.AccountsConfig'
 ]
 
 MIDDLEWARE = [
@@ -100,6 +101,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+LOGIN_REDIRECT_URL = 'index'  # where to redirect after user has logged in
+LOGOUT_REDIRECT_URL = 'index'  # where to redirect after user has logged in
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/

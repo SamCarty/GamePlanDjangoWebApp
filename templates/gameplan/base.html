@@ -4,7 +4,7 @@
     {% load static %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>GamePlan</title>
+    <title>{% block title %}GamePlan | Recommendations based on you favourite games!{% endblock %}</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -26,9 +26,9 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg static-top">
+<nav class="navbar navbar-dark navbar-expand-lg static-top">
     <div class="container">
-        <a class="navbar-brand" id="brand-name" href="#">GamePlan</a>
+        <a class="navbar-brand" id="brand-name" href="{% url 'index' %}">GamePlan</a>
         <!-- Toggler for small resolutions -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,11 +38,17 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <form>
-                        <input type="search" class="form-control input-lg" id="inputGameName"
-                               placeholder="Search for a game">
+                    <form class="form-inline">
+                        <div class="input-group">
+                            <input type="search" class="form-control input-lg" id="inputGameName"
+                                   placeholder="Search for a game">
+                            <button type="button" class="btn btn-primary input-group-prepend" id="search-button">
+                                Search
+                            </button>
+                        </div>
                     </form>
                 </li>
+
                 <li class="nav-item">
                     <div class="btn-group">
                         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
@@ -52,18 +58,35 @@
                         </div>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <button type="button" class="btn btn-primary">Login</button>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Sign up</a>
-                </li>
+
+
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a href="#">
+                            <button type="button" class="btn btn-primary">Account</button>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a href="{% url 'login' %}">
+                            <button type="button" class="btn btn-primary">Login</button>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'signup' %}">Sign up</a>
+                    </li>
+                {% endif %}
+
+
             </ul>
         </div>
     </div>
 </nav>
 
-<div class="container p-0">
+<div class="container">
     {% block content %}{% endblock content %}
 </div>
 
@@ -72,11 +95,67 @@
         loadGenres()
     });
 
+    $('#inputGameName').on('input', function () {
+        var element = document.getElementById('contentRec');
+        const searchQuery = $('#inputGameName').val();
+        if (searchQuery === '') {
+            clearSearchResults(element);
+        } else {
+            url = '/search/' + searchQuery;
+            $.getJSON(url, function (result) {
+                clearSearchResults(element);
+
+                if (result != null && Object.values(result).length > 0) {
+                    Object.values(result).forEach(function (game) {
+                        addSearchResult(element, game);
+                    });
+                }
+            });
+        }
+    });
+
+    function addSearchResult(element, game) {
+        var itemDiv = document.createElement('div');
+        itemDiv.setAttribute('class', "col-sm-2 img-responsive item");
+
+        var itemLink = document.createElement('a');
+        itemLink.setAttribute('href', '/games/game/' + game['game_id']);
+
+        var itemImage = document.createElement('img');
+        itemImage.setAttribute('src', 'https://' + game['cover']);
+        itemImage.setAttribute('class', "img-fluid rec-item");
+        itemImage.setAttribute('title', game['title']);
+        itemLink.appendChild(itemImage);
+
+        itemDiv.appendChild(itemLink);
+
+        element.appendChild(itemDiv);
+    }
+
+    function clearSearchResults(element) {
+        while (element.firstChild) {
+            element.removeChild(element.firstChild);
+        }
+    }
+
     function loadGenres() {
         url = '/genres/get-all-genres/';
         $.getJSON(url, function (result) {
             if (result != null) {
                 dropdown = document.getElementById('genres-dropdown');
+
+                // alphabetically sort the genres
+                result.sort(function (a, b) {
+                    if (a.name < b.name) {
+                        return -1;
+                    }
+                    if (a.name > b.name) {
+                        return 1;
+                    }
+                    return 0;
+                });
+
+                // create the items for the genres dropdown
                 Object.values(result).forEach(function (key) {
                     item = document.createElement('a');
                     item.setAttribute('class', 'dropdown-item');
