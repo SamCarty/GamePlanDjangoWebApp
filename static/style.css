@@ -1,26 +1,37 @@
 @import url('https://rsms.me/inter/inter.css');
 
 body {
-  font-family: 'Inter', sans-serif;
-  color: lightgray;
-  background-color: #1D2635;
+    font-family: 'Inter', sans-serif;
+    color: white;
 }
 
 h1 {
-  font-weight: 800;
-  font-size: 3em;
-}
-
-.remove-padding {
-  padding: 0;
-}
-
-.nav-item {
-  margin-left: 4px;
-  margin-right: 4px;
+    font-weight: 800;
+    font-size: 3rem;
 }
 
 #brand-name {
-  font-weight: 600;
-  font-size: 2em;
+    font-weight: 600;
+    font-size: 2.5rem;
+}
+
+.nav-item {
+    margin: 4px;
+}
+
+.carousel-inner {
+    border-radius: 24px;
+}
+
+.carousel-item h1 {
+    position: absolute;
+    width: 80%;
+    left: 0;
+    right: 0;
+    bottom: 5vh;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 3vw;
+    text-shadow: 0 0 30px black;
 }

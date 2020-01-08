@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e38eafcc-dce6-4a11-98a7-3ff01e46304d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/genres/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gameplan_project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/gameplan_project/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recommender/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recommender_libraries/recommend.py" beforeDir="false" afterPath="$PROJECT_DIR$/recommender_libraries/recommend.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/gameplan/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gameplan/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/gameplan/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gameplan/index.html" afterDir="false" />
@@ -139,7 +135,7 @@
       <workItem from="1578358359102" duration="180000" />
       <workItem from="1578359103946" duration="209000" />
       <workItem from="1578359388913" duration="1343000" />
-      <workItem from="1578402921454" duration="25736000" />
+      <workItem from="1578402921454" duration="30216000" />
     </task>
     <servers />
   </component>
