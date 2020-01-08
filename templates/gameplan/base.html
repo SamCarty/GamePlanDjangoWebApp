@@ -45,6 +45,11 @@
                             <button type="button" class="btn btn-primary input-group-prepend" id="search-button">
                                 Search
                             </button>
+                            <div id="search-overlay">
+                                <ul class="list-group" id="autocomplete">
+
+                                </ul>
+                            </div>
                         </div>
                     </form>
                 </li>
@@ -58,7 +63,6 @@
                         </div>
                     </div>
                 </li>
-
 
                 {% if user.is_authenticated %}
                     <li class="nav-item">
@@ -95,16 +99,16 @@
         loadGenres()
     });
 
+    // Search
     $('#inputGameName').on('input', function () {
-        var element = document.getElementById('contentRec');
+        const element = document.getElementById('autocomplete');
         const searchQuery = $('#inputGameName').val();
         if (searchQuery === '') {
             clearSearchResults(element);
         } else {
-            url = '/search/' + searchQuery;
+            const url = '/search/' + searchQuery;
             $.getJSON(url, function (result) {
                 clearSearchResults(element);
-
                 if (result != null && Object.values(result).length > 0) {
                     Object.values(result).forEach(function (game) {
                         addSearchResult(element, game);
@@ -115,21 +119,11 @@
     });
 
     function addSearchResult(element, game) {
-        var itemDiv = document.createElement('div');
-        itemDiv.setAttribute('class', "col-sm-2 img-responsive item");
-
-        var itemLink = document.createElement('a');
-        itemLink.setAttribute('href', '/games/game/' + game['game_id']);
-
-        var itemImage = document.createElement('img');
-        itemImage.setAttribute('src', 'https://' + game['cover']);
-        itemImage.setAttribute('class', "img-fluid rec-item");
-        itemImage.setAttribute('title', game['title']);
-        itemLink.appendChild(itemImage);
-
-        itemDiv.appendChild(itemLink);
-
-        element.appendChild(itemDiv);
+        const autoCompleteItem = document.createElement('a');
+        autoCompleteItem.setAttribute('class', 'list-group-item');
+        autoCompleteItem.innerHTML = game['title'];
+        autoCompleteItem.setAttribute('href', '/games/game/' + game['game_id']);
+        element.appendChild(autoCompleteItem)
     }
 
     function clearSearchResults(element) {
