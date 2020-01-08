@@ -96,27 +96,34 @@
 
 <script>
     $(document).ready(function () {
-        loadGenres()
+        loadGenres();
     });
 
-    // Search
+    // Search and autocomplete
+    const autocompleteEl = document.getElementById('autocomplete');
     $('#inputGameName').on('input', function () {
-        const element = document.getElementById('autocomplete');
+        const autocompleteEl = document.getElementById('autocomplete');
         const searchQuery = $('#inputGameName').val();
         if (searchQuery === '') {
-            clearSearchResults(element);
+            clearSearchResults(autocompleteEl);
         } else {
             const url = '/search/' + searchQuery;
             $.getJSON(url, function (result) {
-                clearSearchResults(element);
+                clearSearchResults(autocompleteEl);
                 if (result != null && Object.values(result).length > 0) {
                     Object.values(result).forEach(function (game) {
-                        addSearchResult(element, game);
+                        addSearchResult(autocompleteEl, game);
                     });
                 }
             });
         }
+    }).focusout(function () {
+        autocompleteEl.setAttribute('style', 'display: none');
+    }).focusin(function () {
+        autocompleteEl.setAttribute('style', 'display: inherit');
     });
+
+
 
     function addSearchResult(element, game) {
         const autoCompleteItem = document.createElement('a');
