@@ -41,13 +41,13 @@ class Similarity(object):
         cos_mat = cosine_similarity(keyword_count_matrix, keyword_count_matrix)
         return cos_mat
 
-    def make_predictions(self, title, matrix, cos_mat, n):
+    def make_predictions(self, game_id, matrix, cos_mat, n):
         """ Generates predictions given a film title, dataset matrix and cosine similarity matrix.
          :return List containing the index of each recommended game in descending order of relevance. """
         print("Making predictions...")
-        indices = pandas.Series(matrix["title"]).str.lower()
-        if len(indices[indices == title]) >= 1:
-            matching_index = indices[indices == title].index[0]
+        indices = pandas.Series(matrix["game_id"]).str.lower()
+        if len(indices[indices == game_id]) >= 1:
+            matching_index = indices[indices == game_id].index[0]
         else:
             return list()
 
@@ -61,12 +61,11 @@ class Similarity(object):
         return predictions
 
 
-def generate_recommendations(title, n):
+def generate_recommendations(game_id, n):
     sim = Similarity()
     cos, data = sim.generate_model()
 
-    title = title.lower()
-    predictions = sim.make_predictions(title, data, cos, n)
+    predictions = sim.make_predictions(game_id, data, cos, n)
 
     return predictions
 
@@ -74,7 +73,7 @@ def generate_recommendations(title, n):
 if __name__ == '__main__':
     print("Beginning recommendation process...")
     sim = Similarity()
-    cos, data = sim.recalculate_model()
+    cos, data = sim.generate_model()
     prediction_ids = sim.make_predictions("Call Of Duty: Modern Warfare", data, cos, 10)
 
     print("Recommendations: ")

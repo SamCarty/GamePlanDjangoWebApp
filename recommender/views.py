@@ -1,18 +1,12 @@
-import sys
-
 from django.http import JsonResponse
 from recommender_libraries import recommend
-import logging
-
-logger = logging.getLogger(__name__)
 
 
-def get_content_based_recommendations(request, title, n=10):
-    print(title, file=sys.stderr)
-    games = recommend.generate_recommendations(title, n)
+def get_content_based_recommendations(request, game_id, n=10):
+    games = recommend.generate_recommendations(game_id, n)
 
     games_return_data = {
-        'source_id': title,
+        'source_id': game_id,
         'data': games
     }
 

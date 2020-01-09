@@ -26,7 +26,7 @@
 </head>
 
 <body>
-<nav class="navbar navbar-dark navbar-expand-lg static-top">
+<nav class="navbar navbar-light navbar-expand-lg static-top">
     <div class="container">
         <a class="navbar-brand" id="brand-name" href="{% url 'index' %}">GamePlan</a>
         <!-- Toggler for small resolutions -->
@@ -90,7 +90,7 @@
     </div>
 </nav>
 
-<div class="container">
+<div class="container px-0">
     {% block content %}{% endblock content %}
 </div>
 
@@ -102,7 +102,6 @@
     // Search and autocomplete
     const autocompleteEl = document.getElementById('autocomplete');
     $('#inputGameName').on('input', function () {
-        const autocompleteEl = document.getElementById('autocomplete');
         const searchQuery = $('#inputGameName').val();
         if (searchQuery === '') {
             clearSearchResults(autocompleteEl);
@@ -117,19 +116,19 @@
                 }
             });
         }
-    }).focusout(function () {
-        autocompleteEl.setAttribute('style', 'display: none');
     }).focusin(function () {
-        autocompleteEl.setAttribute('style', 'display: inherit');
+        autocompleteEl.style.display = 'inherit';
+    }).focusout(function () {
+        setTimeout(function() {
+            autocompleteEl.style.display = 'none'
+        }, 200);
     });
-
-
 
     function addSearchResult(element, game) {
         const autoCompleteItem = document.createElement('a');
         autoCompleteItem.setAttribute('class', 'list-group-item');
         autoCompleteItem.innerHTML = game['title'];
-        autoCompleteItem.setAttribute('href', '/games/game/' + game['game_id']);
+        autoCompleteItem.setAttribute('href', '/games/' + game['game_id']);
         element.appendChild(autoCompleteItem)
     }
 
@@ -140,10 +139,10 @@
     }
 
     function loadGenres() {
-        url = '/genres/get-all-genres/';
+        const url = '/genres/get-all-genres/';
         $.getJSON(url, function (result) {
             if (result != null) {
-                dropdown = document.getElementById('genres-dropdown');
+                const dropdown = document.getElementById('genres-dropdown');
 
                 // alphabetically sort the genres
                 result.sort(function (a, b) {

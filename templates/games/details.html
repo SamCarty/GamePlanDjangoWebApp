@@ -1,0 +1,85 @@
+{% extends "gameplan/base.html" %}
+
+{% block head %}
+    <script>
+        // DETAILS
+        function getGameDetails(gameId) {
+            url = '/games/details/' + gameId;
+            queryName = 'contentRec';
+
+            $.getJSON(url, function (game) {
+                if (game != null) {
+
+                    gameDiv = document.createElement('div');
+
+                    gameTitle = document.createElement('h1');
+                    gameTitle.innerHTML = game[0]['title'];
+
+                    gameDiv.appendChild(gameTitle);
+
+                    document.getElementById('details-block').appendChild(gameDiv)
+
+                }
+            });
+        }
+
+
+        // RECOMMENDATIONS
+        function getContentRecommendations(gameName) {
+            url = '/recommender/content-based/' + gameName + '/' + 6;
+            fetchRecommendations(url, queryName);
+        }
+
+        function fetchRecommendations(url) {
+            $.getJSON(url, function (result) {
+                if (result.data != null) {
+                    section = document.getElementById('recommendation-block');
+                    section.style.display = 'block';
+                    Object.values(result.data).forEach(function (key) {
+                        addGame(key, section);
+                    });
+                }
+            });
+        }
+
+        function addGame(game, items) {
+            itemDiv = document.createElement('div');
+            itemDiv.setAttribute('class', "col-sm-2 img-responsive item");
+
+            itemLink = document.createElement('a');
+            itemLink.setAttribute('href', '/games/game/' + game['game_id']);
+
+            itemImage = document.createElement('img');
+            itemImage.setAttribute('src', 'https://' + game['cover']);
+            itemImage.setAttribute('class', "img-fluid rec-item");
+            itemImage.setAttribute('title', game['title']);
+            itemLink.appendChild(itemImage);
+
+            itemDiv.appendChild(itemLink);
+
+            items.appendChild(itemDiv);
+        }
+
+
+    </script>
+{% endblock head %}
+
+{% block content %}
+    <p>Game details for ID: {{ request.resolver_match.kwargs.game_id }}</p>
+
+    <div class="col-12 main">
+        <div class="row">
+            <div id="details-block" class="d-flex"></div>
+        </div>
+        <div class="row">
+            <div id="recommendation-block" class="d-flex" style="display: none"></div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            getGameDetails({{ request.resolver_match.kwargs.game_id }});
+            getContentRecommendations({{ request.resolver_match.kwargs.game_id }})
+        });
+    </script>
+{% endblock content %}

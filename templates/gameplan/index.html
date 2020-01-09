@@ -2,45 +2,10 @@
 
 {% block head %}
     <script>
-        function getContentRecommendations(gameName) {
-            url = '/recommender/content-based/' + gameName + '/' + 6;
-            queryName = 'contentRec';
-            fetchRecommendations(url, queryName);
-        }
 
-        function fetchRecommendations(url, queryName) {
-            $.getJSON(url, function (result) {
-                removeGames(queryName);
-                if (result.data != null) {
-                    section = document.getElementById(queryName);
-                    section.style.display = 'block';
-                    Object.values(result.data).forEach(function (key) {
-                        addGame(key, section);
-                    });
-                }
-            });
-        }
-
-        function addGame(game, items) {
-            itemDiv = document.createElement('div');
-            itemDiv.setAttribute('class', "col-sm-2 img-responsive item");
-
-            itemLink = document.createElement('a');
-            itemLink.setAttribute('href', '/games/game/' + game['game_id']);
-
-            itemImage = document.createElement('img');
-            itemImage.setAttribute('src', 'https://' + game['cover']);
-            itemImage.setAttribute('class', "img-fluid rec-item");
-            itemImage.setAttribute('title', game['title']);
-            itemLink.appendChild(itemImage);
-
-            itemDiv.appendChild(itemLink);
-
-            items.appendChild(itemDiv);
-        }
 
         function removeGames(queryName) {
-            document.getElementById(queryName).style.display = 'None';
+            document.getElementById(queryName).style.display = 'none';
             $('.item').remove()
         }
     </script>
@@ -57,18 +22,21 @@
             <div class="carousel-item active">
                 <img class="d-block w-100" src="https://images.igdb.com/igdb/image/upload/t_original/sc6lit.jpg"
                      alt="First slide">
+                <div class="carousel-shadow"></div>
                 <h1>Planet Zoo</h1>
             </div>
             <div class="carousel-item">
                 <img class="d-block w-100"
                      src="https://images.igdb.com/igdb/image/upload/t_original/s2zdtxopibrfjbxvpj5h.jpg"
                      alt="Second slide">
+                <div class="carousel-shadow"></div>
                 <h1>God of War</h1>
             </div>
             <div class="carousel-item">
                 <img class="d-block w-100"
                      src="https://images.igdb.com/igdb/image/upload/t_original/tqt0sxjytiovh3g96cl0.jpg"
                      alt="Third slide">
+                <div class="carousel-shadow"></div>
                 <h1>Uncharted 4: A Thief's End</h1>
             </div>
         </div>
@@ -82,15 +50,4 @@
         </a>
     </div>
 
-    <div class="col-12 main">
-        <div class="row">
-            <div id="contentRec" class="d-flex" style="display: none"></div>
-        </div>
-    </div>
-
-    <script>
-        $('#inputGameName').on('input', function () {
-            //getContentRecommendations($('#inputGameName').val())
-        });
-    </script>
 {% endblock content %}
