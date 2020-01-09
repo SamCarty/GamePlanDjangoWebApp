@@ -1,4 +1,5 @@
 import os
+import sys
 
 import django
 from django.db import connection
@@ -45,7 +46,7 @@ class Similarity(object):
         """ Generates predictions given a film title, dataset matrix and cosine similarity matrix.
          :return List containing the index of each recommended game in descending order of relevance. """
         print("Making predictions...")
-        indices = pandas.Series(matrix["game_id"]).str.lower()
+        indices = pandas.Series(matrix["game_id"])
         if len(indices[indices == game_id]) >= 1:
             matching_index = indices[indices == game_id].index[0]
         else:
@@ -54,28 +55,28 @@ class Similarity(object):
         scores = pandas.Series(cos_mat[matching_index]).sort_values(ascending=False)
         recommended_titles = list(scores.iloc[1:n + 1].index)
 
-        predictions = dict()
-        for i in range(0, len(recommended_titles)):
-            predictions[i] = (matrix.loc[recommended_titles[i]]).to_dict()
-
-        return predictions
+        return recommended_titles
 
 
 def generate_recommendations(game_id, n):
     sim = Similarity()
     cos, data = sim.generate_model()
 
-    predictions = sim.make_predictions(game_id, data, cos, n)
+    prediction_indexes = sim.make_predictions(game_id, data, cos, n)
 
-    return predictions
+    prediction_ids = list()
+    for item in prediction_indexes:
+        prediction_ids.append(data["game_id"].loc[item])
+
+    return prediction_ids
 
 
 if __name__ == '__main__':
     print("Beginning recommendation process...")
     sim = Similarity()
     cos, data = sim.generate_model()
-    prediction_ids = sim.make_predictions("Call Of Duty: Modern Warfare", data, cos, 10)
+    prediction_indexes = sim.make_predictions("119177", data, cos, 10)
 
     print("Recommendations: ")
-    for item in prediction_ids:
+    for item in prediction_indexes:
         print(data["title"].loc[item])
