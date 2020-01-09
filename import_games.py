@@ -11,7 +11,8 @@ from recommender_libraries.lib.rake import Rake
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'gameplan_project.settings')
 django.setup()
 
-from gameplan.models import Game, Genre, Image
+from gameplan.models import Game, Genre, Image, GameMode, Franchise, GameEngine, InvolvedCompany, Company, Platform, \
+    PlayerPerspective, ReleaseDate, Screenshot, Theme, Video, Website
 
 
 def clear_database():
@@ -28,7 +29,7 @@ def import_file(filename):
 
         game_data = data['games']
         games = list()
-        for i in range(0, len(game_data) - 1):  #
+        for i in range(0, len(game_data) - 1):  # len(game_data) - 1
             game = game_data[i]
             print("Adding game: " + game['name'])
 
@@ -51,6 +52,110 @@ def import_file(filename):
                 for genre in game['genres']:
                     genre = Genre.objects.get_or_create(genre_id=genre['id'], name=genre['name'])[0]
                     game_object.genres.add(genre)
+
+            if 'category' in game:
+                game_object.category = game['category']
+
+            if 'first_release_date' in game:
+                game_object.first_release_date = game['first_release_date']
+
+            if 'franchise' in game:
+                franchise = \
+                    Franchise.objects.get_or_create(franchise_id=game['franchise']['id'],
+                                                    name=game['franchise']['name'])[0]
+                game_object.franchise = franchise
+
+            if 'game_engines' in game:
+                for game_engine in game['game_engines']:
+                    if not isinstance(game_engine, int):
+                        game_engine = \
+                            GameEngine.objects.get_or_create(game_engine_id=game_engine['id'], name=game_engine['name'])[0]
+                        game_object.game_engines.add(game_engine)
+
+            if 'game_modes' in game:
+                for gamemode in game['game_modes']:
+                    gamemode = GameMode.objects.get_or_create(game_mode_id=gamemode['id'], name=gamemode['name'])[0]
+                    game_object.game_modes.add(gamemode)
+
+            if 'hypes' in game:
+                game_object.hypes = game['hypes']
+
+            if 'involved_companies' in game:
+                for involved_company in game['involved_companies']:
+                    company = Company.objects.get_or_create(company_id=involved_company['company']['id'],
+                                                            name=involved_company['company']['name'])[0]
+
+                    involved_company = InvolvedCompany.objects.get_or_create(involved_company_id=involved_company['id'],
+                                                                             developer=involved_company['developer'],
+                                                                             publisher=involved_company['publisher'],
+                                                                             company=company)[0]
+                    game_object.involved_companies.add(involved_company)
+
+            if 'keywords' in game:
+                all_keywords = ''
+                for keyword in game['keywords']:
+                    all_keywords += keyword['name'] + ', '
+
+                game_object.keywords = all_keywords
+
+            if 'platforms' in game:
+                for platform in game['platforms']:
+                    platform = Platform.objects.get_or_create(platform_id=platform['id'], name=platform['name'])[0]
+                    game_object.platforms.add(platform)
+
+            if 'player_perspectives' in game:
+                for perspective in game['player_perspectives']:
+                    perspective = PlayerPerspective.objects.get_or_create(player_perspective_id=perspective['id'],
+                                                                          name=perspective['name'])[0]
+                    game_object.player_perspectives.add(perspective)
+
+            if 'popularity' in game:
+                game_object.popularity = game['popularity']
+
+            if 'release_dates' in game:
+                for date in game['release_dates']:
+                    platform = Platform.objects.get_or_create(platform_id=date['platform']['id'],
+                                                              name=date['platform']['name'])[0]
+                    dateToAdd = ReleaseDate.objects.get_or_create(release_date_id=date['id'], platform=platform)[0]
+
+                    if 'date' in date:
+                        dateToAdd.date = date['date']
+
+                    if 'human' in date:
+                        dateToAdd.human = date['human']
+
+                    game_object.release_dates.add(dateToAdd)
+
+            if 'screenshots' in game:
+                for screenshot in game['screenshots']:
+                    screenshot = \
+                        Screenshot.objects.get_or_create(screenshot_id=screenshot['id'], url=screenshot['url'])[0]
+                    game_object.screenshots.add(screenshot)
+
+            if 'themes' in game:
+                for theme in game['themes']:
+                    theme = Theme.objects.get_or_create(theme_id=theme['id'], name=theme['name'])[0]
+                    game_object.themes.add(theme)
+
+            if 'total_rating' in game:
+                game_object.total_rating = game['total_rating']
+
+            if 'total_rating_count' in game:
+                game_object.total_rating_count = game['total_rating_count']
+
+            if 'url' in game:
+                game_object.url = game['url']
+
+            if 'videos' in game:
+                for video in game['videos']:
+                    if not isinstance(video, int):
+                        video = Video.objects.get_or_create(id=video['id'], video_id=video['video_id'])[0]
+                        game_object.videos.add(video)
+
+            if 'websites' in game:
+                for website in game['websites']:
+                    website = Website.objects.get_or_create(website_id=website['id'], url=website['url'])[0]
+                    game_object.websites.add(website)
 
             game_object.save()
             games.append(game_object)
@@ -109,7 +214,7 @@ def pre_process_games(games):
 if __name__ == '__main__':
     print("Starting game data import...")
     clear_database()
-    import_file('games_v3.json')
+    import_file('games_v4.json')
     games = combine_dbs()
     pre_process_games(games)
     print("Import complete!")
