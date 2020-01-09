@@ -44,7 +44,7 @@ class Company(models.Model):
 
 class InvolvedCompany(models.Model):
     involved_company_id = models.CharField(max_length=16, unique=True, primary_key=True)
-    company = models.ForeignKey(Company, on_delete=None)
+    company = models.ForeignKey(Company, on_delete=models.CASCADE)
     developer = models.BooleanField()
     publisher = models.BooleanField()
 
@@ -63,7 +63,7 @@ class ReleaseDate(models.Model):
     release_date_id = models.CharField(max_length=16, unique=True, primary_key=True)
     date = models.CharField(max_length=12, null=True)
     human = models.CharField(max_length=12, null=True)
-    platform = models.ForeignKey(Platform, on_delete=None)
+    platform = models.ForeignKey(Platform, on_delete=models.CASCADE)
     region = models.IntegerField(null=True)
 
 
@@ -98,7 +98,7 @@ class Game(models.Model):
 
     category = models.CharField(max_length=3, null=True)
     first_release_date = models.CharField(max_length=12, null=True)
-    franchise = models.ForeignKey(Franchise, on_delete=None, null=True)
+    franchise = models.ForeignKey(Franchise, on_delete=models.SET_NULL, null=True)
     game_engines = models.ManyToManyField(GameEngine, db_table='game_game_engine')
     game_modes = models.ManyToManyField(GameMode, db_table='game_game_mode')
     hypes = models.IntegerField(null=True)
