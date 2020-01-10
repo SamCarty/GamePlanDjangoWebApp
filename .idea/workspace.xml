@@ -3,6 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="e38eafcc-dce6-4a11-98a7-3ff01e46304d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gameplan/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/gameplan/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/games/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/games/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/games/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/games/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/import_games.py" beforeDir="false" afterPath="$PROJECT_DIR$/import_games.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/games/details.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/games/details.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +79,7 @@
       <recent name="S:\Repos\Games Recommender Files\gameplan" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.recommend (1)">
+  <component name="RunManager" selected="Python.import_games">
     <configuration name="import_games" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="GR_App" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -143,8 +148,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.recommend (1)" />
         <item itemvalue="Python.import_games" />
+        <item itemvalue="Python.recommend (1)" />
         <item itemvalue="Python.recommend" />
       </list>
     </recent_temporary>
@@ -182,7 +187,8 @@
       <workItem from="1578488128235" duration="21775000" />
       <workItem from="1578569996850" duration="28721000" />
       <workItem from="1578611285210" duration="2329000" />
-      <workItem from="1578613715307" duration="28000" />
+      <workItem from="1578613715307" duration="130000" />
+      <workItem from="1578658979868" duration="11614000" />
     </task>
     <servers />
   </component>
@@ -202,26 +208,26 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1059" y="455" key="FileChooserDialogImpl/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578403997834" />
-    <state width="2517" height="538" key="GridCell.Tab.0.bottom" timestamp="1578613615245">
+    <state width="2517" height="538" key="GridCell.Tab.0.bottom" timestamp="1578675036862">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1877" height="68" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1578610701472" />
-    <state width="2517" height="538" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578613615245" />
-    <state width="2517" height="538" key="GridCell.Tab.0.center" timestamp="1578613615245">
+    <state width="2517" height="538" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578675036862" />
+    <state width="2517" height="538" key="GridCell.Tab.0.center" timestamp="1578675036862">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1877" height="68" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1578610701472" />
-    <state width="2517" height="538" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578613615245" />
-    <state width="2517" height="538" key="GridCell.Tab.0.left" timestamp="1578613615245">
+    <state width="2517" height="538" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578675036862" />
+    <state width="2517" height="538" key="GridCell.Tab.0.left" timestamp="1578675036862">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1877" height="68" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1578610701472" />
-    <state width="2517" height="538" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578613615245" />
-    <state width="2517" height="538" key="GridCell.Tab.0.right" timestamp="1578613615245">
+    <state width="2517" height="538" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578675036862" />
+    <state width="2517" height="538" key="GridCell.Tab.0.right" timestamp="1578675036862">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1877" height="68" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1578610701472" />
-    <state width="2517" height="538" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578613615245" />
+    <state width="2517" height="538" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578675036862" />
     <state width="2517" height="492" key="GridCell.Tab.1.bottom" timestamp="1578358206535">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -246,18 +252,20 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="781" y="343" key="SettingsEditor/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578309127154" />
-    <state x="561" y="514" key="com.intellij.ide.util.TipDialog" timestamp="1578613716266">
+    <state x="561" y="514" key="com.intellij.ide.util.TipDialog" timestamp="1578658985310">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="561" y="514" key="com.intellij.ide.util.TipDialog/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578613716266" />
-    <state x="854" y="198" width="1452" height="972" key="dock-window-1" timestamp="1578606122806">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="561" y="514" key="com.intellij.ide.util.TipDialog/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578658985310" />
+    <state x="833" y="145" width="1145" height="863" key="dock-window-1" timestamp="1578666163549">
+      <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="854" y="198" width="1452" height="972" key="dock-window-1/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578606122806" />
-    <state x="561" y="376" width="944" height="966" key="find.popup" timestamp="1578358449090">
+    <state x="833" y="145" width="1145" height="863" key="dock-window-1/0.0.2560.1440/-1920.0.1920.1080@0.0.2560.1440" timestamp="1578666163549" />
+    <state x="495" y="170" width="1145" height="863" key="dock-window-1/0.30.2560.1410/-1920.30.1920.1050@0.30.2560.1410" timestamp="1578665842805" />
+    <state x="561" y="376" width="944" height="966" key="find.popup" timestamp="1578671262236">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="561" y="376" width="944" height="966" key="find.popup/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578358449090" />
+    <state x="561" y="376" width="944" height="966" key="find.popup/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578671262236" />
     <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1578606691091">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -266,6 +274,6 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/gameplan$recommend__1_.coverage" NAME="recommend (1) Coverage Results" MODIFIED="1578613358272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/recommender_libraries" />
     <SUITE FILE_PATH="coverage/gameplan$recommend.coverage" NAME="recommend Coverage Results" MODIFIED="1578341437050" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/gameplan$import_games.coverage" NAME="import_games Coverage Results" MODIFIED="1578608554628" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/gameplan$import_games.coverage" NAME="import_games Coverage Results" MODIFIED="1578672409408" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

@@ -5,17 +5,24 @@
         // DETAILS
         function getGameDetails(gameId) {
             url = '/games/details/' + gameId;
-            queryName = 'contentRec';
 
             $.getJSON(url, function (game) {
                 if (game != null) {
-
                     gameDiv = document.createElement('div');
+
+                    gameIdEl = document.createElement('p');
+                    gameIdEl.innerHTML = 'Game ID: ' + {{ request.resolver_match.kwargs.game_id }};
+                    gameDiv.appendChild(gameIdEl);
 
                     gameTitle = document.createElement('h1');
                     gameTitle.innerHTML = game[0]['title'];
-
                     gameDiv.appendChild(gameTitle);
+
+
+                    gameImage = document.createElement('img');
+                    gameImage.setAttribute('class', 'game-headline-image row text-center');
+                    gameImage.setAttribute('src', 'https://' + game[0]['screenshots'][0]['url']);
+                    gameDiv.appendChild(gameImage);
 
                     document.getElementById('details-block').appendChild(gameDiv)
 
@@ -27,7 +34,7 @@
         // RECOMMENDATIONS
         function getContentRecommendations(gameName) {
             url = '/recommender/content-based/' + gameName + '/' + 6;
-            fetchRecommendations(url, queryName);
+            fetchRecommendations(url);
         }
 
         function fetchRecommendations(url) {
@@ -36,13 +43,13 @@
                     section = document.getElementById('recommendation-block');
                     section.style.display = 'block';
                     Object.values(result.data).forEach(function (key) {
-                        addGame(key, section);
+                        addRecommendation(key, section);
                     });
                 }
             });
         }
 
-        function addGame(game, items) {
+        function addRecommendation(game, section) {
             itemDiv = document.createElement('div');
             itemDiv.setAttribute('class', "col-sm-2 img-responsive item");
 
@@ -57,7 +64,7 @@
 
             itemDiv.appendChild(itemLink);
 
-            items.appendChild(itemDiv);
+            section.appendChild(itemDiv);
         }
 
 
@@ -65,13 +72,12 @@
 {% endblock head %}
 
 {% block content %}
-    <p>Game details for ID: {{ request.resolver_match.kwargs.game_id }}</p>
-
     <div class="col-12 main">
         <div class="row">
-            <div id="details-block" class="d-flex"></div>
+            <div id="details-block" class=""></div>
         </div>
         <div class="row">
+            <h2>Similar games to this:</h2>
             <div id="recommendation-block" class="d-flex" style="display: none"></div>
         </div>
     </div>

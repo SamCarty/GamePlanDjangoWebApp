@@ -11,7 +11,7 @@ from recommender_libraries.lib.rake import Rake
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'gameplan_project.settings')
 django.setup()
 
-from gameplan.models import Game, Genre, Image, GameMode, Franchise, GameEngine, InvolvedCompany, Company, Platform, \
+from gameplan.models import Game, Genre, GameMode, Franchise, GameEngine, InvolvedCompany, Company, Platform, \
     PlayerPerspective, ReleaseDate, Screenshot, Theme, Video, Website
 
 
@@ -19,7 +19,20 @@ def clear_database():
     print("Purging all Game entries in database.")
     Game.objects.all().delete()
     Genre.objects.all().delete()
-    Image.objects.all().delete()
+    GameMode.objects.all().delete()
+    Franchise.objects.all().delete()
+    GameEngine.objects.all().delete()
+    InvolvedCompany.objects.all().delete()
+    Company.objects.all().delete()
+    Platform.objects.all().delete()
+    PlayerPerspective.objects.all().delete()
+    ReleaseDate.objects.all().delete()
+    Screenshot.objects.all().delete()
+    Theme.objects.all().delete()
+    Video.objects.all().delete()
+    Website.objects.all().delete()
+    PlayerPerspective.objects.all().delete()
+
     print("Purge complete.")
 
 
@@ -128,8 +141,11 @@ def import_file(filename):
 
             if 'screenshots' in game:
                 for screenshot in game['screenshots']:
+                    url = screenshot['url']
+                    url = str(url).strip('/').replace('t_thumb', 't_screenshot_big')
+
                     screenshot = \
-                        Screenshot.objects.get_or_create(screenshot_id=screenshot['id'], url=screenshot['url'])[0]
+                        Screenshot.objects.get_or_create(screenshot_id=screenshot['id'], url=url)[0]
                     game_object.screenshots.add(screenshot)
 
             if 'themes' in game:

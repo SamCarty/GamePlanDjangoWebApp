@@ -1,14 +1,6 @@
 from django.db import models
 
 
-class Image(models.Model):
-    image_id = models.CharField(max_length=16, unique=True, primary_key=True)
-    url = models.URLField(max_length=200)
-
-    def __str__(self):
-        return self.url
-
-
 class Genre(models.Model):
     genre_id = models.CharField(max_length=16, unique=True, primary_key=True)
     name = models.CharField(max_length=64)
@@ -71,6 +63,9 @@ class Screenshot(models.Model):
     screenshot_id = models.CharField(max_length=16, unique=True, primary_key=True)
     url = models.URLField(max_length=200)
 
+    def __str__(self):
+        return self.url
+
 
 class Theme(models.Model):
     theme_id = models.CharField(max_length=16, unique=True, primary_key=True)
@@ -115,7 +110,6 @@ class Game(models.Model):
     url = models.URLField(max_length=200, null=True)
     videos = models.ManyToManyField(Video, db_table='game_video')
     websites = models.ManyToManyField(Website, db_table='game_website')
-
 
     def __str__(self):
         return self.title

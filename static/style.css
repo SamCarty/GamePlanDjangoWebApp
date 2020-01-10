@@ -4,6 +4,10 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
+body, html {
+  height: 100%;
+}
+
 h1 {
     font-weight: 800;
     font-size: 3rem;
@@ -54,4 +58,8 @@ h1 {
     font-size: 2.5rem;
     color: white;
     text-shadow: 0 0 30px black;
+}
+
+.game-headline-image {
+
 }
