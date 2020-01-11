@@ -1,5 +1,7 @@
 {% extends "gameplan/base.html" %}
 
+{% block title %}GamePlan - recommendations based on your favourite games!{% endblock title %}
+
 {% block head %}
     {% load static %}
     <script>
@@ -12,8 +14,7 @@
 
 {% block content %}
     <div class="container px-0 section-container" id="featured-container">
-        <h1 class="section-heading">Featured Titles</h1>
-        <div class="carousel slide" data-ride="carousel" id="carousel" data-interval="6000">
+        <div class="carousel slide" data-ride="carousel" id="index-carousel" data-interval="6000">
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
                     <a href="/games/7331">
@@ -41,26 +42,25 @@
                 </div>
             </div>
             <div>
-                <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                <a class="carousel-control-prev" href="#index-carousel" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon"></span>
                     <span class="sr-only">Previous</span>
                 </a>
-                <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                <a class="carousel-control-next" href="#index-carousel" role="button" data-slide="next">
                     <span class="carousel-control-next-icon"></span><span class="sr-only">Next</span>
                 </a>
             </div>
             <ol class="carousel-indicators">
-                <li data-target="#carousel" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel" data-slide-to="1"></li>
-                <li data-target="#carousel" data-slide-to="2"></li>
+                <li data-target="#index-carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#index-carousel" data-slide-to="1"></li>
+                <li data-target="#index-carousel" data-slide-to="2"></li>
             </ol>
         </div>
-    </div>
-    <div class="container px-0 section-container" id="recommendations-container">
-        <h1 id="recommendations-heading" class="section-heading">Just for you</h1>
-        <div class="slider" id="slider-1">
 
-        </div>
+    <section id="recommendations-section">
+        <h1 id="recommendations-heading">Just for you</h1>
+        <div class="slider" id="slider-1"></div>
+    </section>
     </div>
 
     <script>
@@ -83,7 +83,16 @@
                         addRecommendation(key, section);
                     });
 
-                    run_flickity();
+                    new Flickity('#slider-1', {
+                        cellAlign: 'left',
+                        friction: 0.2,
+                        initialIndex: 0,
+                        lazyLoad: 9,
+                        prevNextButtons: true,
+                        pageDots: false,
+                        setGallerySize: true,
+                        wrapAround: true
+                    });
                 }
             });
         }

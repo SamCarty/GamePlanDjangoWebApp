@@ -4,7 +4,7 @@
     {% load static %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{% block title %}GamePlan | Recommendations based on your favourite games!{% endblock %}</title>
+    <title>{% block title %}{% endblock title %}</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -91,11 +91,9 @@
 </nav>
 
 
-<div class="container px-0">
-    {% block content %}{% endblock content %}
-</div>
+{% block content %}
 
-<script src="{% static "slider.js" %}"></script>
+{% endblock content %}
 
 <script>
     $(document).ready(function () {

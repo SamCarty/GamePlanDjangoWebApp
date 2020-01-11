@@ -1,17 +1,80 @@
 {% extends "gameplan/base.html" %}
 
-{% block head %}
-
-{% endblock head %}
-
 {% block content %}
-    <div class="container px-0 section-container">
-        <div id="details-block" class=""></div>
-    </div>
-    <div class="container px-0 section-container" id="recommendations-container">
-        <h1 id="recommendations-heading" class="section-heading">Similar content</h1>
-        <div class="slider" id="slider-1">
-        </div>
+    <section id="top-image"></section>
+
+    <div class="container">
+        <section id="top-info-section">
+            <div class="row d-flex flex-row" id="top-info-box">
+                <div class="col-12 col-lg-3"><img id="top-cover-img">
+                </div>
+                <div class="col-12 col-lg-9 flex-column" id="top-info-text-holder">
+                    <div class="row">
+                        <div class="col">
+                            <h1 id="game-name-heading"></h1>
+                        </div>
+                    </div>
+                    <div class="row" id="top-info-text">
+                        <div class="col" id="top-info-table-holder">
+                            <div class="table-responsive table-borderless">
+                                <table class="table" id="info-table">
+                                    <tbody class="d-inline-block float-left">
+                                    <tr>
+                                        <td class="left-cell">Developer</td>
+                                        <td class="cell-field" id="top-info-developer"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="left-cell">Publisher</td>
+                                        <td class="cell-field" id="top-info-publisher"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="left-cell">Genres</td>
+                                        <td class="cell-field" id="top-info-genres"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="left-cell">Platforms</td>
+                                        <td class="cell-field" id="top-info-platforms"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="left-cell">Release date</td>
+                                        <td class="cell-field" id="top-info-release-date"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="body-section">
+            <h1>Summary</h1>
+            <p id="body-summary"></p>
+        </section>
+
+        <section id="screenshots-section">
+            <h1>Screenshots</h1>
+            <div class="carousel slide" data-ride="carousel" id="carousel" data-interval="6000">
+                <div class="carousel-inner" id="carousel-inner" role="listbox"></div>
+                <div>
+                    <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon"></span><span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="recommendations-section">
+            <h1>Similar to this game</h1>
+            <div class="slider" id="slider-similar">
+            </div>
+        </section>
+
     </div>
 
     <script>
@@ -26,24 +89,99 @@
 
             $.getJSON(url, function (game) {
                 if (game != null) {
-                    gameDiv = document.createElement('div');
 
-                    gameIdEl = document.createElement('p');
-                    gameIdEl.innerHTML = 'Game ID: ' + {{ request.resolver_match.kwargs.game_id }};
-                    gameDiv.appendChild(gameIdEl);
+                    // TOP IMAGE
+                    topImage = document.getElementById('top-image');
+                    topImage.setAttribute('style', 'background-image: url(https://' + game[0]['screenshots'][0]['url'] + ')');
 
-                    gameTitle = document.createElement('h1');
-                    gameTitle.setAttribute('class', 'section-heading');
-                    gameTitle.innerHTML = game[0]['title'];
-                    gameDiv.appendChild(gameTitle);
+                    // COVER IMAGE
+                    coverImage = document.getElementById('top-cover-img');
+                    coverImage.setAttribute('src', 'https://' + game[0]['cover']);
 
-                    gameImage = document.createElement('img');
-                    gameImage.setAttribute('class', 'game-headline-image row text-center');
-                    gameImage.setAttribute('src', 'https://' + game[0]['screenshots'][0]['url']);
-                    gameDiv.appendChild(gameImage);
+                    // TITLE
+                    gameNameHeading = document.getElementById('game-name-heading');
+                    gameNameHeading.innerHTML = game[0]['title'];
+                    document.title = game[0]['title'] + ' | GamePlan';
 
-                    document.getElementById('details-block').appendChild(gameDiv)
+                    // COMPANIES
+                    developerTopInfo = document.getElementById('top-info-developer');
+                    publisherTopInfo = document.getElementById('top-info-publisher');
+                    for (var i = 0; i < game[0]['involved_companies'].length; i++) {
+                        if (game[0]['involved_companies'][i]['is_dev'] === true) {
+                            if (developerTopInfo.innerHTML !== '') developerTopInfo.innerHTML = developerTopInfo.innerHTML + ", ";
+                            developerLink = document.createElement('a');
+                            developerLink.setAttribute('href', '/company/' + game[0]['involved_companies'][i]['company_id']);
+                            developerLink.innerHTML = game[0]['involved_companies'][i]['name'];
+                            developerTopInfo.appendChild(developerLink);
 
+                        }
+                        if (game[0]['involved_companies'][i]['is_pub'] === true) {
+                            if (publisherTopInfo.innerHTML !== '') publisherTopInfo.innerHTML = publisherTopInfo.innerHTML + ", ";
+                            publisherLink = document.createElement('a');
+                            publisherLink.setAttribute('href', '/company/' + game[0]['involved_companies'][i]['company_id']);
+                            publisherLink.innerHTML = game[0]['involved_companies'][i]['name'];
+                            publisherTopInfo.appendChild(publisherLink);
+                        }
+                    }
+
+                    if (developerTopInfo.innerHTML === '') {
+                        developerTopInfo.innerHTML = 'Unknown'
+                    }
+
+                    if (publisherTopInfo.innerHTML === '') {
+                        publisherTopInfo.innerHTML = 'Unknown'
+                    }
+
+                    // GENRES
+                    genresTopInfo = document.getElementById('top-info-genres');
+                    for (var i = 0; i < game[0]['genres'].length; i++) {
+                        if (genresTopInfo.innerHTML !== '') genresTopInfo.innerHTML = genresTopInfo.innerHTML + ", ";
+                        genreLink = document.createElement('a');
+                        genreLink.setAttribute('href', '/genre/' + game[0]['genres'][i]['genre_id']);
+                        genreLink.innerHTML = game[0]['genres'][i]['name'];
+                        genresTopInfo.appendChild(genreLink);
+                    }
+
+                    // PLATFORMS
+                    platformsTopInfo = document.getElementById('top-info-platforms');
+                    for (var i = 0; i < game[0]['platform'].length; i++) {
+                        if (platformsTopInfo.innerHTML !== '') platformsTopInfo.innerHTML = platformsTopInfo.innerHTML + ", ";
+                        platformLink = document.createElement('a');
+                        platformLink.setAttribute('href', '/platform/' + game[0]['platform'][i]['platform_id']);
+                        platformLink.innerHTML = game[0]['platform'][i]['name'];
+                        platformsTopInfo.appendChild(platformLink);
+                    }
+
+                    // RELEASE DATE
+                    releaseDateTopInfo = document.getElementById('top-info-release-date');
+                    unix_time = game[0]['first_release_date'];
+                    months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'Sepember', 'October',
+                        'November', 'December'];
+                    date = new Date(unix_time * 1000); // Converting to millis
+                    day = date.getDate();
+                    month = months[date.getMonth()];
+                    year = date.getFullYear();
+                    releaseDateTopInfo.innerHTML = day + ' ' + month + ' ' + year;
+
+                    // SUMMARY
+                    summaryInfo = document.getElementById('body-summary');
+                    summaryInfo.innerHTML = game[0]['summary'];
+
+                    // SCREENSHOTS
+                    screenshotsSection = document.getElementById('carousel-inner');
+                    for (var i = 0; i < game[0]['screenshots'].length; i++) {
+                        carouselItemDiv = document.createElement('div');
+                        if (i === 0) carouselItemDiv.setAttribute('class', 'carousel-item active');
+                        else carouselItemDiv.setAttribute('class', 'carousel-item');
+
+                        carouselItemImg = document.createElement('img');
+                        carouselItemImg.setAttribute('class', 'w-100 d-block');
+                        carouselItemImg.setAttribute('src', 'https://' + game[0]['screenshots'][i]['url']);
+                        carouselItemImg.setAttribute('title', game[0]['title']);
+
+                        carouselItemDiv.appendChild(carouselItemImg);
+                        screenshotsSection.appendChild(carouselItemDiv);
+                    }
                 }
             });
         }
@@ -58,13 +196,22 @@
         function fetchRecommendations(url) {
             $.getJSON(url, function (result) {
                 if (result.data != null) {
-                    section = document.getElementById('slider-1');
+                    section = document.getElementById('slider-similar');
                     section.style.display = 'block';
                     Object.values(result.data).forEach(function (key) {
                         addRecommendation(key, section);
                     });
 
-                    run_flickity();
+                    new Flickity('#slider-similar', {
+                        cellAlign: 'left',
+                        initialIndex: 0,
+                        lazyLoad: 9,
+                        prevNextButtons: true,
+                        pageDots: false,
+                        setGallerySize: true,
+                        wrapAround: true
+                    });
+
                 }
             });
         }
