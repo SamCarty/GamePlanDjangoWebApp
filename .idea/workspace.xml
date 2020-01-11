@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e38eafcc-dce6-4a11-98a7-3ff01e46304d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/static/slider.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/slider.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/slider.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/gameplan/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gameplan/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/gameplan/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gameplan/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/games/details.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/games/details.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,7 +189,7 @@
       <workItem from="1578613715307" duration="130000" />
       <workItem from="1578658979868" duration="11666000" />
       <workItem from="1578683687385" duration="2306000" />
-      <workItem from="1578700063565" duration="2350000" />
+      <workItem from="1578700063565" duration="4105000" />
     </task>
     <servers />
   </component>
@@ -266,6 +267,10 @@
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1920" y="3" width="1936" height="1019" key="dock-window-2/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578701132963" />
+    <state x="247" y="195" width="1936" height="1019" key="dock-window-3" timestamp="1578702977886">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="247" y="195" width="1936" height="1019" key="dock-window-3/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578702977886" />
     <state x="561" y="376" width="944" height="966" key="find.popup" timestamp="1578671262236">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>

@@ -13,11 +13,11 @@ body, html {
 }
 
 #search-titles {
-  border-radius: 8px 0 0 8px;
+    border-radius: 8px 0 0 8px;
 }
 
 #search-button {
-  border-radius: 0 8px 8px 0;
+    border-radius: 0 8px 8px 0;
 }
 
 #search-overlay {
@@ -35,9 +35,6 @@ body, html {
     margin-right: 8px;
 }
 
-body {
-    font-family: Inter, sans-serif;
-}
 
 #carousel {
     overflow: hidden;
@@ -68,6 +65,29 @@ body {
 
 #main-nav {
     margin-left: 16px;
+}
+
+.carousel-item {
+    text-align: center;
+}
+
+.featured-title-name {
+    position: absolute;
+    bottom: 40px;
+    font-size: 1.5rem;
+    color: white;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-shadow: 0 0 32px black;
+    font-weight: 800;
+}
+
+@media (min-width: 768px) {
+    .featured-title-name {
+        bottom: 48px;
+        font-size: 3rem;
+    }
 }
 
 .title-listing-image {

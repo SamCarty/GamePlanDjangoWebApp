@@ -12,18 +12,33 @@
 
 {% block content %}
     <div class="container px-0 section-container" id="featured-container">
-        <h1 id="featured-heading" class="section-heading">Featured Titles</h1>
+        <h1 class="section-heading">Featured Titles</h1>
         <div class="carousel slide" data-ride="carousel" id="carousel">
             <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active"><img class="w-100 d-block"
-                                                       src="https://images.igdb.com/igdb/image/upload/t_original/sc6lit.jpg"
-                                                       alt="Slide Image"></div>
-                <div class="carousel-item"><img class="w-100 d-block"
-                                                src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"
-                                                alt="Slide Image"></div>
-                <div class="carousel-item"><img class="w-100 d-block"
-                                                src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"
-                                                alt="Slide Image"></div>
+                <div class="carousel-item active">
+                    <a href="/games/7331">
+                        <img class="w-100 d-block"
+                             src="https://images.igdb.com/igdb/image/upload/t_original/qwytrspu8brvow9x9y15.jpg"
+                             alt="Slide Image">
+                        <h1 class="featured-title-name">Uncharted 4: A Thief's End</h1>
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="/games/9066">
+                        <img class="w-100 d-block"
+                             src="https://images.igdb.com/igdb/image/upload/t_original/dwhwyahob4d4zsnjztmo.jpg"
+                             alt="Slide Image">
+                        <h1 class="featured-title-name">Cities Skylines</h1>
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="/games/19130">
+                        <img class="w-100 d-block"
+                             src="https://images.igdb.com/igdb/image/upload/t_original/ar66f.jpg"
+                             alt="Slide Image">
+                        <h1 class="featured-title-name">Civilization VI</h1>
+                    </a>
+                </div>
             </div>
             <div>
                 <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
@@ -47,8 +62,6 @@
 
         </div>
     </div>
-
-    <script src="{% static "slider.js" %}"></script>
 
     <script>
         $(document).ready(function () {

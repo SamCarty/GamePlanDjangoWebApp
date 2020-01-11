@@ -44,7 +44,8 @@
                     <div class="input-group">
                         <input class="form-control" type="search" id="search-titles" placeholder="Enter a game title">
                         <div class="input-group-append">
-                            <button class="btn btn-primary" id="search-button" type="button"><i class="fa fa-search"></i></button>
+                            <button class="btn btn-primary" id="search-button" type="button"><i
+                                    class="fa fa-search"></i></button>
                         </div>
                         <div id="search-overlay">
                             <ul class="list-group" id="autocomplete">
@@ -93,6 +94,8 @@
 <div class="container px-0">
     {% block content %}{% endblock content %}
 </div>
+
+<script src="{% static "slider.js" %}"></script>
 
 <script>
     $(document).ready(function () {

@@ -47,7 +47,7 @@ function run_flickity() {
         initialIndex: 0,
         // zero-based index of the initial selected cell
 
-        lazyLoad: true,
+        lazyLoad: 9,
         // enable lazy-loading images
         // set img data-flickity-lazyload="src.jpg"
         // set to number to load images adjacent cells
