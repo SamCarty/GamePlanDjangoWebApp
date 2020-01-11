@@ -1,9 +1,8 @@
 {% extends "gameplan/base.html" %}
 
 {% block head %}
+    {% load static %}
     <script>
-
-
         function removeGames(queryName) {
             document.getElementById(queryName).style.display = 'none';
             $('.item').remove()
@@ -12,42 +11,85 @@
 {% endblock head %}
 
 {% block content %}
-    <div id="carousel" class="carousel slide" data-ride="carousel" data-interval="6000">
-        <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="d-block w-100" src="https://images.igdb.com/igdb/image/upload/t_original/sc6lit.jpg"
-                     alt="First slide">
-                <div class="carousel-shadow"></div>
-                <h1>Planet Zoo</h1>
+    <div class="container px-0 section-container" id="featured-container">
+        <h1 id="featured-heading" class="section-heading">Featured Titles</h1>
+        <div class="carousel slide" data-ride="carousel" id="carousel">
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active"><img class="w-100 d-block"
+                                                       src="https://images.igdb.com/igdb/image/upload/t_original/sc6lit.jpg"
+                                                       alt="Slide Image"></div>
+                <div class="carousel-item"><img class="w-100 d-block"
+                                                src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"
+                                                alt="Slide Image"></div>
+                <div class="carousel-item"><img class="w-100 d-block"
+                                                src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"
+                                                alt="Slide Image"></div>
             </div>
-            <div class="carousel-item">
-                <img class="d-block w-100"
-                     src="https://images.igdb.com/igdb/image/upload/t_original/s2zdtxopibrfjbxvpj5h.jpg"
-                     alt="Second slide">
-                <div class="carousel-shadow"></div>
-                <h1>God of War</h1>
+            <div>
+                <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon"></span><span class="sr-only">Next</span>
+                </a>
             </div>
-            <div class="carousel-item">
-                <img class="d-block w-100"
-                     src="https://images.igdb.com/igdb/image/upload/t_original/tqt0sxjytiovh3g96cl0.jpg"
-                     alt="Third slide">
-                <div class="carousel-shadow"></div>
-                <h1>Uncharted 4: A Thief's End</h1>
-            </div>
+            <ol class="carousel-indicators">
+                <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel" data-slide-to="1"></li>
+                <li data-target="#carousel" data-slide-to="2"></li>
+            </ol>
         </div>
-        <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
     </div>
+    <div class="container px-0 section-container" id="recommendations-container">
+        <h1 id="recommendations-heading" class="section-heading">Just for you</h1>
+        <div class="slider" id="slider-1">
+
+        </div>
+    </div>
+
+    <script src="{% static "slider.js" %}"></script>
+
+    <script>
+        $(document).ready(function () {
+            getContentRecommendations(6036)
+        });
+
+        // RECOMMENDATIONS
+        function getContentRecommendations(gameName) {
+            url = '/recommender/content-based/' + gameName + '/' + 60;
+            fetchRecommendations(url);
+        }
+
+        function fetchRecommendations(url) {
+            $.getJSON(url, function (result) {
+                if (result.data != null) {
+                    section = document.getElementById('slider-1');
+                    section.style.display = 'block';
+                    Object.values(result.data).forEach(function (key) {
+                        addRecommendation(key, section);
+                    });
+
+                    run_flickity();
+                }
+            });
+        }
+
+        function addRecommendation(game, section) {
+            itemDiv = document.createElement('div');
+            itemDiv.setAttribute('class', 'slider-cell');
+
+            itemImage = document.createElement('img');
+            itemImage.setAttribute('class', "title-image");
+            itemImage.setAttribute('src', 'https://' + game['cover']);
+            itemImage.setAttribute('title', game['title']);
+
+            itemLink = document.createElement('a');
+            itemLink.setAttribute('href', '/games/' + game['game_id']);
+            itemLink.appendChild(itemImage);
+            itemDiv.appendChild(itemLink);
+            section.appendChild(itemDiv);
+        }
+    </script>
 
 {% endblock content %}

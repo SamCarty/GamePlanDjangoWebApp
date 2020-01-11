@@ -5,22 +5,19 @@ body {
 }
 
 body, html {
-  height: 100%;
-}
-
-h1 {
-    font-weight: 800;
-    font-size: 3rem;
-}
-
-.navbar {
-    margin: 0;
-    padding: 16px;
-    z-index: 10;
+    height: 100%;
 }
 
 .nav-item {
     margin: 4px;
+}
+
+#search-titles {
+  border-radius: 8px 0 0 8px;
+}
+
+#search-button {
+  border-radius: 0 8px 8px 0;
 }
 
 #search-overlay {
@@ -30,36 +27,73 @@ h1 {
     z-index: 2;
 }
 
-#brand-name {
-    font-weight: 600;
-    font-size: 1.5rem;
+.navbar-brand {
+    font-weight: 900;
 }
 
-#search-button {
-    margin-right: 1px;
-    margin-left: -2px;
-    z-index: 1;
+.nav-icon {
+    margin-right: 8px;
 }
 
-.carousel {
+body {
+    font-family: Inter, sans-serif;
+}
+
+#carousel {
     overflow: hidden;
-    border-radius: 24px;
+    border-radius: 32px;
 }
 
-.carousel-item h1 {
-    position: absolute;
-    width: 80%;
-    left: 0;
-    right: 0;
-    bottom: 5vh;
-    margin-left: auto;
-    margin-right: auto;
+.navbar {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.navbar-brand {
+    font-weight: 600;
+}
+
+.section-container {
+    text-align: left;
+    padding-top: 32px;
+}
+
+.section-heading {
+    padding-left: 32px;
+    font-weight: 800;
+}
+
+.navbar-brand {
+    font-size: 30px;
+}
+
+#main-nav {
+    margin-left: 16px;
+}
+
+.title-listing-image {
+    width: 100%;
+    height: auto;
+}
+
+.title-holder {
     text-align: center;
-    font-size: 2.5rem;
-    color: white;
-    text-shadow: 0 0 30px black;
 }
 
-.game-headline-image {
-
+.title-name {
+    font-weight: 400;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
+
+.slider-cell {
+    text-align: center;
+    width: 160px;
+    height: 240px;
+}
+
+.title-image {
+    max-width: 100%;
+    max-height: 100%;
+}
+

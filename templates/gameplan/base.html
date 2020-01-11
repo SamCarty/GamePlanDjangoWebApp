@@ -4,7 +4,7 @@
     {% load static %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{% block title %}GamePlan | Recommendations based on you favourite games!{% endblock %}</title>
+    <title>{% block title %}GamePlan | Recommendations based on your favourite games!{% endblock %}</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -16,6 +16,13 @@
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 
+    <!-- Flickity (for sliders) -->
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"
             integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm"
@@ -26,69 +33,62 @@
 </head>
 
 <body>
-<nav class="navbar navbar-light navbar-expand-lg static-top">
-    <div class="container">
-        <a class="navbar-brand" id="brand-name" href="{% url 'index' %}">GamePlan</a>
-        <!-- Toggler for small resolutions -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <form class="form-inline">
-                        <div class="input-group">
-                            <input type="search" class="form-control input-lg" id="inputGameName"
-                                   placeholder="Search for a game">
-                            <button type="button" class="btn btn-primary input-group-prepend" id="search-button">
-                                Search
-                            </button>
-                            <div id="search-overlay">
-                                <ul class="list-group" id="autocomplete">
-
-                                </ul>
-                            </div>
+<nav class="navbar navbar-light navbar-expand-md navbar-dark bg-dark">
+    <div class="container" id="navbar-container"><a class="navbar-brand" href="{% url 'index' %}">GamePlan</a>
+        <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
+                class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse"
+             id="navcol-1">
+            <ul class="nav navbar-nav mr-auto" id="main-nav">
+                <li class="nav-item" role="presentation">
+                    <div class="input-group">
+                        <input class="form-control" type="search" id="search-titles" placeholder="Enter a game title">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" id="search-button" type="button"><i class="fa fa-search"></i></button>
                         </div>
-                    </form>
+                        <div id="search-overlay">
+                            <ul class="list-group" id="autocomplete">
+                            </ul>
+                        </div>
+                    </div>
                 </li>
-
-                <li class="nav-item">
+                <li class="nav-item" role="presentation">
                     <div class="btn-group">
-                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">Genres
+                        <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                                type="button"><i class="fa fa-book nav-icon"></i>Genres
                         </button>
                         <div class="dropdown-menu" id="genres-dropdown">
                         </div>
                     </div>
                 </li>
-
+            </ul>
+            <ul class="nav navbar-nav ml-auto" id="login-nav">
                 {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a href="#">
-                            <button type="button" class="btn btn-primary">Account</button>
+                            <button class="btn btn-primary" type="button"><i class="fa fa-unlock nav-icon"></i>Account
+                            </button>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'logout' %}">Log out</a>
                     </li>
                 {% else %}
                     <li class="nav-item">
                         <a href="{% url 'login' %}">
-                            <button type="button" class="btn btn-primary">Login</button>
+                            <button class="btn btn-primary" type="button"><i class="fa fa-unlock nav-icon"></i>Login
+                            </button>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'signup' %}">Sign up</a>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'signup' %}">Sign up</a>
                     </li>
                 {% endif %}
-
-
             </ul>
         </div>
     </div>
 </nav>
+
 
 <div class="container px-0">
     {% block content %}{% endblock content %}
@@ -101,8 +101,8 @@
 
     // Search and autocomplete
     const autocompleteEl = document.getElementById('autocomplete');
-    $('#inputGameName').on('input', function () {
-        const searchQuery = $('#inputGameName').val();
+    $('#search-titles').on('input', function () {
+        const searchQuery = $('#search-titles').val();
         if (searchQuery === '') {
             clearSearchResults(autocompleteEl);
         } else {
@@ -119,7 +119,7 @@
     }).focusin(function () {
         autocompleteEl.style.display = 'inherit';
     }).focusout(function () {
-        setTimeout(function() {
+        setTimeout(function () {
             autocompleteEl.style.display = 'none'
         }, 200);
     });
