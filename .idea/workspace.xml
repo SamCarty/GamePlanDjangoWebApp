@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e38eafcc-dce6-4a11-98a7-3ff01e46304d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/static/img/game-controller-64px.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/add-game.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/gameplan/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gameplan/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/gameplan/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gameplan/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/games/details.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/games/details.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +44,7 @@
       <list>
         <option value="Python Script" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -192,7 +194,7 @@
       <workItem from="1578683687385" duration="2306000" />
       <workItem from="1578700063565" duration="4657000" />
       <workItem from="1578747557465" duration="12609000" />
-      <workItem from="1578862590288" duration="2471000" />
+      <workItem from="1578862590288" duration="3220000" />
     </task>
     <servers />
   </component>
