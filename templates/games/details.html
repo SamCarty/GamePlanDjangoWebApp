@@ -80,7 +80,8 @@
     <script>
         $(document).ready(function () {
             getGameDetails({{ request.resolver_match.kwargs.game_id }});
-            getContentRecommendations({{ request.resolver_match.kwargs.game_id }})
+            element = document.getElementById('slider-similar');
+            getContentRecommendations({{ request.resolver_match.kwargs.game_id }}, element);
         });
 
         // DETAILS
@@ -182,36 +183,6 @@
                         carouselItemDiv.appendChild(carouselItemImg);
                         screenshotsSection.appendChild(carouselItemDiv);
                     }
-                }
-            });
-        }
-
-
-        // RECOMMENDATIONS
-        function getContentRecommendations(gameName) {
-            url = '/recommender/content-based/' + gameName + '/' + 60;
-            fetchRecommendations(url);
-        }
-
-        function fetchRecommendations(url) {
-            $.getJSON(url, function (result) {
-                if (result.data != null) {
-                    section = document.getElementById('slider-similar');
-                    section.style.display = 'block';
-                    Object.values(result.data).forEach(function (key) {
-                        addRecommendation(key, section);
-                    });
-
-                    new Flickity(section, {
-                        cellAlign: 'left',
-                        initialIndex: 0,
-                        lazyLoad: 9,
-                        prevNextButtons: true,
-                        pageDots: false,
-                        setGallerySize: true,
-                        wrapAround: true
-                    });
-
                 }
             });
         }

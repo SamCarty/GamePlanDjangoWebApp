@@ -65,7 +65,8 @@
 
     <script>
         $(document).ready(function () {
-            getContentRecommendations(6036)
+            element = document.getElementById('slider-similar');
+            getContentRecommendations(6036, element);
         });
 
         // RECOMMENDATIONS
@@ -82,17 +83,7 @@
                     Object.values(result.data).forEach(function (key) {
                         addRecommendation(key, section);
                     });
-
-                    new Flickity(section, {
-                        cellAlign: 'left',
-                        friction: 0.2,
-                        initialIndex: 0,
-                        lazyLoad: 9,
-                        prevNextButtons: true,
-                        pageDots: false,
-                        setGallerySize: true,
-                        wrapAround: true
-                    });
+                    createSlider(section);
                 }
             });
         }
