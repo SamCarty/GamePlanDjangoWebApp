@@ -48,17 +48,21 @@
              id="navcol-1">
             <ul class="nav navbar-nav mr-auto" id="main-nav">
                 <li class="nav-item" role="presentation">
-                    <div class="input-group">
-                        <input class="form-control" type="search" id="search-titles" placeholder="Enter a game title">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" id="search-button" type="button"><i
-                                    class="fa fa-search"></i></button>
+                    <form action="http://google.com">
+                        <div class="input-group">
+                            <input class="form-control" type="search" id="search-titles"
+                                   placeholder="Enter a game title">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" id="search-button" type="submit">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                            <div id="search-overlay">
+                                <ul class="list-group" id="autocomplete">
+                                </ul>
+                            </div>
                         </div>
-                        <div id="search-overlay">
-                            <ul class="list-group" id="autocomplete">
-                            </ul>
-                        </div>
-                    </div>
+                    </form>
                 </li>
                 <li class="nav-item" role="presentation">
                     <div class="btn-group-vertical" role="group">

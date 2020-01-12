@@ -79,3 +79,9 @@ def get_platforms_by_game_id(request, game_id):
     platforms = list(Platform.objects.filter(platform_id__in=ids).values())
 
     return platforms
+
+
+def get_games_by_query(request, search_query):
+    details = list(Game.objects.filter(title__contains=search_query).values())
+
+    return JsonResponse(details, safe=False)
