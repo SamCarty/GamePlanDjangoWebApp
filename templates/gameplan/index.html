@@ -83,7 +83,7 @@
                         addRecommendation(key, section);
                     });
 
-                    new Flickity('#slider-1', {
+                    new Flickity(section, {
                         cellAlign: 'left',
                         friction: 0.2,
                         initialIndex: 0,
@@ -103,7 +103,7 @@
 
             itemImage = document.createElement('img');
             itemImage.setAttribute('class', "title-image");
-            itemImage.setAttribute('src', 'https://' + game['cover']);
+            itemImage.setAttribute('data-flickity-lazyload', 'https://' + game['cover']);
             itemImage.setAttribute('title', game['title']);
 
             itemLink = document.createElement('a');
