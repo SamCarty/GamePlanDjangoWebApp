@@ -37,19 +37,18 @@ h1 {
     margin-right: 8px;
 }
 
-
 #index-carousel {
     overflow: hidden;
-    border-radius: 32px;
 }
 
 .navbar {
     background-color: rgba(255, 255, 255, 0);
 }
 
-.section-container {
-    text-align: left;
-    padding-top: 32px;
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1200px;
+    }
 }
 
 .section-heading {
