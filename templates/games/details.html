@@ -1,4 +1,5 @@
 {% extends "gameplan/base.html" %}
+{% load static %}
 
 {% block content %}
     <section id="top-image"></section>
@@ -16,6 +17,13 @@
                     </div>
                     <div class="row" id="top-info-text">
                         <div class="col" id="top-info-table-holder">
+                            <form action="#" onsubmit="return addRemoveWishlist()" id="add-wishlist-form"
+                                  style="text-align: left; margin-left: 12px; margin-bottom: 8px">
+                                <button aria-haspopup="true" title="Add to wishlist" class="btn btn-outline-primary"
+                                        type="submit">
+                                    <i id="add-to-wishlist-icon" class="far fa-heart"></i>
+                                </button>
+                            </form>
                             <div class="table-responsive table-borderless">
                                 <table class="table" id="info-table">
                                     <tbody class="d-inline-block float-left">
@@ -79,10 +87,50 @@
 
     <script>
         $(document).ready(function () {
-            getGameDetails({{ request.resolver_match.kwargs.game_id }});
+            gameId = {{ request.resolver_match.kwargs.game_id }}
+            getGameDetails(gameId);
             element = document.getElementById('slider-similar');
-            getContentRecommendations({{ request.resolver_match.kwargs.game_id }}, element);
+            getContentRecommendations(gameId, element);
+            checkGameOnWishlist(gameId)
         });
+
+        function checkGameOnWishlist(gameId) {
+            $.ajax({
+                type: 'GET',
+                url: '/accounts/on-wishlist/' + gameId,
+                success: function (result) {
+                    if (result != null) {
+                        icon = document.getElementById('add-to-wishlist-icon');
+                        if(result.length > 0) {
+                            icon.setAttribute('class', 'fas fa-heart');
+                        } else {
+                            icon.setAttribute('class', 'far fa-heart');
+                        }
+                    }
+                }
+            });
+        }
+
+        function addRemoveWishlist() {
+            $.ajax({
+                type: 'POST',
+                url: '{% url 'add_remove_wishlist' %}',
+                data: {
+                    'game_id': {{ request.resolver_match.kwargs.game_id }},
+                    'csrfmiddlewaretoken': '{{ csrf_token }}',
+                },
+                success: function (result) {
+                    if (result != null) {
+                        icon = document.getElementById('add-to-wishlist-icon');
+                        if(result.length > 0) {
+                            icon.setAttribute('class', 'fas fa-heart');
+                        } else {
+                            icon.setAttribute('class', 'far fa-heart');
+                        }
+                    }
+                }
+            });
+        }
 
         // DETAILS
         function getGameDetails(gameId) {

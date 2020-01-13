@@ -1,0 +1,30 @@
+{% extends "gameplan/base.html" %}
+
+{% block title %}Wishlist | GamePlan{% endblock title %}
+
+{% block head %}
+    {% load static %}
+    <script>
+    </script>
+{% endblock head %}
+
+{% block content %}
+    <div class="container">
+        <h1>Your wishlist</h1>
+
+        <ul>
+            {% for game in object_list %}
+                <li>
+                    <a href="{% url 'game_details' game_id=game.game_id %}">
+                        {{ game.title }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <script>
+
+    </script>
+
+{% endblock content %}

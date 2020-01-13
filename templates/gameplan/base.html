@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/bd972dcb28.js" crossorigin="anonymous"></script>
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"
@@ -53,7 +53,7 @@
                 <li class="nav-item" role="presentation">
                     <div class="btn-group-vertical" role="group">
                         <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                                type="button"><i class="fa fa-book nav-icon"></i>Genres
+                                type="button"><i class="fas fa-book nav-icon"></i>Genres
                         </button>
                         <div class="dropdown-menu dropdown-menu-right" id="genres-dropdown">
                         </div>
@@ -63,22 +63,26 @@
             <ul class="nav navbar-nav ml-auto" id="login-nav">
                 {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a href="#">
-                            <button class="btn btn-primary" type="button"><i class="fa fa-unlock nav-icon"></i>Account
+                        <a href="{% url 'wishlist' %}">
+                            <button class="btn btn-primary" type="button"><i class="fas fa-heart nav-icon"></i>Wishlist
                             </button>
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="#">
+                            <button class="btn btn-primary" type="button"><i class="fas fa-unlock nav-icon"></i>Account
+                            </button>
+                        </a>
+                    </li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'logout' %}">Log out</a>
                     </li>
                 {% else %}
                     <li class="nav-item">
                         <a href="{% url 'login' %}">
-                            <button class="btn btn-primary" type="button"><i class="fa fa-unlock nav-icon"></i>Login
+                            <button class="btn btn-primary" type="button"><i class="fas fa-unlock nav-icon"></i>Login
                             </button>
                         </a>
                     </li>
-                    <li class="nav-item">
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'signup' %}">Sign up</a>
                     </li>
                 {% endif %}
