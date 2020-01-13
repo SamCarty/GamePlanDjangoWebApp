@@ -17,23 +17,12 @@
                     </div>
                     <div class="row" id="top-info-text">
                         <div class="col" id="top-info-table-holder">
-
-                            {% if user.is_authenticated %}
-                                <form action="#" onsubmit="return addRemoveWishlist()" id="add-wishlist-form">
-                                    <button aria-haspopup="true" class="btn btn-outline-primary"
-                                            id="add-to-wishlist-button"
-                                            type="submit">Add to wishlist
-                                    </button>
-                                </form>
-                            {% else %}
-                                <form action="{% url 'login' %}" id="add-wishlist-form">
-                                    <button aria-haspopup="true" title="Add to wishlist" class="btn btn-outline-primary"
-                                            id="add-to-wishlist-button"
-                                            type="submit">Login to add to wishlist
-                                        <i class="far fa-heart"></i>
-                                    </button>
-                                </form>
-                            {% endif %}
+                            <form onsubmit="return addRemoveWishlist();" id="add-wishlist-form">
+                                <button aria-haspopup="true" class="btn btn-outline-primary"
+                                        id="add-to-wishlist-button"
+                                        type="submit">Add to wishlist
+                                </button>
+                            </form>
 
                             <div class="table-responsive table-borderless">
                                 <table class="table" id="info-table">
@@ -98,48 +87,39 @@
 
     <script>
         $(document).ready(function () {
-            gameId = {{ request.resolver_match.kwargs.game_id }}
-                getGameDetails(gameId);
+            gameId = {{ request.resolver_match.kwargs.game_id }};
+            getGameDetails(gameId);
             element = document.getElementById('slider-similar');
             getContentRecommendations(gameId, element);
-
-            if ({{ request.user.is_authenticated|yesno:"true,false" }}) {
-                checkGameOnWishlist(gameId);
-            }
         });
-
-        function checkGameOnWishlist(gameId) {
-            $.ajax({
-                type: 'GET',
-                url: '/accounts/on-wishlist/' + gameId,
-                success: function (result) {
-                    if (result != null) {
-                        showHideWishlistIcon(result)
-                    }
-                }
-            });
-        }
 
         function addRemoveWishlist() {
             gameId = {{ request.resolver_match.kwargs.game_id }}
                 $.ajax({
-                    type: 'POST',
-                    url: '{% url 'add_remove_wishlist' %}',
-                    data: {
-                        'game_id': gameId,
-                        'csrfmiddlewaretoken': '{{ csrf_token }}',
-                    },
-                    success: function (result) {
-                        showHideWishlistIcon(result);
+                        type: 'POST',
+                        url: '{% url 'add_remove_wishlist' %}',
+                        data: {
+                            'game_id': gameId,
+                            'csrfmiddlewaretoken': '{{ csrf_token }}',
+                        },
+                        success: function (result) {
+                            if (result['auth']) {
+                                showHideWishlistIcon(result['on_wishlist']);
+                            } else {
+                                alert("Not auth'd");
+                                window.location.replace('{% url 'login' %}?next={{ request.path }}')
+                            }
+                        },
                     }
-                });
+                );
+                return false;
         }
 
-        function showHideWishlistIcon(result) {
+        function showHideWishlistIcon(show) {
             icon = document.createElement('i');
             icon.setAttribute('style', 'margin-left: 8px');
             button = document.getElementById('add-to-wishlist-button');
-            if (result.length > 0) {
+            if (show) {
                 icon.setAttribute('class', 'fas fa-heart');
                 button.setAttribute('title', 'Remove from wishlist');
                 button.innerHTML = "Remove from wishlist";
@@ -251,6 +231,8 @@
                         carouselItemDiv.appendChild(carouselItemImg);
                         screenshotsSection.appendChild(carouselItemDiv);
                     }
+
+                    showHideWishlistIcon(game[0]['on_wishlist'])
                 }
             });
         }

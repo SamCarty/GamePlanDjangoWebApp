@@ -1,10 +1,12 @@
+import functools
 import json
 import sys
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from django.http import JsonResponse
-from django.urls import reverse_lazy
+from django.http import JsonResponse, HttpResponseRedirect
+from django.shortcuts import redirect
+from django.urls import reverse_lazy, reverse
 from django.utils.decorators import method_decorator
 from django.views import generic
 
@@ -36,29 +38,35 @@ class Wishlist(generic.ListView):
 
 
 @login_required
-def get_games_on_wishlist(request, game_id):
+def on_wishlist(request, game_id):
     user = request.user
     user_id = user.id
-    return list(WishlistModel.objects.filter(user_id=user_id, game_id=game_id).values('game_id'))
-
-
-@login_required
-def on_wishlist(request, game_id):
-    game_ids = get_games_on_wishlist(request, game_id)
-    return JsonResponse(game_ids, safe=False)
-
-
-@login_required
-def add_remove_wishlist(request):
-    game_id = request.POST.get('game_id', None)
-    game_ids = get_games_on_wishlist(request, game_id)
-    if game_ids:
-        # remove it
-        WishlistModel.objects.filter(user_id=request.user.id, game_id=game_id).delete()
+    if WishlistModel.objects.filter(user_id=user_id, game_id=game_id).values('game_id').exists():
+        return True
     else:
-        # add it
-        WishlistModel.objects.create(user_id=request.user.id, game_id=game_id)
+        return False
 
-    game_ids = get_games_on_wishlist(request, game_id)
 
-    return JsonResponse(game_ids, safe=False)
+def add_remove_wishlist(request):
+    if request.user.is_authenticated:
+        response_data = {'auth': True}
+
+        game_id = request.POST.get('game_id', None)
+        user = request.user
+        user_id = user.id
+        game_ids = list(WishlistModel.objects.filter(user_id=user_id, game_id=game_id).values('game_id'))
+
+        if game_ids:
+            # remove it
+            WishlistModel.objects.filter(user_id=request.user.id, game_id=game_id).delete()
+            response_data['on_wishlist'] = False
+        else:
+            # add it
+            WishlistModel.objects.create(user_id=request.user.id, game_id=game_id)
+            response_data['on_wishlist'] = True
+
+        return JsonResponse(response_data, safe=False)
+    else:
+        json.dumps({'auth': False})
+        return JsonResponse(json.dumps({'auth': False}), safe=False)
+

@@ -20,7 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),  # admin console
     path('', include('gameplan.urls')),  # base index
     path('search/', include('search.urls')),  # search and autocomplete
-    path('accounts/', include('accounts.urls')),  # account management and wishlish
+    path('accounts/', include('accounts.urls')),  # account management and wishlist
     path('accounts/', include('django.contrib.auth.urls')),  # login and authentication
     path('recommender/', include('recommender.urls')),  # provides implementations for recommending content
     path('genres/', include('genres.urls')),  # for generic tasks (e.g. loading genres to dropdown)

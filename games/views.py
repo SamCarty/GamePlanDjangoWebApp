@@ -1,7 +1,6 @@
-import sys
-
 from django.http import JsonResponse
 from django.views.generic import TemplateView
+from accounts.views import on_wishlist
 
 from gameplan.models import Game, Screenshot, InvolvedCompany, Company, Genre, Platform
 
@@ -16,6 +15,9 @@ def get_game_details(request, game_id):
     details[0]['involved_companies'] = get_involved_companies_by_game_id(request, game_id)
     details[0]['genres'] = get_genres_by_game_id(request, game_id)
     details[0]['platform'] = get_platforms_by_game_id(request, game_id)
+
+    if request.user.is_authenticated:
+        details[0]['on_wishlist'] = on_wishlist(request, game_id)
 
     return JsonResponse(details, safe=False)
 
