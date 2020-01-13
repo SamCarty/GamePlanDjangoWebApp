@@ -35,20 +35,23 @@ class Wishlist(generic.ListView):
         return games
 
 
-def get_game_on_wishlist(request, game_id):
+@login_required
+def get_games_on_wishlist(request, game_id):
     user = request.user
     user_id = user.id
     return list(WishlistModel.objects.filter(user_id=user_id, game_id=game_id).values('game_id'))
 
 
+@login_required
 def on_wishlist(request, game_id):
-    game_ids = get_game_on_wishlist(request, game_id)
+    game_ids = get_games_on_wishlist(request, game_id)
     return JsonResponse(game_ids, safe=False)
 
 
+@login_required
 def add_remove_wishlist(request):
     game_id = request.POST.get('game_id', None)
-    game_ids = get_game_on_wishlist(request, game_id)
+    game_ids = get_games_on_wishlist(request, game_id)
     if game_ids:
         # remove it
         WishlistModel.objects.filter(user_id=request.user.id, game_id=game_id).delete()
@@ -56,6 +59,6 @@ def add_remove_wishlist(request):
         # add it
         WishlistModel.objects.create(user_id=request.user.id, game_id=game_id)
 
-    game_ids = get_game_on_wishlist(request, game_id)
+    game_ids = get_games_on_wishlist(request, game_id)
 
     return JsonResponse(game_ids, safe=False)

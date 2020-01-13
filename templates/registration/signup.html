@@ -3,10 +3,12 @@
 {% block title %}Sign up | GamePlan{% endblock title %}
 
 {% block content %}
-    <h2>Sign up</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Sign up</button>
-    </form>
+    <div class="container">
+        <h1>Sign up</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-primary" type="submit">Sign up</button>
+        </form>
+    </div>
 {% endblock %}

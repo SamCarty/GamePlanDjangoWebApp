@@ -17,13 +17,24 @@
                     </div>
                     <div class="row" id="top-info-text">
                         <div class="col" id="top-info-table-holder">
-                            <form action="#" onsubmit="return addRemoveWishlist()" id="add-wishlist-form"
-                                  style="text-align: left; margin-left: 12px; margin-bottom: 8px">
-                                <button aria-haspopup="true" title="Add to wishlist" class="btn btn-outline-primary"
-                                        type="submit">
-                                    <i id="add-to-wishlist-icon" class="far fa-heart"></i>
-                                </button>
-                            </form>
+
+                            {% if user.is_authenticated %}
+                                <form action="#" onsubmit="return addRemoveWishlist()" id="add-wishlist-form">
+                                    <button aria-haspopup="true" class="btn btn-outline-primary"
+                                            id="add-to-wishlist-button"
+                                            type="submit">Add to wishlist
+                                    </button>
+                                </form>
+                            {% else %}
+                                <form action="{% url 'login' %}" id="add-wishlist-form">
+                                    <button aria-haspopup="true" title="Add to wishlist" class="btn btn-outline-primary"
+                                            id="add-to-wishlist-button"
+                                            type="submit">Login to add to wishlist
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </form>
+                            {% endif %}
+
                             <div class="table-responsive table-borderless">
                                 <table class="table" id="info-table">
                                     <tbody class="d-inline-block float-left">
@@ -88,10 +99,13 @@
     <script>
         $(document).ready(function () {
             gameId = {{ request.resolver_match.kwargs.game_id }}
-            getGameDetails(gameId);
+                getGameDetails(gameId);
             element = document.getElementById('slider-similar');
             getContentRecommendations(gameId, element);
-            checkGameOnWishlist(gameId)
+
+            if ({{ request.user.is_authenticated|yesno:"true,false" }}) {
+                checkGameOnWishlist(gameId);
+            }
         });
 
         function checkGameOnWishlist(gameId) {
@@ -100,36 +114,42 @@
                 url: '/accounts/on-wishlist/' + gameId,
                 success: function (result) {
                     if (result != null) {
-                        icon = document.getElementById('add-to-wishlist-icon');
-                        if(result.length > 0) {
-                            icon.setAttribute('class', 'fas fa-heart');
-                        } else {
-                            icon.setAttribute('class', 'far fa-heart');
-                        }
+                        showHideWishlistIcon(result)
                     }
                 }
             });
         }
 
         function addRemoveWishlist() {
-            $.ajax({
-                type: 'POST',
-                url: '{% url 'add_remove_wishlist' %}',
-                data: {
-                    'game_id': {{ request.resolver_match.kwargs.game_id }},
-                    'csrfmiddlewaretoken': '{{ csrf_token }}',
-                },
-                success: function (result) {
-                    if (result != null) {
-                        icon = document.getElementById('add-to-wishlist-icon');
-                        if(result.length > 0) {
-                            icon.setAttribute('class', 'fas fa-heart');
-                        } else {
-                            icon.setAttribute('class', 'far fa-heart');
-                        }
+            gameId = {{ request.resolver_match.kwargs.game_id }}
+                $.ajax({
+                    type: 'POST',
+                    url: '{% url 'add_remove_wishlist' %}',
+                    data: {
+                        'game_id': gameId,
+                        'csrfmiddlewaretoken': '{{ csrf_token }}',
+                    },
+                    success: function (result) {
+                        showHideWishlistIcon(result);
                     }
-                }
-            });
+                });
+        }
+
+        function showHideWishlistIcon(result) {
+            icon = document.createElement('i');
+            icon.setAttribute('style', 'margin-left: 8px');
+            button = document.getElementById('add-to-wishlist-button');
+            if (result.length > 0) {
+                icon.setAttribute('class', 'fas fa-heart');
+                button.setAttribute('title', 'Remove from wishlist');
+                button.innerHTML = "Remove from wishlist";
+                button.appendChild(icon);
+            } else {
+                icon.setAttribute('class', 'far fa-heart');
+                button.setAttribute('title', 'Add to wishlist');
+                button.innerHTML = "Add to wishlist";
+                button.appendChild(icon);
+            }
         }
 
         // DETAILS

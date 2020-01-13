@@ -228,3 +228,9 @@ h1 {
 #recommendations-section {
     margin-bottom: 32px;
 }
+
+#add-wishlist-form {
+    text-align: left;
+    margin-left: 12px;
+    margin-bottom: 8px;
+}
