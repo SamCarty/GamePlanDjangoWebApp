@@ -9,7 +9,17 @@
 {% endblock head %}
 
 {% block content %}
+    <div class="container">
+        <h1>Search Results</h1>
 
+        <ul>
+            {% for game in object_list %}
+                <li>
+                    {{ game.title }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 
     <script>
 

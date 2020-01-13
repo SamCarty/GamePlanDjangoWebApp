@@ -48,21 +48,7 @@
              id="navcol-1">
             <ul class="nav navbar-nav mr-auto" id="main-nav">
                 <li class="nav-item" role="presentation">
-                    <form action="http://google.com">
-                        <div class="input-group">
-                            <input class="form-control" type="search" id="search-titles"
-                                   placeholder="Enter a game title">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" id="search-button" type="submit">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </div>
-                            <div id="search-overlay">
-                                <ul class="list-group" id="autocomplete">
-                                </ul>
-                            </div>
-                        </div>
-                    </form>
+                    {% include "search/search-form.html" %}
                 </li>
                 <li class="nav-item" role="presentation">
                     <div class="btn-group-vertical" role="group">
@@ -118,7 +104,7 @@
         if (searchQuery === '') {
             clearSearchResults(autocompleteEl);
         } else {
-            const url = '/search/' + searchQuery;
+            const url = '/search/a/' + searchQuery;
             $.getJSON(url, function (result) {
                 clearSearchResults(autocompleteEl);
                 if (result != null && Object.values(result).length > 0) {
