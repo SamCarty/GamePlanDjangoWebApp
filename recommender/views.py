@@ -1,10 +1,7 @@
-import sys
-
 from django.http import JsonResponse
 
 from gameplan.models import Game
 from recommender_libraries import recommend
-import games.views
 
 
 def get_content_based_recommendations(request, game_id, n=10):

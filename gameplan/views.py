@@ -1,8 +1,5 @@
-from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
-
-from gameplan.models import Game
+from django.views.generic import TemplateView
 
 
-def index(request):
-    return render(request, 'gameplan/index.html')
+class HomePageView(TemplateView):
+    template_name = 'gameplan/index.html'

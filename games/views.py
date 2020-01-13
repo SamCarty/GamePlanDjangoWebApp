@@ -2,13 +2,17 @@ import sys
 
 from django.http import JsonResponse
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, TemplateView
 
 from gameplan.models import Game, Screenshot, InvolvedCompany, Company, Genre, Platform
 
 
-def index(request, game_id):
-    return render(request, 'games/details.html')
+class GameDetails(TemplateView):
+    template_name = 'games/details.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        return Game.objects.filter(title__icontains=query)
 
 
 def get_game_details(request, game_id):
