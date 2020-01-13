@@ -104,13 +104,16 @@
         if (searchQuery === '') {
             clearSearchResults(autocompleteEl);
         } else {
-            const url = '/search/a/' + searchQuery;
-            $.getJSON(url, function (result) {
-                clearSearchResults(autocompleteEl);
-                if (result != null && Object.values(result).length > 0) {
-                    Object.values(result).forEach(function (game) {
-                        addSearchResult(autocompleteEl, game);
-                    });
+            $.ajax({
+                type: 'GET',
+                url: '/search/a/' + searchQuery,
+                success: function (result) {
+                    clearSearchResults(autocompleteEl);
+                    if (result != null && Object.values(result).length > 0) {
+                        Object.values(result).forEach(function (game) {
+                            addSearchResult(autocompleteEl, game);
+                        });
+                    }
                 }
             });
         }
@@ -137,11 +140,10 @@
     }
 
     function loadGenres() {
-
-        /*
-        const url = '/genres/get-all-genres/';
-        $.getJSON(url, function (result) {
-            if (result != null) {
+        $.ajax({
+            type: 'GET',
+            url: '/genres/get-all-genres/',
+            success: function (result) {
                 const dropdown = document.getElementById('genres-dropdown');
 
                 // alphabetically sort the genres
@@ -166,8 +168,6 @@
                 });
             }
         });
-
-         */
     }
 </script>
 </body>

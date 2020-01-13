@@ -4,13 +4,17 @@ function getContentRecommendations(gameName, element) {
 }
 
 function fetchRecommendations(url, section) {
-    $.getJSON(url, function (result) {
-        if (result.data != null) {
-            section.style.display = 'block';
-            Object.values(result.data).forEach(function (key) {
-                addRecommendation(key, section);
-            });
-            createSlider(section);
+    $.ajax({
+        type: 'GET',
+        url: url,
+        success: function (result) {
+            if (result.data != null) {
+                section.style.display = 'block';
+                Object.values(result.data).forEach(function (key) {
+                    addRecommendation(key, section);
+                });
+                createSlider(section);
+            }
         }
     });
 }

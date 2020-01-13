@@ -2,16 +2,6 @@
 
 {% block title %}GamePlan - recommendations based on your favourite games!{% endblock title %}
 
-{% block head %}
-    {% load static %}
-    <script>
-        function removeGames(queryName) {
-            document.getElementById(queryName).style.display = 'none';
-            $('.item').remove()
-        }
-    </script>
-{% endblock head %}
-
 {% block content %}
     <div class="container px-0 section-container" id="featured-container">
         <div class="carousel slide" data-ride="carousel" id="index-carousel" data-interval="6000">
@@ -57,10 +47,10 @@
             </ol>
         </div>
 
-    <section id="recommendations-section">
-        <h1 id="recommendations-heading">Just for you</h1>
-        <div class="slider" id="slider-1"></div>
-    </section>
+        <section id="recommendations-section">
+            <h1 id="recommendations-heading">Just for you</h1>
+            <div class="slider" id="slider-similar"></div>
+        </section>
     </div>
 
     <script>
@@ -68,25 +58,6 @@
             element = document.getElementById('slider-similar');
             getContentRecommendations(6036, element);
         });
-
-        // RECOMMENDATIONS
-        function getContentRecommendations(gameName) {
-            url = '/recommender/content-based/' + gameName + '/' + 60;
-            fetchRecommendations(url);
-        }
-
-        function fetchRecommendations(url) {
-            $.getJSON(url, function (result) {
-                if (result.data != null) {
-                    section = document.getElementById('slider-1');
-                    section.style.display = 'block';
-                    Object.values(result.data).forEach(function (key) {
-                        addRecommendation(key, section);
-                    });
-                    createSlider(section);
-                }
-            });
-        }
     </script>
 
 {% endblock content %}
