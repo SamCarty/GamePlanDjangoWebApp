@@ -6,6 +6,10 @@ function log_wishlist_event(content_id, csrf_token) {
     add_event(content_id, 'wishlist_event', csrf_token)
 }
 
+function log_purchase_event(content_id, csrf_token) {
+    add_event(content_id, 'purchase_event', csrf_token)
+}
+
 function log_recommendation_view_event(content_id, csrf_token) {
     add_event(content_id, 'rec_view_event', csrf_token)
 }

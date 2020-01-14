@@ -229,8 +229,14 @@ h1 {
     margin-bottom: 32px;
 }
 
-#add-wishlist-form {
+.top-info-button-holder {
+    display: inline-block;
+}
+
+
+.top-info-form {
     text-align: left;
     margin-left: 12px;
     margin-bottom: 8px;
+    float: left;
 }

@@ -17,12 +17,21 @@
                     </div>
                     <div class="row" id="top-info-text">
                         <div class="col" id="top-info-table-holder">
-                            <form onsubmit="return addRemoveWishlist();" id="add-wishlist-form">
-                                <button aria-haspopup="true" class="btn btn-outline-primary"
-                                        id="add-to-wishlist-button"
-                                        type="submit">Add to wishlist
-                                </button>
-                            </form>
+                            <div id="top-info-button-holder">
+                                <form class="top-info-form">
+                                    <button aria-haspopup="true" class="btn btn-outline-primary"
+                                            id="add-to-wishlist-button"
+                                            onclick="return addRemoveWishlist()" type="button">Add to wishlist
+                                    </button>
+                                </form>
+                                <form class="top-info-form">
+                                    <button title="Buy now" aria-haspopup="true" class="btn btn-outline-primary"
+                                            id="buy-title-button"
+                                            onclick="return buyTitle()" type="button">Buy now
+                                        <i class="fas fa-shopping-bag" style="margin-left: 8px"></i>
+                                    </button>
+                                </form>
+                            </div>
 
                             <div class="table-responsive table-borderless">
                                 <table class="table" id="info-table">
@@ -86,8 +95,9 @@
     </div>
 
     <script>
+        gameId = {{ request.resolver_match.kwargs.game_id }};
+
         $(document).ready(function () {
-            gameId = {{ request.resolver_match.kwargs.game_id }};
             getGameDetails(gameId);
             log_detail_view_event(gameId, '{{ csrf_token }}');
             element = document.getElementById('slider-similar');
@@ -114,7 +124,7 @@
                         },
                     }
                 );
-                return false;
+            return false;
         }
 
         function showHideWishlistIcon(show) {
@@ -132,6 +142,10 @@
                 button.innerHTML = "Add to wishlist";
                 button.appendChild(icon);
             }
+        }
+
+        function buyTitle() {
+            log_purchase_event(gameId, '{{ csrf_token }}')
         }
 
         // DETAILS
