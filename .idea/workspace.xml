@@ -2,11 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e38eafcc-dce6-4a11-98a7-3ff01e46304d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/static/js/gatherer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gameplan/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/gameplan/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gameplan/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/gameplan/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gameplan_project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/gameplan_project/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gameplan_project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/gameplan_project/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/games/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/games/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/gatherer/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/search/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/search/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/search/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/search/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/search/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/search/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/search/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/add-game.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/add-game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/gameplan/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gameplan/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/games/details.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/games/details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/search/search-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gameplan/search-form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/search/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gameplan/search.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,9 +55,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="HTML File" />
         <option value="JavaScript File" />
         <option value="Python Script" />
-        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -65,19 +79,19 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.django.DjangoModulesConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="S:\Repos\Games Recommender Files\gameplan\static\css" />
-      <recent name="S:\Repos\Games Recommender Files\gameplan\templates\search" />
-      <recent name="S:\Repos\Games Recommender Files\gameplan\static\img" />
-      <recent name="S:\Repos\Games Recommender Files\gameplan\static" />
-      <recent name="S:\Repos\Games Recommender Files\gameplan\templates\games" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="S:\Repos\Games Recommender Files\gameplan\static\img" />
       <recent name="S:\Repos\Games Recommender Files\gameplan\static" />
       <recent name="S:\Repos\Games Recommender Files\gameplan\recommender" />
       <recent name="S:\Repos\Games Recommender Files\gameplan\gameplan" />
       <recent name="S:\Repos\Games Recommender Files\gameplan" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="S:\Repos\Games Recommender Files\gameplan\templates\gameplan" />
+      <recent name="S:\Repos\Games Recommender Files\gameplan\static\css" />
+      <recent name="S:\Repos\Games Recommender Files\gameplan\templates\search" />
+      <recent name="S:\Repos\Games Recommender Files\gameplan\static\img" />
+      <recent name="S:\Repos\Games Recommender Files\gameplan\static" />
     </key>
   </component>
   <component name="RunManager" selected="Python.recommend">
@@ -195,7 +209,8 @@
       <workItem from="1578747557465" duration="12609000" />
       <workItem from="1578862590288" duration="4981000" />
       <workItem from="1578872383706" duration="4732000" />
-      <workItem from="1578919039700" duration="24515000" />
+      <workItem from="1578919039700" duration="25158000" />
+      <workItem from="1579005505052" duration="8765000" />
     </task>
     <servers />
   </component>
@@ -259,10 +274,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="781" y="343" key="SettingsEditor/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578309127154" />
-    <state x="561" y="514" key="com.intellij.ide.util.TipDialog" timestamp="1578919046946">
+    <state x="561" y="514" key="com.intellij.ide.util.TipDialog" timestamp="1579008137908">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="561" y="514" key="com.intellij.ide.util.TipDialog/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578919046946" />
+    <state x="561" y="514" key="com.intellij.ide.util.TipDialog/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1579008137908" />
     <state x="-1920" y="0" width="1936" height="1019" key="dock-window-1" timestamp="1578758673726">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
@@ -277,10 +292,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="247" y="195" width="1936" height="1019" key="dock-window-3/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578702977886" />
-    <state x="561" y="376" width="944" height="966" key="find.popup" timestamp="1578671262236">
+    <state x="561" y="376" width="944" height="966" key="find.popup" timestamp="1579014072483">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="561" y="376" width="944" height="966" key="find.popup/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578671262236" />
+    <state x="561" y="376" width="944" height="966" key="find.popup/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1579014072483" />
     <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1578943772927">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>

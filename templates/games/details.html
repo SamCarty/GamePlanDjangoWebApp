@@ -89,6 +89,7 @@
         $(document).ready(function () {
             gameId = {{ request.resolver_match.kwargs.game_id }};
             getGameDetails(gameId);
+            log_detail_view_event(gameId, '{{ csrf_token }}');
             element = document.getElementById('slider-similar');
             getContentRecommendations(gameId, element);
         });
@@ -105,6 +106,7 @@
                         success: function (result) {
                             if (result['auth']) {
                                 showHideWishlistIcon(result['on_wishlist']);
+                                if (result['on_wishlist']) log_wishlist_event(gameId, '{{ csrf_token }}');
                             } else {
                                 alert("Not auth'd");
                                 window.location.replace('{% url 'login' %}?next={{ request.path }}')

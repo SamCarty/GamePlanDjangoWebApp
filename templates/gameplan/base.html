@@ -25,14 +25,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
           type="text/css"/>
 
-
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"
             integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm"
             crossorigin="anonymous"></script>
 
     <!-- Load custom JS -->
-    <script src="{% static 'js/add-game.js' %}"></script>
+    <script src="{% static 'js/add-game.js' %}"></script> <!-- For adding a game to a list -->
+    <script src="{% static 'js/gatherer.js' %}"></script> <!-- For monitoring user behavior -->
 
     {% block head %}
     {% endblock head %}
@@ -51,7 +51,7 @@
         <div class="collapse navbar-collapse" id="navcol-1">
             <ul class="nav navbar-nav mr-auto" id="main-nav">
                 <li class="nav-item" role="presentation">
-                    {% include "search/search-form.html" %}
+                    {% include "gameplan/search-form.html" %}
                 </li>
                 <li class="nav-item" role="presentation">
                     <div class="btn-group-vertical" role="group">
@@ -100,6 +100,8 @@
 {% endblock content %}
 
 <script>
+    const csrftoken = '{{ csrf_token }}'; // IMPORTANT!
+
     $(document).ready(function () {
         loadGenres();
     });

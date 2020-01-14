@@ -1,9 +1,9 @@
-function getContentRecommendations(gameName, element) {
-    url = '/recommender/content-based/' + gameName + '/' + 60;
-    fetchRecommendations(url, element);
+function getContentRecommendations(gameId, element) {
+    url = '/recommender/content-based/' + gameId + '/' + 60;
+    fetchRecommendations(url, element, gameId);
 }
 
-function fetchRecommendations(url, section) {
+function fetchRecommendations(url, section, gameId) {
     $.ajax({
         type: 'GET',
         url: url,
@@ -13,7 +13,7 @@ function fetchRecommendations(url, section) {
                 Object.values(result.data).forEach(function (key) {
                     addRecommendation(key, section);
                 });
-                createSlider(section);
+                createGameRecommendationSlider(section, gameId);
             }
         }
     });
@@ -40,8 +40,8 @@ function addRecommendation(game, section) {
     section.appendChild(itemDiv);
 }
 
-function createSlider(section) {
-    new Flickity(section, {
+function createGameRecommendationSlider(section, game_id) {
+    let slider = new Flickity(section, {
         cellAlign: 'left',
         initialIndex: 0,
         lazyLoad: 9,
@@ -50,4 +50,8 @@ function createSlider(section) {
         setGallerySize: true,
         wrapAround: true
     });
+
+    slider.on('change', function (index) {
+        log_recommendation_view_event(game_id, csrftoken)
+    })
 }
