@@ -1,5 +1,4 @@
 from django.http import JsonResponse
-
 from gameplan.models import Game
 from recommender_libraries import recommend
 

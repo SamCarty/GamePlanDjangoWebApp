@@ -66,24 +66,32 @@
         </section>
 
         <section id="body-section">
-            <h1>Summary</h1>
-            <p id="body-summary"></p>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2>Summary</h2>
+                    <p id="body-summary"></p>
+                </div>
+                <div class="col-lg-6">
+                    <h2>Screenshots</h2>
+                    <div class="carousel slide" data-ride="carousel" id="carousel" data-interval="6000">
+                        <div class="carousel-inner" id="carousel-inner" role="listbox"></div>
+                        <div>
+                            <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon"></span><span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </section>
 
         <section id="screenshots-section">
-            <h1>Screenshots</h1>
-            <div class="carousel slide" data-ride="carousel" id="carousel" data-interval="6000">
-                <div class="carousel-inner" id="carousel-inner" role="listbox"></div>
-                <div>
-                    <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon"></span><span class="sr-only">Next</span>
-                    </a>
-                </div>
-            </div>
+
         </section>
 
         <section id="recommendations-section">
@@ -95,7 +103,8 @@
     </div>
 
     <script>
-        gameId = {{ request.resolver_match.kwargs.game_id }};
+        var gameId = {{ request.resolver_match.kwargs.game_id }};
+        var currentTitle;
 
         $(document).ready(function () {
             getGameDetails(gameId);
@@ -118,7 +127,6 @@
                                 showHideWishlistIcon(result['on_wishlist']);
                                 if (result['on_wishlist']) log_wishlist_event(gameId, '{{ csrf_token }}');
                             } else {
-                                alert("Not auth'd");
                                 window.location.replace('{% url 'login' %}?next={{ request.path }}')
                             }
                         },
@@ -154,6 +162,7 @@
 
             $.getJSON(url, function (game) {
                 if (game != null) {
+                    currentTitle = game;
 
                     // TOP IMAGE
                     topImage = document.getElementById('top-image');
@@ -189,14 +198,6 @@
                         }
                     }
 
-                    if (developerTopInfo.innerHTML === '') {
-                        developerTopInfo.innerHTML = 'Unknown'
-                    }
-
-                    if (publisherTopInfo.innerHTML === '') {
-                        publisherTopInfo.innerHTML = 'Unknown'
-                    }
-
                     // GENRES
                     genresTopInfo = document.getElementById('top-info-genres');
                     for (var i = 0; i < game[0]['genres'].length; i++) {
@@ -227,6 +228,14 @@
                     month = months[date.getMonth()];
                     year = date.getFullYear();
                     releaseDateTopInfo.innerHTML = day + ' ' + month + ' ' + year;
+
+                    if (developerTopInfo.innerHTML === '') {
+                        developerTopInfo.innerHTML = 'Unknown'
+                    }
+
+                    if (publisherTopInfo.innerHTML === '') {
+                        publisherTopInfo.innerHTML = 'Unknown'
+                    }
 
                     // SUMMARY
                     summaryInfo = document.getElementById('body-summary');
