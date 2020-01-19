@@ -8,6 +8,8 @@
 # Icon must end with two \r
 Icon
 
+# Migrations
+migrations/*.py
 
 # Thumbnails
 ._*
