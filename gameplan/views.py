@@ -1,12 +1,21 @@
+from django.contrib.sites import requests
+from django.shortcuts import render_to_response
+from django.template.context_processors import csrf
 from django.views.generic import TemplateView
 from django.http import JsonResponse
 from django.views.generic import ListView
 
+from recommender.views import get_top_charts_recommendations
 from gameplan.models import Game
 
 
 class HomePageView(TemplateView):
     template_name = 'gameplan/index.html'
+
+    def get(self, request, *args, **kwargs):
+        context = locals()
+        context['top_charts'] = get_top_charts_recommendations(request, 10)
+        return render_to_response(self.template_name, context)
 
 
 def search(request, title):
@@ -24,5 +33,5 @@ class SearchResultsView(ListView):
     template_name = 'gameplan/search.html'
 
     def get_queryset(self):
-        query = self.request.GET.get('q')
+        query = self.request.GET.get()
         return Game.objects.filter(title__icontains=query)

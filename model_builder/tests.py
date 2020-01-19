@@ -42,7 +42,7 @@ class RecommenderTest(TestCase):
         pass
 
     def test_ratings_calc(self):
-        user = User.objects.get(username='Test')
+        user = User.objects.get()
         ratings = user_ratings_builder.calculate_ratings_for_user(user.id)
 
         self.assertEqual(ratings['11800'], 6.0)  # 150

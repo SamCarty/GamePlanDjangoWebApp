@@ -51,7 +51,7 @@ def add_remove_wishlist(request):
     if request.user.is_authenticated:
         response_data = {'auth': True}
 
-        game_id = request.POST.get('game_id', None)
+        game_id = request.POST.get()
         user = request.user
         user_id = user.id
         game_ids = list(WishlistModel.objects.filter(user_id=user_id, game_id=game_id).values('game_id'))

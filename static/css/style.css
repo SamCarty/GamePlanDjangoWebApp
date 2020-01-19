@@ -5,11 +5,6 @@ body, html {
     height: 100%;
 }
 
-h1 {
-    font-weight: 600;
-    margin-top: 32px;
-}
-
 .nav-item {
     margin: 4px;
 }
@@ -60,8 +55,8 @@ h1 {
 }
 
 .section-heading {
-    padding-left: 32px;
-    font-weight: 800;
+    margin-top: 32px;
+    font-weight: 600;
 }
 
 #index-carousel {
@@ -89,6 +84,30 @@ h1 {
         bottom: 48px;
         font-size: 3rem;
     }
+}
+
+#top-charts ol {
+    margin: 0;
+    padding: 0 8px 8px;
+}
+
+.top-chart-item {
+    padding: 6px;
+    list-style-type: inherit;
+}
+
+.top-chart-item-body {
+    display: inline;
+}
+
+.top-chart-item-body a {
+    word-wrap: break-word;
+}
+
+.top-chart-item-image {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
 }
 
 .title-listing-image {
