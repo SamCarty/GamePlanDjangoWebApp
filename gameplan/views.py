@@ -1,6 +1,4 @@
-from django.contrib.sites import requests
-from django.shortcuts import render_to_response
-from django.template.context_processors import csrf
+from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.http import JsonResponse
 from django.views.generic import ListView
@@ -13,9 +11,9 @@ class HomePageView(TemplateView):
     template_name = 'gameplan/index.html'
 
     def get(self, request, *args, **kwargs):
-        context = locals()
+        context = dict()
         context['top_charts'] = get_top_charts_recommendations(request, 10)
-        return render_to_response(self.template_name, context)
+        return render(request, self.template_name, context)
 
 
 def search(request, title):

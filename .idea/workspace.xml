@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e38eafcc-dce6-4a11-98a7-3ff01e46304d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/gameplan/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gameplan/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gameplan/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/gameplan/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -266,6 +265,8 @@
       <workItem from="1579273994298" duration="2675000" />
       <workItem from="1579351641611" duration="3549000" />
       <workItem from="1579434918308" duration="12011000" />
+      <workItem from="1579462672762" duration="29000" />
+      <workItem from="1579462755523" duration="84000" />
     </task>
     <servers />
   </component>
@@ -329,10 +330,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="781" y="343" key="SettingsEditor/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578309127154" />
-    <state x="561" y="514" key="com.intellij.ide.util.TipDialog" timestamp="1579435696806">
+    <state x="561" y="514" key="com.intellij.ide.util.TipDialog" timestamp="1579462756212">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="561" y="514" key="com.intellij.ide.util.TipDialog/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1579435696806" />
+    <state x="561" y="514" key="com.intellij.ide.util.TipDialog/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1579462756212" />
     <state x="-1920" y="0" width="1936" height="1019" key="dock-window-1" timestamp="1578758673726">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
