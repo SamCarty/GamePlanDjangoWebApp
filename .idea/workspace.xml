@@ -2,14 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e38eafcc-dce6-4a11-98a7-3ff01e46304d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/model_builder/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_builder/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_builder/user_ratings_builder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/recommender_libraries/title_popularity.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recommender/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gameplan_project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/gameplan_project/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model_builder/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/model_builder/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recommender/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/recommender/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recommender_libraries/recommend.py" beforeDir="false" afterPath="$PROJECT_DIR$/recommender_libraries/recommend.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/games/details.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/games/details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recommender_libraries/recommend.py" beforeDir="false" afterPath="$PROJECT_DIR$/recommender_libraries/title_similarity.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/add-game.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/add-game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/gameplan/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gameplan/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +84,7 @@
       <recent name="S:\Repos\Games Recommender Files\gameplan\static" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.user_ratings_builder">
+  <component name="RunManager" selected="Python.title_popularity">
     <configuration name="import_games" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="GR_App" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -106,7 +107,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="recommend (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="title_popularity" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="GR_App" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -119,7 +120,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/recommender_libraries/recommend.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/recommender_libraries/title_popularity.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -128,7 +129,29 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="recommend" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="title_similarity" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="GR_App" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/recommender_libraries" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="S:\Repos\Games Recommender Files\gameplan\recommender_libraries\title_similarity.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="title_similarity" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="GR_App" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -141,7 +164,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="S:\Repos\Games Recommender Files\gameplan\recommender_libraries\recommend.py" />
+      <option name="SCRIPT_NAME" value="S:\Repos\Games Recommender Files\gameplan\recommender_libraries\title_similarity.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -196,11 +219,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.title_popularity" />
         <item itemvalue="Python.user_ratings_builder" />
         <item itemvalue="Python.views" />
         <item itemvalue="Python.import_games" />
-        <item itemvalue="Python.recommend (1)" />
-        <item itemvalue="Python.recommend" />
+        <item itemvalue="Python.title_similarity" />
       </list>
     </recent_temporary>
   </component>
@@ -245,7 +268,10 @@
       <workItem from="1578862590288" duration="4981000" />
       <workItem from="1578872383706" duration="4732000" />
       <workItem from="1578919039700" duration="25158000" />
-      <workItem from="1579005505052" duration="22558000" />
+      <workItem from="1579005505052" duration="22647000" />
+      <workItem from="1579273994298" duration="2675000" />
+      <workItem from="1579351641611" duration="3549000" />
+      <workItem from="1579434918308" duration="2923000" />
     </task>
     <servers />
   </component>
@@ -265,26 +291,26 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1059" y="455" key="FileChooserDialogImpl/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578403997834" />
-    <state width="2517" height="484" key="GridCell.Tab.0.bottom" timestamp="1579049640198">
+    <state width="2517" height="484" key="GridCell.Tab.0.bottom" timestamp="1579438005923">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1877" height="68" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1578610701472" />
-    <state width="2517" height="484" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1579049640198" />
-    <state width="2517" height="484" key="GridCell.Tab.0.center" timestamp="1579049640198">
+    <state width="2517" height="484" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1579438005923" />
+    <state width="2517" height="484" key="GridCell.Tab.0.center" timestamp="1579438005923">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1877" height="68" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1578610701472" />
-    <state width="2517" height="484" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1579049640198" />
-    <state width="2517" height="484" key="GridCell.Tab.0.left" timestamp="1579049640198">
+    <state width="2517" height="484" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1579438005923" />
+    <state width="2517" height="484" key="GridCell.Tab.0.left" timestamp="1579438005923">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1877" height="68" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1578610701472" />
-    <state width="2517" height="484" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1579049640198" />
-    <state width="2517" height="484" key="GridCell.Tab.0.right" timestamp="1579049640198">
+    <state width="2517" height="484" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1579438005923" />
+    <state width="2517" height="484" key="GridCell.Tab.0.right" timestamp="1579438005923">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1877" height="68" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1578610701472" />
-    <state width="2517" height="484" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1579049640198" />
+    <state width="2517" height="484" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1579438005923" />
     <state width="2517" height="492" key="GridCell.Tab.1.bottom" timestamp="1578358206535">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -309,10 +335,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="781" y="343" key="SettingsEditor/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578309127154" />
-    <state x="561" y="514" key="com.intellij.ide.util.TipDialog" timestamp="1579008137908">
+    <state x="561" y="514" key="com.intellij.ide.util.TipDialog" timestamp="1579435696806">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="561" y="514" key="com.intellij.ide.util.TipDialog/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1579008137908" />
+    <state x="561" y="514" key="com.intellij.ide.util.TipDialog/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1579435696806" />
     <state x="-1920" y="0" width="1936" height="1019" key="dock-window-1" timestamp="1578758673726">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
@@ -344,6 +370,7 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/gameplan$recommend__1_.coverage" NAME="recommend (1) Coverage Results" MODIFIED="1578613358272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/recommender_libraries" />
     <SUITE FILE_PATH="coverage/gameplan$recommend.coverage" NAME="recommend Coverage Results" MODIFIED="1578341437050" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/gameplan$title_popularity.coverage" NAME="title_popularity Coverage Results" MODIFIED="1579437933723" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/recommender_libraries" />
     <SUITE FILE_PATH="coverage/gameplan$user_ratings_builder.coverage" NAME="user_ratings_builder Coverage Results" MODIFIED="1579049640188" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model_builder" />
     <SUITE FILE_PATH="coverage/gameplan$views.coverage" NAME="views Coverage Results" MODIFIED="1579044619776" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/recommender" />
     <SUITE FILE_PATH="coverage/gameplan$import_games.coverage" NAME="import_games Coverage Results" MODIFIED="1578672409408" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

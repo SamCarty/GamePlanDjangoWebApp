@@ -1,8 +1,11 @@
+import sys
+
 from django.contrib.auth.models import User
 from django.test import TestCase
 
 from gatherer.models import Log
 from model_builder import user_ratings_builder
+from recommender_libraries.title_popularity import generate_recommendations
 
 
 class RecommenderTest(TestCase):
@@ -47,3 +50,7 @@ class RecommenderTest(TestCase):
         self.assertEqual(ratings['28210'], 10.0)  # 250
         self.assertEqual(ratings['59849'], 2.0)  # 50
         self.assertEqual(ratings['6036'], 1.0)  # 25
+
+    def top_ten_rec(self):
+        self.assertEqual(generate_recommendations(10)[0]['game_id'], 105049)
+

@@ -1,3 +1,18 @@
+function getTopChartRecommendations() {
+    url = '/recommender/top-charts';
+    $.ajax({
+        type: 'GET',
+        url: url,
+        success: function (result) {
+            if (result.data != null) {
+                Object.values(result.data).forEach(function (key) {
+
+                });
+            }
+        }
+    });
+}
+
 function getContentRecommendations(gameId, element) {
     url = '/recommender/content-based/' + gameId + '/' + 60;
     fetchRecommendations(url, element, gameId);
