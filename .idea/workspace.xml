@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e38eafcc-dce6-4a11-98a7-3ff01e46304d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gameplan/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/gameplan/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/migrations/0002_auto_20200113_1410.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -267,6 +268,7 @@
       <workItem from="1579434918308" duration="12011000" />
       <workItem from="1579462672762" duration="29000" />
       <workItem from="1579462755523" duration="84000" />
+      <workItem from="1579466317220" duration="1094000" />
     </task>
     <servers />
   </component>
@@ -278,10 +280,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1039" y="503" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578436031054" />
-    <state x="1010" y="447" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1578600512225">
+    <state x="1010" y="447" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1579467216931">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1010" y="447" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578600512225" />
+    <state x="1010" y="447" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1579467216931" />
     <state x="1059" y="455" key="FileChooserDialogImpl" timestamp="1578403997834">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -330,10 +332,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="781" y="343" key="SettingsEditor/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578309127154" />
-    <state x="561" y="514" key="com.intellij.ide.util.TipDialog" timestamp="1579462756212">
+    <state x="561" y="514" key="com.intellij.ide.util.TipDialog" timestamp="1579466335757">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="561" y="514" key="com.intellij.ide.util.TipDialog/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1579462756212" />
+    <state x="561" y="514" key="com.intellij.ide.util.TipDialog/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1579466335757" />
     <state x="-1920" y="0" width="1936" height="1019" key="dock-window-1" timestamp="1578758673726">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
