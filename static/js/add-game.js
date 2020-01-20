@@ -67,6 +67,6 @@ function createGameRecommendationSlider(section, game_id) {
     });
 
     slider.on('change', function (index) {
-        log_recommendation_view_event(game_id, csrftoken)
+        log_recommendation_view_event(game_id, csrftoken, sessionid)
     })
 }

@@ -12,12 +12,14 @@ def log_event(request):
             user_id = request.user
             event_type = request.POST['event_type']
             content_id = request.POST['content_id']
+            session_id = request.POST['session_id']
 
             log = Log(
                 created=date,
                 user=user_id,
                 event_type=event_type,
-                content_id=content_id)
+                content_id=content_id,
+                session_id=session_id)
 
             log.save()
     else:

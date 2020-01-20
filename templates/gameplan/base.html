@@ -94,16 +94,17 @@
     </div>
 </nav>
 
-
 {% block content %}
 
 {% endblock content %}
 
 <script>
-    const csrftoken = '{{ csrf_token }}'; // IMPORTANT!
+    csrftoken = '{{ csrf_token }}'; // IMPORTANT!
+    sessionid = '{{ session_id }}'; // IMPORTANT!
 
     $(document).ready(function () {
         loadGenres();
+        console.log("Session id is " + sessionid)
     });
 
     // Search and autocomplete
@@ -149,34 +150,14 @@
     }
 
     function loadGenres() {
-        $.ajax({
-            type: 'GET',
-            url: '/genres/get-all-genres/',
-            success: function (result) {
-                const dropdown = document.getElementById('genres-dropdown');
-
-                // alphabetically sort the genres
-                result.sort(function (a, b) {
-                    if (a.name < b.name) {
-                        return -1;
-                    }
-                    if (a.name > b.name) {
-                        return 1;
-                    }
-                    return 0;
-                });
-
-                // create the items for the genres dropdown
-                Object.values(result).forEach(function (key) {
-                    item = document.createElement('a');
-                    item.setAttribute('class', 'dropdown-item');
-                    item.setAttribute('href', '/genre/' + key['genre_id']);
-                    item.innerHTML = key['name'];
-
-                    dropdown.appendChild(item)
-                });
-            }
-        });
+        const dropdown = document.getElementById('genres-dropdown');
+        {% for genre in genres %}
+            item = document.createElement('a');
+            item.setAttribute('class', 'dropdown-item');
+            item.setAttribute('href', '/genre/{{ genre.genre_id }}');
+            item.innerHTML = '{{ genre.name }}';
+            dropdown.appendChild(item);
+        {% endfor %}
     }
 </script>
 </body>

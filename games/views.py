@@ -1,12 +1,20 @@
 from django.http import JsonResponse
+from django.shortcuts import render
 from django.views.generic import TemplateView
 from accounts.views import on_wishlist
 
 from gameplan.models import Game, Screenshot, InvolvedCompany, Company, Genre, Platform
+from gameplan.views import create_session
 
 
 class GameDetails(TemplateView):
     template_name = 'games/details.html'
+
+    def get(self, request, *args, **kwargs):
+        context = dict()
+        context['session_id'] = create_session(request)
+
+        return render(request, self.template_name, context)
 
 
 def get_game_details(request, game_id):

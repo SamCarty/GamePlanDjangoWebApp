@@ -7,3 +7,4 @@ class Log(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     event_type = models.CharField(max_length=32)
     content_id = models.CharField(max_length=32)
+    session_id = models.CharField(max_length=64)

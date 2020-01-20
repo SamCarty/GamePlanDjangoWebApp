@@ -22,7 +22,6 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),  # account management and wishlist
     path('accounts/', include('django.contrib.auth.urls')),  # login and authentication
     path('recommender/', include('recommender.urls')),  # provides implementations for recommending content
-    path('genres/', include('genres.urls')),  # for generic tasks (e.g. loading genres to dropdown)
     path('games/', include('games.urls')),
     path('gatherer/', include('gatherer.urls'))
 ]

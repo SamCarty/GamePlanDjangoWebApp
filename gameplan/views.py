@@ -4,7 +4,7 @@ from django.http import JsonResponse
 from django.views.generic import ListView
 
 from recommender.views import get_top_charts_recommendations
-from gameplan.models import Game
+from gameplan.models import Game, Genre
 
 
 class HomePageView(TemplateView):
@@ -12,8 +12,22 @@ class HomePageView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         context = dict()
+        context['session_id'] = create_session(request)
+        context['genres'] = get_all_genres()
         context['top_charts'] = get_top_charts_recommendations(request, 10)
+
         return render(request, self.template_name, context)
+
+
+def create_session(request):
+    if not request.session.session_key:
+        request.session.create()
+
+    return request.session.session_key
+
+
+def get_all_genres():
+    return Genre.objects.order_by('name').values()
 
 
 def search(request, title):
