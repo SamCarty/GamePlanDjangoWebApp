@@ -18,6 +18,11 @@ function getContentRecommendations(gameId, element) {
     fetchRecommendations(url, element, gameId);
 }
 
+function getBoughtTogetherRecommendations(gameId, element) {
+    url = '/recommender/bought-together/' + gameId + '/' + 60;
+    fetchRecommendations(url, element, gameId)
+}
+
 function fetchRecommendations(url, section, gameId) {
     $.ajax({
         type: 'GET',
@@ -67,6 +72,6 @@ function createGameRecommendationSlider(section, game_id) {
     });
 
     slider.on('change', function (index) {
-        log_recommendation_view_event(game_id, csrftoken, sessionid)
+        logRecommendationViewEvent(game_id, csrftoken, sessionid)
     })
 }

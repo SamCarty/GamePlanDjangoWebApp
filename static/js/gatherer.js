@@ -1,28 +1,28 @@
-function log_detail_view_event(content_id, csrf_token, session_id) {
-    add_event(content_id, 'detail_view_event', csrf_token, session_id)
+function logDetailViewEvent(content_id, csrf_token, session_id) {
+    addEvent(content_id, 'detail_view_event', csrf_token, session_id)
 }
 
-function log_wishlist_event(content_id, csrf_token, session_id) {
-    add_event(content_id, 'wishlist_event', csrf_token, session_id)
+function logWishlistEvent(content_id, csrf_token, session_id) {
+    addEvent(content_id, 'wishlist_event', csrf_token, session_id)
 }
 
-function log_purchase_event(content_id, csrf_token, session_id) {
-    add_event(content_id, 'purchase_event', csrf_token, session_id)
+function logPurchaseEvent(content_id, csrf_token, session_id) {
+    addEvent(content_id, 'purchase_event', csrf_token, session_id)
 }
 
-function log_recommendation_view_event(content_id, csrf_token, session_id) {
-    add_event(content_id, 'rec_view_event', csrf_token, session_id)
+function logRecommendationViewEvent(content_id, csrf_token, session_id) {
+    addEvent(content_id, 'rec_view_event', csrf_token, session_id)
 }
 
-function log_genre_view_event(content_id, csrf_token, session_id) {
-    add_event(content_id, 'genre_view_event', csrf_token, session_id)
+function logGenreViewEvent(content_id, csrf_token, session_id) {
+    addEvent(content_id, 'genre_view_event', csrf_token, session_id)
 }
 
-function log_screenshot_view_event(content_id, csrf_token, session_id) {
-    add_event(content_id, 'screenshot_view_event', csrf_token, session_id)
+function logScreenshotViewEvent(content_id, csrf_token, session_id) {
+    addEvent(content_id, 'screenshot_view_event', csrf_token, session_id)
 }
 
-function add_event(content_id, event_type, csrf_token, session_id) {
+function addEvent(content_id, event_type, csrf_token, session_id) {
     $.ajax({
         type: 'POST',
         url: '/gatherer/log-event/',

@@ -94,6 +94,12 @@
 
         </section>
 
+        <section id="bought-together-recommendations-section">
+            <h1 class="section-heading heading-underline">Frequently bought with this game</h1>
+            <div class="slider" id="slider-bought-together">
+            </div>
+        </section>
+
         <section id="recommendations-section">
             <h1 class="section-heading heading-underline">Similar to this game</h1>
             <div class="slider" id="slider-similar">
@@ -108,9 +114,12 @@
 
         $(document).ready(function () {
             getGameDetails(gameId);
-            log_detail_view_event(gameId, csrftoken, sessionid);
-            element = document.getElementById('slider-similar');
-            getContentRecommendations(gameId, element);
+            logDetailViewEvent(gameId, csrftoken, sessionid);
+            const contentElement = document.getElementById('slider-similar');
+            getContentRecommendations(gameId, contentElement);
+
+            const boughtTogetherElement = document.getElementById('slider-bought-together');
+            getBoughtTogetherRecommendations(gameId, boughtTogetherElement)
         });
 
         function addRemoveWishlist() {
@@ -125,7 +134,7 @@
                         success: function (result) {
                             if (result['auth']) {
                                 showHideWishlistIcon(result['on_wishlist']);
-                                if (result['on_wishlist']) log_wishlist_event(gameId, csrftoken, sessionid);
+                                if (result['on_wishlist']) logWishlistEvent(gameId, csrftoken, sessionid);
                             } else {
                                 window.location.replace('{% url 'login' %}?next={{ request.path }}')
                             }
@@ -153,7 +162,7 @@
         }
 
         function buyTitle() {
-            log_purchase_event(gameId, csrftoken, sessionid)
+            logPurchaseEvent(gameId, csrftoken, sessionid)
         }
 
         // DETAILS

@@ -1,5 +1,8 @@
 import os
 from collections import defaultdict
+
+import pytz
+from django.utils.datetime_safe import datetime
 from itertools import combinations
 
 import django
@@ -7,7 +10,13 @@ import django
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'gameplan_project.settings')
 django.setup()
 
+from gameplan.models import Game
 from gatherer.models import Log
+from recommender.models import RecommendationPairing
+
+
+def clear_db():
+    RecommendationPairing.objects.all().delete()
 
 
 def get_buy_events():
@@ -50,7 +59,7 @@ def get_cumulative_items(session_trans, min):
 
     for key, items in session_trans.items():
         for item in items:
-            index = frozenset({item})
+            index = frozenset({item})  # frozenset because values are immutable and can be used as dict key.
             temp[index] += 1
 
     for key, set in temp.items():
@@ -90,11 +99,11 @@ def get_bought_together_rules(one_sets, two_sets, n):
     """ Create the list of all bought together item pairings with confidence and support values.
      :returns List of 'bought together' item rules. """
     rules = list()
-    for k1, cumulative_freq in one_sets.items():
-        for k2, pairing_freq in two_sets.items():
-            # if the cumulative key is in pairings... (if not, we don't care about it!)
-            if k1.issubset(k2):
-                target = k2.difference(k1)
+    for from_game, cumulative_freq in one_sets.items():  # game id, number of times purchased
+        for game_pairings, pairing_freq in two_sets.items():  # game ids (pairings), number of times paired together
+            # if the game is paired with us, keep going... (if not, we don't care about it!)
+            if from_game.issubset(game_pairings):
+                target = game_pairings.difference(from_game)  # extract the 'to_game' id by finding the difference.
 
                 # support is the percentage of sessions that contain both items
                 # - support(x -> y) = (x ^ y) / (total transactions)
@@ -102,13 +111,28 @@ def get_bought_together_rules(one_sets, two_sets, n):
                 # confidence is the trust we have in finding item B given item A - confidence(x -> y) = (x ^ y) / (x)
                 confidence = pairing_freq / cumulative_freq
 
-                rules.append((next(iter(k1)), next(iter(target)), confidence, support))
+                # next(iter()) because we need the value, not the frozenset
+                rules.append((next(iter(from_game)), next(iter(target)), confidence, support))
 
     return rules
 
 
+def save_results(results):
+    for i in range(0, len(results) - 1):
+        item = results[i]
+        created = datetime.now(pytz.utc)
+        from_game = Game.objects.get(game_id=item[0])
+        to_game = Game.objects.get(game_id=item[1])
+
+        rec_object = RecommendationPairing.objects.create(created=created, from_game=from_game, to_game=to_game,
+                                                          confidence=item[2], support=item[3], )
+        rec_object.save()
+
+
 if __name__ == '__main__':
+    clear_db()
     e = get_buy_events()
     t = collate_transactions(e)
-    print(bought_together(t))
+    bought_together = bought_together(t)
+    save_results(bought_together)
 

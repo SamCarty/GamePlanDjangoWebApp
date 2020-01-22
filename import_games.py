@@ -16,7 +16,7 @@ from gameplan.models import Game, Genre, GameMode, Franchise, GameEngine, Involv
 
 
 def clear_database():
-    print("Purging all Game entries in database.")
+    print("Purging all entries in database.")
     Game.objects.all().delete()
     Genre.objects.all().delete()
     GameMode.objects.all().delete()
@@ -42,7 +42,7 @@ def import_file(filename):
 
         game_data = data['games']
         games = list()
-        for i in range(0, len(game_data) - 1):  # len(game_data) - 1
+        for i in range(0, len(game_data) - 1):
             game = game_data[i]
             print("Adding game: " + game['name'])
 
@@ -129,15 +129,15 @@ def import_file(filename):
                 for date in game['release_dates']:
                     platform = Platform.objects.get_or_create(platform_id=date['platform']['id'],
                                                               name=date['platform']['name'])[0]
-                    dateToAdd = ReleaseDate.objects.get_or_create(release_date_id=date['id'], platform=platform)[0]
+                    date_to_add = ReleaseDate.objects.get_or_create(release_date_id=date['id'], platform=platform)[0]
 
                     if 'date' in date:
-                        dateToAdd.date = date['date']
+                        date_to_add.date = date['date']
 
                     if 'human' in date:
-                        dateToAdd.human = date['human']
+                        date_to_add.human = date['human']
 
-                    game_object.release_dates.add(dateToAdd)
+                    game_object.release_dates.add(date_to_add)
 
             if 'screenshots' in game:
                 for screenshot in game['screenshots']:
@@ -198,7 +198,7 @@ def combine_dbs():
     games = reduce(lambda x, y: pandas.merge(x, y, on='game_id', how='outer'), [games, genres])
     games = games.fillna('').groupby(['game_id', 'title', 'summary', 'storyline'])['name'].apply(
         ' '.join).reset_index()
-    # games = games[["title", "genre_id", "summary", "storyline"]]  # only use these columns
+
     return games
 
 
