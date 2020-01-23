@@ -3,14 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e38eafcc-dce6-4a11-98a7-3ff01e46304d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gameplan/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/gameplan/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gatherer/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/gatherer/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gatherer/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/gatherer/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recommender/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/recommender/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/add-game.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/recommend.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/gameplan/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gameplan/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/gameplan/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gameplan/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -277,7 +272,7 @@
       <workItem from="1579466317220" duration="2230000" />
       <workItem from="1579519434594" duration="25175000" />
       <workItem from="1579700949579" duration="12904000" />
-      <workItem from="1579777007148" duration="15833000" />
+      <workItem from="1579777007148" duration="18619000" />
     </task>
     <servers />
   </component>
@@ -297,28 +292,28 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1059" y="455" key="FileChooserDialogImpl/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1579523939228" />
-    <state width="2517" height="342" key="GridCell.Tab.0.bottom" timestamp="1579788971259">
+    <state width="2517" height="342" key="GridCell.Tab.0.bottom" timestamp="1579800600941">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="342" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.0.1920.1040/2560.0.3840.2120@0.0.2560.1400" timestamp="1579788971259" />
+    <state width="2517" height="342" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.0.1920.1040/2560.0.3840.2120@0.0.2560.1400" timestamp="1579800600941" />
     <state width="1877" height="68" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1578610701472" />
     <state width="2517" height="342" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1579724269356" />
-    <state width="2517" height="342" key="GridCell.Tab.0.center" timestamp="1579788971259">
+    <state width="2517" height="342" key="GridCell.Tab.0.center" timestamp="1579800600940">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="342" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.0.1920.1040/2560.0.3840.2120@0.0.2560.1400" timestamp="1579788971259" />
+    <state width="2517" height="342" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.0.1920.1040/2560.0.3840.2120@0.0.2560.1400" timestamp="1579800600940" />
     <state width="1877" height="68" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1578610701472" />
     <state width="2517" height="342" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1579724269356" />
-    <state width="2517" height="342" key="GridCell.Tab.0.left" timestamp="1579788971259">
+    <state width="2517" height="342" key="GridCell.Tab.0.left" timestamp="1579800600940">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="342" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.0.1920.1040/2560.0.3840.2120@0.0.2560.1400" timestamp="1579788971259" />
+    <state width="2517" height="342" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.0.1920.1040/2560.0.3840.2120@0.0.2560.1400" timestamp="1579800600940" />
     <state width="1877" height="68" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1578610701472" />
     <state width="2517" height="342" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1579724269356" />
-    <state width="2517" height="342" key="GridCell.Tab.0.right" timestamp="1579788971259">
+    <state width="2517" height="342" key="GridCell.Tab.0.right" timestamp="1579800600941">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="342" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.0.1920.1040/2560.0.3840.2120@0.0.2560.1400" timestamp="1579788971259" />
+    <state width="2517" height="342" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.0.1920.1040/2560.0.3840.2120@0.0.2560.1400" timestamp="1579800600941" />
     <state width="1877" height="68" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1578610701472" />
     <state width="2517" height="342" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1579724269356" />
     <state width="1258" height="492" key="GridCell.Tab.1.bottom" timestamp="1579569445833">
@@ -388,6 +383,6 @@
     <SUITE FILE_PATH="coverage/gameplan$user_ratings_builder.coverage" NAME="user_ratings_builder Coverage Results" MODIFIED="1579049640188" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model_builder" />
     <SUITE FILE_PATH="coverage/gameplan$views.coverage" NAME="views Coverage Results" MODIFIED="1579044619776" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/recommender" />
     <SUITE FILE_PATH="coverage/gameplan$import_games.coverage" NAME="import_games Coverage Results" MODIFIED="1578672409408" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/gameplan$bought_together_builder.coverage" NAME="bought_together_builder Coverage Results" MODIFIED="1579788896817" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model_builder" />
+    <SUITE FILE_PATH="coverage/gameplan$bought_together_builder.coverage" NAME="bought_together_builder Coverage Results" MODIFIED="1579800600935" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model_builder" />
   </component>
 </project>

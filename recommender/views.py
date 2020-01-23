@@ -70,7 +70,9 @@ def get_users_like_you_recommendations(request, n=50):
         game_data = list()
         for rec in pairings:
             to_game = rec.to_game
-            game_data.append(list(Game.objects.filter(game_id=to_game.game_id).values())[0])
+            game = list(Game.objects.filter(game_id=to_game.game_id).values())[0]
+            if game not in game_data:
+                game_data.append(game)
 
         games_return_data = {
             'user_id': uid,
