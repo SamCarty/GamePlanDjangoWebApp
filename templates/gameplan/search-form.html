@@ -1,4 +1,4 @@
-<form action="{% url 'search_results' %}">
+<form action="{% url 'search_results' %}" onsubmit="return validateSearch()" id="search-form">
     <div class="input-group">
         <input name="q" class="form-control" type="search" id="search-titles"
                placeholder="Enter a game title">
@@ -13,3 +13,10 @@
         </div>
     </div>
 </form>
+
+<script>
+    function validateSearch() {
+        searchQuery = document.forms["search-form"]["search-titles"].value;
+        return searchQuery !== "";
+    }
+</script>

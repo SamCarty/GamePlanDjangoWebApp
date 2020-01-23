@@ -46,5 +46,5 @@ class SearchResultsView(ListView):
     template_name = 'gameplan/search.html'
 
     def get_queryset(self):
-        query = self.request.GET.get()
+        query = self.request.GET.get('q')
         return Game.objects.filter(title__icontains=query)
