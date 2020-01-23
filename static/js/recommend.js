@@ -23,7 +23,17 @@ function getBoughtTogetherRecommendations(gameId, element) {
     fetchRecommendations(url, element, gameId)
 }
 
-function fetchRecommendations(url, section, gameId) {
+function getUsersLikeYouRecommendations(element) {
+    url = '/recommender/like-you/' + 50;
+    fetchRecommendations(url, element)
+}
+
+function getSimilarToRecentRecommendations(element) {
+    url = '/recommender/similar-to-recent/' + 50;
+    fetchRecommendations(url, element)
+}
+
+function fetchRecommendations(url, section) {
     $.ajax({
         type: 'GET',
         url: url,
@@ -33,7 +43,12 @@ function fetchRecommendations(url, section, gameId) {
                 Object.values(result.data).forEach(function (key) {
                     addRecommendation(key, section);
                 });
-                createGameRecommendationSlider(section, gameId);
+
+                if (result.based_on_title != null) {
+                    heading = document.getElementById('heading-rec-content-based');
+                    heading.innerHTML = "Because you viewed " + result.based_on_title
+                }
+                createGameRecommendationSlider(section);
             }
         }
     });
@@ -60,7 +75,7 @@ function addRecommendation(game, section) {
     section.appendChild(itemDiv);
 }
 
-function createGameRecommendationSlider(section, game_id) {
+function createGameRecommendationSlider(section) {
     let slider = new Flickity(section, {
         cellAlign: 'left',
         initialIndex: 0,
@@ -71,7 +86,9 @@ function createGameRecommendationSlider(section, game_id) {
         wrapAround: true
     });
 
+    /*
     slider.on('change', function (index) {
         logRecommendationViewEvent(game_id, csrftoken, sessionid)
     })
+     */
 }

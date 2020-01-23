@@ -51,7 +51,7 @@
             </div>
             <div class="col-lg-3">
                 <div id="top-charts">
-                    <h3 class="heading-underline">Popular now</h3>
+                    <h2 class="heading-underline">Popular now</h2>
                     <ol>
                         {% for game in top_charts %}
                             <li class="top-chart-item">
@@ -68,15 +68,24 @@
         </section>
 
         <section id="recommendations-section">
-            <h1 class="section-heading heading-underline" id="recommendations-heading">Just for you</h1>
-            <div class="slider" id="slider-similar"></div>
+            <h2 class="section-heading heading-underline" id="heading-rec-like-you">People like you enjoyed</h2>
+            <div class="slider" id="slider-users-like-you"></div>
+
+            <h2 class="section-heading heading-underline" id="heading-rec-content-based">Based on your recently viewed titles</h2>
+            <div class="slider" id="slider-content-based"></div>
         </section>
+
+
+
     </section>
 
     <script>
         $(document).ready(function () {
-            element = document.getElementById('slider-similar');
-            getContentRecommendations(6036, element);
+            const likeYouElement = document.getElementById('slider-users-like-you');
+            getUsersLikeYouRecommendations(likeYouElement);
+
+            const contentBasedElement = document.getElementById('slider-content-based');
+            getSimilarToRecentRecommendations(contentBasedElement);
         });
     </script>
 

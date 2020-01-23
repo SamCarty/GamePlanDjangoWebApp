@@ -21,7 +21,8 @@ class HomePageView(TemplateView):
 
 def create_session(request):
     if not request.session.session_key:
-        request.session.create().set_expiry(0)
+        request.session.create()
+        request.session.set_expiry(0)
 
     return request.session.session_key
 
