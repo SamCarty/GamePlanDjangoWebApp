@@ -118,6 +118,7 @@ def get_bought_together_rules(one_sets, two_sets, n):
 
 
 def save_results(results):
+    """ Saves the pairings to the database. """
     for i in range(0, len(results) - 1):
         item = results[i]
         created = datetime.now(pytz.utc)
@@ -129,10 +130,13 @@ def save_results(results):
         rec_object.save()
 
 
-if __name__ == '__main__':
+def recalculate_bought_together_db():
     clear_db()
     e = get_buy_events()
     t = collate_transactions(e)
-    bought_together = bought_together(t)
-    save_results(bought_together)
+    b_t = bought_together(t)
+    save_results(b_t)
 
+
+if __name__ == '__main__':
+    recalculate_bought_together_db()
