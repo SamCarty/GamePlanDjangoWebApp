@@ -10,17 +10,43 @@
 
 {% block content %}
     <div class="container">
-        <h1>Your wishlist</h1>
-
-        <ul>
+        <h2 class="section-heading">Wishlist</h2>
+        <p>{{ object_list|length }} titles found:</p>
+        <div class="row">
             {% for game in object_list %}
-                <li>
-                    <a href="{% url 'game_details' game_id=game.game_id %}">
-                        {{ game.title }}
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
+                    <a href="{% url 'game_details' game_id=game.game_id %}" class="no-underline search-item-link">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="text-left" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">{{ game.title }}</h5>
+                                <div class="d-flex">
+                                    <span class="text-secondary font-weight-bold"><sup>
+                                         Released <span class="font-weight-normal">{{ game.first_release_date }}</span>
+                                    </sup>
+                                    </span>
+                                </div>
+                                <div class="d-flex">
+                                    <span class="text-secondary font-weight-bold"><sup>
+                                        Available on <span class="font-weight-normal">
+                                        {% for platform in game.platforms_human %}
+                                            {% if forloop.last and not forloop.first %} and {% endif %}
+                                            {{ platform.name }}{% if not forloop.last %},{% else %}.{% endif %}
+                                        {% endfor %}
+                                        </span>
+                                    </sup>
+                                    </span>
+                                </div>
+                                <div style="width: 100%; height: 320px">
+                                    <img class="title-image mx-auto d-block rounded" src="https://{{ game.cover }}"
+                                         alt="{{ game.title }}"/>
+                                </div>
+                                <button class="w-100 btn btn-outline-primary text-center">View more</button>
+                            </div>
+                        </div>
                     </a>
-                </li>
+                </div>
             {% endfor %}
-        </ul>
+        </div>
     </div>
 
     <script>

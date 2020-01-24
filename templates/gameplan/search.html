@@ -9,18 +9,6 @@
 {% endblock head %}
 
 {% block content %}
-    <script>
-        function convertUnixTimeToDate(unixVal) {
-            months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
-                'November', 'December'];
-            date = new Date(unixVal * 1000); // Converting to millis
-            day = date.getDate();
-            month = months[date.getMonth()];
-            year = date.getFullYear();
-            return day + ' ' + month + ' ' + year;
-        }
-    </script>
-
     <div class="container">
         <h2 class="section-heading">Search Results</h2>
         <p>{{ object_list|length }} titles found:</p>

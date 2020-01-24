@@ -1,16 +1,14 @@
-import functools
 import json
-import sys
+from datetime import datetime
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from django.http import JsonResponse, HttpResponseRedirect
-from django.shortcuts import redirect
-from django.urls import reverse_lazy, reverse
+from django.http import JsonResponse
+from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views import generic
 
-from gameplan.models import Game
+from gameplan.models import Game, Platform
 from accounts.models import Wishlist as WishlistModel
 
 
@@ -30,11 +28,18 @@ class Wishlist(generic.ListView):
         user_id = user.id
 
         game_ids = WishlistModel.objects.filter(user_id=user_id).values('game_id')
-        print(game_ids, sys.stderr)
 
         games = Game.objects.filter(game_id__in=game_ids)
-        print(games, sys.stderr)
+
+        for game in games:
+            frd = int(game.first_release_date)
+            game.first_release_date = datetime.utcfromtimestamp(frd).strftime('%d/%m/%Y')
+
+            game.platforms_human = list(Platform.objects.filter(
+                platform_id__in=game.platforms.all().values_list('platform_id', flat=True)).values('name'))
+
         return games
+
 
 
 @login_required
@@ -51,7 +56,7 @@ def add_remove_wishlist(request):
     if request.user.is_authenticated:
         response_data = {'auth': True}
 
-        game_id = request.POST.get()
+        game_id = request.POST.get('game_id')
         user = request.user
         user_id = user.id
         game_ids = list(WishlistModel.objects.filter(user_id=user_id, game_id=game_id).values('game_id'))
