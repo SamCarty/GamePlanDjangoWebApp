@@ -11,41 +11,119 @@
 {% block content %}
     <div class="container">
         <h2 class="section-heading">Search Results</h2>
-        <p>{{ object_list|length }} titles found:</p>
+        <p>{{ search_results.paginator.count }} titles found:</p>
         <div class="row">
-            {% for game in object_list %}
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
-                    <a href="{% url 'game_details' game_id=game.game_id %}" class="no-underline search-item-link">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="text-left" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">{{ game.title }}</h5>
-                                <div class="d-flex">
+            <div class="col-md-3">
+                <div class="card">
+                    <h5 class="p-3 border-bottom">Platform</h5>
+                    <div class="py-2 px-3">
+                        {% for platform in search_results_platforms %}
+                            <label class="p-1 mt-2 d-flex align-items-center">
+                                <input type="checkbox" value="{{ platform.platform_id }}"/>
+                                <span class="ml-2">{{ platform.name }}</span>
+                            </label>
+                        {% endfor %}
+                    </div>
+
+                    <h5 class="m-0 p-3 border-top border-bottom">Genres</h5>
+                    <div class="py-2 px-3">
+                        {% for genre in search_results_genres %}
+                            <label class="p-1 mt-2 d-flex align-items-center">
+                                <input type="checkbox"/>
+                                <span class="ml-2">{{ genre.name }}</span>
+                            </label>
+                        {% endfor %}
+                    </div>
+
+                    <h5 class="m-0 p-3 border-top border-bottom">Sort</h5>
+                    <div class="p-3 d-flex align-items-center">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary-outline dropdown-toggle" type="button"
+                                    id="dropdownMenuButton"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Release date (descending)
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Release date (ascending)</a>
+                                <a class="dropdown-item" href="#">Release date (descending)</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="row px-3">
+                    {% for game in search_results %}
+                        <div class="col-sm-12 col-md-6 col-lg-4 px-2 mb-3">
+                            <a href="{% url 'game_details' game_id=game.game_id %}"
+                               class="no-underline search-item-link">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="text-left"
+                                            style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">{{ game.title }}</h5>
+                                        <div class="d-flex">
                                     <span class="text-secondary font-weight-bold"><sup>
                                          Released <span class="font-weight-normal">{{ game.first_release_date }}</span>
                                     </sup>
                                     </span>
-                                </div>
-                                <div class="d-flex">
+                                        </div>
+                                        <div class="d-flex">
                                     <span class="text-secondary font-weight-bold"><sup>
                                         Available on <span class="font-weight-normal">
-                                        {% for platform in game.platforms_human %}
+                                        {% for platform in game.platforms_full %}
                                             {% if forloop.last and not forloop.first %} and {% endif %}
                                             {{ platform.name }}{% if not forloop.last %},{% else %}.{% endif %}
-                                        {% endfor %}
-                                        </span>
+                                        {% endfor %}</span>
                                     </sup>
                                     </span>
+                                        </div>
+                                        <div style="width: 100%; height: 320px">
+                                            <img class="title-image mx-auto d-block rounded"
+                                                 src="https://{{ game.cover }}"
+                                                 alt="{{ game.title }}"/>
+                                        </div>
+                                        <button class="w-100 btn btn-outline-primary text-center">View more</button>
+                                    </div>
                                 </div>
-                                <div style="width: 100%; height: 320px">
-                                    <img class="title-image mx-auto d-block rounded" src="https://{{ game.cover }}"
-                                         alt="{{ game.title }}"/>
-                                </div>
-                                <button class="w-100 btn btn-outline-primary text-center">View more</button>
-                            </div>
+                            </a>
                         </div>
-                    </a>
+                    {% endfor %}
                 </div>
-            {% endfor %}
+
+                <nav aria-label="Pagination nav">
+                    <ul class="pagination">
+                        {% if search_results.has_previous %}
+                            <li class="page-item"><a class="page-link" href="?q={{ request.GET.q }}&page=1">&laquo; first</a></li>
+                            <li class="page-item"><a class="page-link" href="?q={{ request.GET.q }}&page={{ search_results.previous_page_number }}">previous</a></li>
+                        {% endif %}
+
+                        {% for page in search_results.paginator.page_range %}
+                            <li class="page-item"><a class="page-link {% if page == search_results.paginator.current %}active{% endif %}" href="?q={{ request.GET.q }}&page{{ page }}">{{ page }}</a></li>
+                        {% endfor %}
+
+                        {% if search_results.has_next %}
+                            <li class="page-item"><a class="page-link" href="?q={{ request.GET.q }}&page={{ search_results.next_page_number }}">next</a></li>
+                            <li class="page-item"><a class="page-link" href="?q={{ request.GET.q }}&page={{ search_results.paginator.num_pages }}">last &raquo;</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+
+
+            </div>
+
+            <div class="pagination">
+                <span class="step-links">
+                    <span class="current">
+                        Page {{ search_results.number }} of {{ search_results.paginator.num_pages }}.
+                    </span>
+
+                    {% if search_results.has_next %}
+                        <a href="?q={{ request.GET.q }}&page={{ search_results.next_page_number }}">next</a>
+                        <a href="?q={{ request.GET.q }}&page={{ search_results.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
         </div>
     </div>
 
