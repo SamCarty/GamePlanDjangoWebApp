@@ -263,10 +263,21 @@ body, html {
     display: inline-block;
 }
 
-
 .top-info-form {
     text-align: left;
     margin-left: 12px;
     margin-bottom: 8px;
     float: left;
 }
+
+/* SEARCH */
+.no-underline:link {
+    text-decoration: none;
+}
+
+.search-item-link:hover button {
+    background-color: rgb(0,123,255);
+    color: white;
+}
+
+

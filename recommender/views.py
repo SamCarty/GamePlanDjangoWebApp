@@ -64,8 +64,7 @@ def get_users_like_you_recommendations(request, n=50):
         newest_events = list(events[:20])
 
         pairings = RecommendationPairing.objects.filter(from_game_id__in=newest_events)\
-            .exclude(to_game_id__in=newest_events).annotate(avg_confidence=Avg('confidence'))\
-            .order_by('-avg_confidence')
+            .annotate(avg_confidence=Avg('confidence')).order_by('-avg_confidence')
 
         game_data = list()
         for rec in pairings:

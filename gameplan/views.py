@@ -2,9 +2,11 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.http import JsonResponse
 from django.views.generic import ListView
+from datetime import datetime
+
 
 from recommender.views import get_top_charts_recommendations
-from gameplan.models import Game, Genre
+from gameplan.models import Game, Genre, Platform
 
 
 class HomePageView(TemplateView):
@@ -47,4 +49,13 @@ class SearchResultsView(ListView):
 
     def get_queryset(self):
         query = self.request.GET.get('q')
-        return Game.objects.filter(title__icontains=query)
+
+        games = Game.objects.filter(title__icontains=query)
+        for game in games:
+            frd = int(game.first_release_date)
+            game.first_release_date = datetime.utcfromtimestamp(frd).strftime('%d/%m/%Y')
+
+            game.platforms_human = list(Platform.objects.filter(
+                platform_id__in=game.platforms.all().values_list('platform_id', flat=True)).values('name'))
+
+        return games

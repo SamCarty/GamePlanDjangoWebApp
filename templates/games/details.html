@@ -229,10 +229,10 @@
 
                     // RELEASE DATE
                     releaseDateTopInfo = document.getElementById('top-info-release-date');
-                    unix_time = game[0]['first_release_date'];
-                    months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'Sepember', 'October',
+                    unixTime = game[0]['first_release_date'];
+                    months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
                         'November', 'December'];
-                    date = new Date(unix_time * 1000); // Converting to millis
+                    date = new Date(unixTime * 1000); // Converting to millis
                     day = date.getDate();
                     month = months[date.getMonth()];
                     year = date.getFullYear();
