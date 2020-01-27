@@ -19,12 +19,12 @@ class Similarity(object):
         self.rake = Rake()
 
     def generate_model(self):
-        data_matrix = self.__import_data()
-        cosine_matrix = self.__make_model(data_matrix)
+        data_matrix = self.import_data()
+        cosine_matrix = self.make_model(data_matrix)
         return cosine_matrix, data_matrix
 
     @staticmethod
-    def __import_data():
+    def import_data():
         """ Imports the dataset and returns the resulting DataFrame matrix. """
         print("Importing data...")
         query = str(Game.objects.all().query)
@@ -32,7 +32,7 @@ class Similarity(object):
         return games
 
     @staticmethod
-    def __make_model(matrix):
+    def make_model(matrix):
         """ Generates a model based on the dataset using the cosine similarity.
          :return Matrix containing the cosine similarity model. """
         print("Creating model...")
@@ -41,7 +41,8 @@ class Similarity(object):
         cos_mat = cosine_similarity(keyword_count_matrix, keyword_count_matrix)
         return cos_mat
 
-    def make_predictions(self, game_id, matrix, cos_mat, n):
+    @staticmethod
+    def make_predictions(game_id, matrix, cos_mat, n):
         """ Generates predictions given a film title, dataset matrix and cosine similarity matrix.
          :return List containing the index of each recommended game in descending order of relevance. """
         print("Making predictions...")

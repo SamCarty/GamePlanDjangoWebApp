@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'gameplan',
     'gatherer',
     'recommender',
+    'django_filters',
     'accounts.apps.AccountsConfig'
 ]
 

@@ -45,6 +45,9 @@ class Platform(models.Model):
     platform_id = models.CharField(max_length=16, unique=True, primary_key=True)
     name = models.CharField(max_length=128)
 
+    def __str__(self):
+        return self.name
+
 
 class PlayerPerspective(models.Model):
     player_perspective_id = models.CharField(max_length=16, unique=True, primary_key=True)

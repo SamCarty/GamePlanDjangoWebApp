@@ -4,6 +4,7 @@ from django.views.generic import TemplateView
 from django.http import JsonResponse
 from django.views.generic import ListView
 from datetime import datetime
+from gameplan.filters import GameFilter
 
 from recommender.views import get_top_charts_recommendations
 from gameplan.models import Game, Genre, Platform
@@ -44,7 +45,6 @@ def search(request, title):
 
 
 class SearchResultsView(ListView):
-    paginate_by = 6
     model = Game
     template_name = 'gameplan/search.html'
 
@@ -53,19 +53,14 @@ class SearchResultsView(ListView):
         context['session_id'] = create_session(request)
         context['genres'] = get_all_genres()
 
+        filter_set = GameFilter(self.request.GET, queryset=Game.objects.all())
+        context['filter'] = filter_set
+        games = filter_set.qs
+
         platforms = list()
         genres = list()
 
-        query = self.request.GET.get('q')
-        games = Game.objects.filter(title__icontains=query)
-        if self.request.GET.get('p') is not None:
-            q_platforms = self.request.GET.get('p')
-            q_platforms_list = [int(x) for x in q_platforms.split(',')]
-            games = games.filter(platforms__platform_id__in=q_platforms_list)
-        if self.request.GET.get('g') is not None:
-            q_genres = self.request.GET.get('g')
-            q_genres_list = [int(x) for x in q_genres.split(',')]
-            games = games.filter(genres__genre_id__in=q_genres_list)
+        games = games.order_by('-first_release_date')
 
         for game in games:
             frd = int(game.first_release_date)
