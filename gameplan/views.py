@@ -1,5 +1,3 @@
-import sys
-
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
 from django.views.generic import TemplateView
@@ -64,8 +62,25 @@ class SearchResultsView(ListView):
             frd = int(game.first_release_date)
             game.first_release_date = datetime.utcfromtimestamp(frd).strftime('%d/%m/%Y')
 
+            platforms_full = list(Platform.objects.filter(
+                platform_id__in=game.platforms.all().values_list('platform_id', flat=True))
+                                  .values('name', 'platform_id'))
+            game.platforms_full = platforms_full
+
+            genres_full = list(Genre.objects.filter(
+                genre_id__in=game.genres.all().values_list('genre_id', flat=True))
+                               .values('name', 'genre_id'))
+            game.genres_full = genres_full
+
+        context['search_results'] = self.setup_pagination(request, games)
+        context['url_extension'] = self.get_url_extension(request)
+
+        return render(request, self.template_name, context)
+
+    @staticmethod
+    def setup_pagination(request, data):
         page = request.GET.get('page', 1)
-        paginator = Paginator(games, 12)
+        paginator = Paginator(data, 12)
         try:
             games_page = paginator.page(page)
         except PageNotAnInteger:
@@ -73,8 +88,10 @@ class SearchResultsView(ListView):
         except EmptyPage:
             games_page = paginator.page(paginator.num_pages)
 
-        context['search_results'] = games_page
+        return games_page
 
+    @staticmethod
+    def get_url_extension(request):
         p = ''
         if request.GET.get('platforms') is not None:
             for platform in request.GET.getlist('platforms'):
@@ -87,7 +104,4 @@ class SearchResultsView(ListView):
 
         q = '&q=' + request.GET.get('q')
 
-        context['url_extension'] = q + p + g
-        print(context['url_extension'], sys.stderr)
-
-        return render(request, self.template_name, context)
+        return q + p + g
