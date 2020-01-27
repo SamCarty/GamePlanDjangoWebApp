@@ -1,3 +1,5 @@
+import sys
+
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
 from django.views.generic import TemplateView
@@ -56,35 +58,11 @@ class SearchResultsView(ListView):
         filter_set = GameFilter(self.request.GET, queryset=Game.objects.all())
         context['filter'] = filter_set
         games = filter_set.qs
-
-        platforms = list()
-        genres = list()
-
         games = games.order_by('-first_release_date')
 
         for game in games:
             frd = int(game.first_release_date)
             game.first_release_date = datetime.utcfromtimestamp(frd).strftime('%d/%m/%Y')
-
-            platforms_full = list(Platform.objects.filter(
-                platform_id__in=game.platforms.all().values_list('platform_id', flat=True)).values('name',
-                                                                                                   'platform_id'))
-
-            game.platforms_full = platforms_full
-            for platform in platforms_full:
-                if platform not in platforms:
-                    platforms.append(platform)
-
-            genres_full = list(Genre.objects.filter(
-                genre_id__in=game.genres.all().values_list('genre_id', flat=True)).values('name', 'genre_id'))
-
-            game.genres_full = genres_full
-            for genre in genres_full:
-                if genre not in genres:
-                    genres.append(genre)
-
-        context['search_results_platforms'] = platforms
-        context['search_results_genres'] = genres
 
         page = request.GET.get('page', 1)
         paginator = Paginator(games, 12)
@@ -96,5 +74,20 @@ class SearchResultsView(ListView):
             games_page = paginator.page(paginator.num_pages)
 
         context['search_results'] = games_page
+
+        p = ''
+        if request.GET.get('platforms') is not None:
+            for platform in request.GET.getlist('platforms'):
+                p += '&platforms=' + platform
+
+        g = ''
+        if request.GET.get('genres') is not None:
+            for genre in request.GET.getlist('genres'):
+                g += '&genres=' + genre
+
+        q = '&q=' + request.GET.get('q')
+
+        context['url_extension'] = q + p + g
+        print(context['url_extension'], sys.stderr)
 
         return render(request, self.template_name, context)

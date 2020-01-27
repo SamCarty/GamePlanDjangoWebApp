@@ -4,8 +4,7 @@
 
 {% block head %}
     {% load static %}
-    <script xmlns="http://www.w3.org/1999/html">
-    </script>
+    {% load gameplan_extras %}
 {% endblock head %}
 
 {% block content %}
@@ -105,26 +104,25 @@
 
                 <nav aria-label="Pagination nav">
                     <ul class="pagination">
-
                         {% if search_results.has_previous %}
                             <li class="page-item">
-                                <a class="page-link" href="?page=1{{ url_extension }}{% for key, value in request.GET.items %}{% ifnotequal key 'page' %}&{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">&laquo;first</a></li>
+                                <a class="page-link" href="?page=1{{ url_extension }}">&laquo;first</a></li>
                             <li class="page-item">
-                                <a class="page-link" href="?page={{ search_results.previous_page_number }}{% for key, value in request.GET.items %}{% ifnotequal key 'page' %}&{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">previous</a>
+                                <a class="page-link" href="?page={{ search_results.previous_page_number }}{{ url_extension }}">previous</a>
                             </li>
                         {% endif %}
 
                         {% for page in search_results.paginator.page_range %}
                             <li class="page-item">
-                                <a class="page-link {% if page == search_results.paginator.current %}active{% endif %}" href="?page={{ page }}{% for key, value in request.GET.items %}{% ifnotequal key 'page' %}&{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">{{ page }}</a>
+                                <a class="page-link {% if page == search_results.paginator.current %}active{% endif %}" href="?page={{ page }}{{ url_extension }}">{{ page }}</a>
                             </li>
                         {% endfor %}
 
                         {% if search_results.has_next %}
-                            <li class="page-item"><a class="page-link" href="?page={{ search_results.next_page_number }}{% for key, value in request.GET.items %}{% ifnotequal key 'page' %}&{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">next</a>
+                            <li class="page-item"><a class="page-link" href="?page={{ search_results.next_page_number }}{{ url_extension }}">next</a>
                             </li>
                             <li class="page-item">
-                                <a class="page-link" href="?page={{ search_results.paginator.num_pages }}{% for key, value in request.GET.items %}{% ifnotequal key 'page' %}&{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">last&raquo;</a>
+                                <a class="page-link" href="?page={{ search_results.paginator.num_pages }}{{ url_extension }}">last&raquo;</a>
                             </li>
                         {% endif %}
                     </ul>
