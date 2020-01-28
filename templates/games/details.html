@@ -212,7 +212,7 @@
                     for (var i = 0; i < game[0]['genres'].length; i++) {
                         if (genresTopInfo.innerHTML !== '') genresTopInfo.innerHTML = genresTopInfo.innerHTML + ", ";
                         genreLink = document.createElement('a');
-                        genreLink.setAttribute('href', '/genre/' + game[0]['genres'][i]['genre_id']);
+                        genreLink.setAttribute('href', '/search/?q=&genres=' + game[0]['genres'][i]['genre_id']);
                         genreLink.innerHTML = game[0]['genres'][i]['name'];
                         genresTopInfo.appendChild(genreLink);
                     }
@@ -222,7 +222,7 @@
                     for (var i = 0; i < game[0]['platform'].length; i++) {
                         if (platformsTopInfo.innerHTML !== '') platformsTopInfo.innerHTML = platformsTopInfo.innerHTML + ", ";
                         platformLink = document.createElement('a');
-                        platformLink.setAttribute('href', '/platform/' + game[0]['platform'][i]['platform_id']);
+                        platformLink.setAttribute('href', '/search/?q=&platforms=' + game[0]['platform'][i]['platform_id']);
                         platformLink.innerHTML = game[0]['platform'][i]['name'];
                         platformsTopInfo.appendChild(platformLink);
                     }
