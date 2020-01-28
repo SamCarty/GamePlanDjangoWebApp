@@ -193,7 +193,7 @@
                         if (game[0]['involved_companies'][i]['is_dev'] === true) {
                             if (developerTopInfo.innerHTML !== '') developerTopInfo.innerHTML = developerTopInfo.innerHTML + ", ";
                             developerLink = document.createElement('a');
-                            developerLink.setAttribute('href', '/company/' + game[0]['involved_companies'][i]['company_id']);
+                            //developerLink.setAttribute('href', '/company/' + game[0]['involved_companies'][i]['company_id']);
                             developerLink.innerHTML = game[0]['involved_companies'][i]['name'];
                             developerTopInfo.appendChild(developerLink);
 
@@ -201,7 +201,7 @@
                         if (game[0]['involved_companies'][i]['is_pub'] === true) {
                             if (publisherTopInfo.innerHTML !== '') publisherTopInfo.innerHTML = publisherTopInfo.innerHTML + ", ";
                             publisherLink = document.createElement('a');
-                            publisherLink.setAttribute('href', '/company/' + game[0]['involved_companies'][i]['company_id']);
+                            //publisherLink.setAttribute('href', '/company/' + game[0]['involved_companies'][i]['company_id']);
                             publisherLink.innerHTML = game[0]['involved_companies'][i]['name'];
                             publisherTopInfo.appendChild(publisherLink);
                         }

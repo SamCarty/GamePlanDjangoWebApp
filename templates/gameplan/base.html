@@ -154,7 +154,7 @@
         {% for genre in genres %}
             item = document.createElement('a');
             item.setAttribute('class', 'dropdown-item');
-            item.setAttribute('href', '/genre/{{ genre.genre_id }}');
+            item.setAttribute('href', '/search/?q=&genres={{ genre.genre_id }}');
             item.innerHTML = '{{ genre.name }}';
             dropdown.appendChild(item);
         {% endfor %}

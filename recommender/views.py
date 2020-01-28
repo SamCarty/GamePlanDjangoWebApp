@@ -23,6 +23,8 @@ def get_content_based_recommendations_json(request, game_id, n=10):
 
 
 def get_content_based_recommendations(request, game_id, n=10):
+    """ Gets the n most similar titles to the given game_id
+    @:returns a list containing information about each similar game."""
     games = title_similarity.generate_recommendations(game_id, n)
 
     game_data = list()
@@ -39,6 +41,8 @@ def get_top_charts_recommendations(request, n=10):
 
 
 def get_bought_together_recommendations(request, game_id, n=10):
+    """ Get the n most bought together titles based on the the given game.
+     @:returns a JSON response containing information about each bought together game. """
     from_game = Game.objects.get(game_id=game_id)
     recs = RecommendationPairing.objects.filter(from_game=from_game).order_by('-confidence')[:n]
 
@@ -57,6 +61,8 @@ def get_bought_together_recommendations(request, game_id, n=10):
 
 
 def get_users_like_you_recommendations(request, n=50):
+    """ Get n number of games based on users similar to the logged-in user.
+     @:returns a JSON response containing information about 'like you' game. """
     uid = request.user.id
     games_return_data = None
     if uid is not None:
@@ -82,6 +88,8 @@ def get_users_like_you_recommendations(request, n=50):
 
 
 def get_similar_to_recent_recommendations(request, n=50):
+    """ Get n number of games based on what the user has looked at recently
+     @:returns a JSON response containing information about similar game.  """
     uid = request.user.id
     games_return_data = None
     if uid is not None:

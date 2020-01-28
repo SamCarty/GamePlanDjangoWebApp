@@ -1,12 +1,18 @@
 import os
 import sys
+from datetime import datetime
+
 import django
 from collections import defaultdict
+
+import pytz
 from django.db.models import Count
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "gameplan_project.settings")
 django.setup()
-from gatherer.models import Log
+from django.contrib.auth.models import User
+from gatherer.models import Log, UserRating
+from gameplan.models import Game
 
 weighting_buy = 100
 weighting_wishlist = 75
@@ -52,6 +58,27 @@ def calculate_ratings_for_user(user_id):
     return ratings
 
 
+def save_ratings(user_ratings, user_id):
+    print(user_ratings, sys.stderr)
+    for game_id, user_rating in user_ratings.items():
+        if user_rating > 0:
+            user = User.objects.get(id=user_id)
+            game = Game.objects.get(game_id=game_id)
+            UserRating(created=datetime.now(pytz.utc), user=user, game=game, user_rating=user_rating).save()
+
+
+def calculate_ratings():
+    users = Log.objects.values('user_id').distinct()
+    print(users, sys.stderr)
+    for user in users:
+        print("New user " + str(user['user_id']), sys.stderr)
+        if user['user_id'] is not None:
+            id = user['user_id']
+            user_ratings = calculate_ratings_for_user(id)
+
+            save_ratings(user_ratings, id)
+
+
 if __name__ == '__main__':
     print('Calculating ratings...')
-    print(calculate_ratings_for_user(1), sys.stderr)
+    calculate_ratings()
