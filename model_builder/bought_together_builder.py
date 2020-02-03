@@ -6,7 +6,11 @@ from django.utils.datetime_safe import datetime
 from itertools import combinations
 
 import django
+import sys
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(BASE_DIR)
+os.environ['DJANGO_SETTINGS_MODULE'] = 'gameplan_project.settings'
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'gameplan_project.settings')
 django.setup()
 
