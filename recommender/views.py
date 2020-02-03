@@ -1,11 +1,12 @@
+import operator
 import random
 import sys
 
-from django.db.models import Avg
+from django.db.models import Avg, Count
 from django.http import JsonResponse
 
 from gameplan.models import Game
-from gatherer.models import Log
+from gatherer.models import Log, UserRating
 from recommender.models import RecommendationPairing
 from recommender_libraries import title_similarity, title_popularity
 
