@@ -68,23 +68,25 @@
         </section>
 
         <section id="recommendations-section">
-            <h2 class="section-heading heading-underline" id="heading-rec-like-you">People like you enjoyed</h2>
-            <div class="slider" id="slider-users-like-you"></div>
+            <section id="section-users-like-you">
+                <h2 class="section-heading heading-underline">People like you enjoyed</h2>
+                <div class="slider"></div>
+            </section>
 
-            <h2 class="section-heading heading-underline" id="heading-rec-content-based">Based on your recently viewed titles</h2>
-            <div class="slider" id="slider-content-based"></div>
+            <section id="section-rec-content-based">
+                <h2 class="section-heading heading-underline">Based on your recently viewed titles</h2>
+                <div class="slider"></div>
+            </section>
         </section>
-
-
 
     </section>
 
     <script>
         $(document).ready(function () {
-            const likeYouElement = document.getElementById('slider-users-like-you');
+            const likeYouElement = document.getElementById('section-users-like-you');
             getUsersLikeYouRecommendations(likeYouElement);
 
-            const contentBasedElement = document.getElementById('slider-content-based');
+            const contentBasedElement = document.getElementById('section-rec-content-based');
             getSimilarToRecentRecommendations(contentBasedElement);
         });
     </script>

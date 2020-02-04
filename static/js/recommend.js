@@ -38,17 +38,23 @@ function fetchRecommendations(url, section) {
         type: 'GET',
         url: url,
         success: function (result) {
-            if (result.data != null) {
+            if (result != null && result.data != null) {
                 section.style.display = 'block';
-                Object.values(result.data).forEach(function (key) {
-                    addRecommendation(key, section);
-                });
+
+                heading = section.getElementsByTagName('h2')[0];
+                slider = section.getElementsByTagName('div')[0];
 
                 if (result.based_on_title != null) {
-                    heading = document.getElementById('heading-rec-content-based');
                     heading.innerHTML = "Because you viewed " + result.based_on_title
                 }
-                createGameRecommendationSlider(section);
+
+                Object.values(result.data).forEach(function (key) {
+                    addRecommendation(key, slider);
+                });
+
+                createGameRecommendationSlider(slider);
+            } else {
+                section.style.display = 'none';
             }
         }
     });

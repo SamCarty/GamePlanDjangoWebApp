@@ -105,16 +105,14 @@
 
         </section>
 
-        <section id="bought-together-recommendations-section">
-            <h1 class="section-heading heading-underline">Frequently bought with this game</h1>
-            <div class="slider" id="slider-bought-together">
-            </div>
+        <section id="section-rec-bought-together">
+            <h2 class="section-heading heading-underline">Frequently bought with this game</h2>
+            <div class="slider"></div>
         </section>
 
-        <section id="recommendations-section">
+        <section id="section-rec-similar">
             <h1 class="section-heading heading-underline">Similar to this game</h1>
-            <div class="slider" id="slider-similar">
-            </div>
+            <div class="slider"></div>
         </section>
 
     </div>
@@ -126,11 +124,12 @@
         $(document).ready(function () {
             getGameDetails(gameId);
             logDetailViewEvent(gameId, csrftoken, sessionid);
-            const contentElement = document.getElementById('slider-similar');
-            getContentRecommendations(gameId, contentElement);
 
-            const boughtTogetherElement = document.getElementById('slider-bought-together');
-            getBoughtTogetherRecommendations(gameId, boughtTogetherElement)
+            const boughtTogetherElement = document.getElementById('section-rec-bought-together');
+            getBoughtTogetherRecommendations(gameId, boughtTogetherElement);
+
+            const contentElement = document.getElementById('section-rec-similar');
+            getContentRecommendations(gameId, contentElement);
         });
 
         function addRemoveWishlist() {
