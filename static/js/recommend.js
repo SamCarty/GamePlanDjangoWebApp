@@ -38,7 +38,7 @@ function fetchRecommendations(url, section) {
         type: 'GET',
         url: url,
         success: function (result) {
-            if (result != null && result.data != null) {
+            if (result != null && result.data != null && Object.values(result.data).length > 0) {
                 section.style.display = 'block';
 
                 heading = section.getElementsByTagName('h2')[0];
@@ -53,6 +53,7 @@ function fetchRecommendations(url, section) {
                 });
 
                 createGameRecommendationSlider(slider);
+
             } else {
                 section.style.display = 'none';
             }
