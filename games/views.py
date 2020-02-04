@@ -1,8 +1,9 @@
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from accounts.views import on_wishlist
 
+from gameplan.views import get_all_genres
+from accounts.views import on_wishlist
 from gameplan.models import Game, Screenshot, InvolvedCompany, Company, Genre, Platform
 from gameplan.views import create_session
 
@@ -13,6 +14,7 @@ class GameDetails(TemplateView):
     def get(self, request, *args, **kwargs):
         context = dict()
         context['session_id'] = create_session(request)
+        context['genres'] = get_all_genres()
 
         return render(request, self.template_name, context)
 

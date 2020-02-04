@@ -56,6 +56,17 @@
                                         <td class="left-cell">Release date</td>
                                         <td class="cell-field" id="top-info-release-date"></td>
                                     </tr>
+                                    <tr id="rating-top-section">
+                                        <td class="left-cell">Rating</td>
+                                        <td class="cell-field" id="top-info-rating">
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <p id="top-info-rating-count"></p>
+                                        </td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -162,7 +173,8 @@
         }
 
         function buyTitle() {
-            logPurchaseEvent(gameId, csrftoken, sessionid)
+            logPurchaseEvent(gameId, csrftoken, sessionid);
+            alert("Game purchased");
         }
 
         // DETAILS
@@ -185,6 +197,52 @@
                     gameNameHeading = document.getElementById('game-name-heading');
                     gameNameHeading.innerHTML = game[0]['title'];
                     document.title = game[0]['title'] + ' | GamePlan';
+
+                    // RATING
+                    ratingCount = game[0]['total_rating_count'];
+
+                    if (ratingCount != null && ratingCount > 0) {
+                        rating = game[0]['total_rating'];
+                        rating = Math.round(rating);
+
+                        ratingCountTopInfo = document.getElementById('top-info-rating-count');
+                        ratingCountTopInfo.innerHTML = rating + '% positive (' + ratingCount + ' reviews)';
+
+                        ratingTopInfo = document.getElementById('top-info-rating');
+                        stars = ratingTopInfo.children;
+                        if (rating > 5) {
+                            stars[0].setAttribute('class', 'fas fa-star-half-alt');
+                        }
+                        if (rating > 15) {
+                            stars[0].setAttribute('class', 'fas fa-star');
+                        }
+                        if (rating > 25) {
+                            stars[1].setAttribute('class', 'fas fa-star-half-alt');
+                        }
+                        if (rating > 35) {
+                            stars[1].setAttribute('class', 'fas fa-star');
+                        }
+                        if (rating > 45) {
+                            stars[2].setAttribute('class', 'fas fa-star-half-alt');
+                        }
+                        if (rating > 55) {
+                            stars[2].setAttribute('class', 'fas fa-star');
+                        }
+                        if (rating > 65) {
+                            stars[3].setAttribute('class', 'fas fa-star-half-alt');
+                        }
+                        if (rating > 75) {
+                            stars[3].setAttribute('class', 'fas fa-star');
+                        }
+                        if (rating > 85) {
+                            stars[4].setAttribute('class', 'fas fa-star-half-alt');
+                        }
+                        if (rating > 95) {
+                            stars[4].setAttribute('class', 'fas fa-star');
+                        }
+                    } else {
+                        document.getElementById('rating-top-section').setAttribute('style', 'display: none;');
+                    }
 
                     // COMPANIES
                     developerTopInfo = document.getElementById('top-info-developer');

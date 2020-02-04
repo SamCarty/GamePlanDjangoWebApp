@@ -103,7 +103,7 @@
                 </div>
 
                 <nav aria-label="Pagination nav">
-                    <ul class="pagination">
+                    <ul class="pagination pg-blue">
                         {% if search_results.has_previous %}
                             <li class="page-item">
                                 <a class="page-link" href="?page=1{{ url_extension }}">&laquo;first</a></li>
@@ -113,8 +113,8 @@
                         {% endif %}
 
                         {% for page in search_results.paginator.page_range %}
-                            <li class="page-item">
-                                <a class="page-link {% if page == search_results.paginator.current %}active{% endif %}" href="?page={{ page }}{{ url_extension }}">{{ page }}</a>
+                            <li class="page-item {% if page == search_results.number %}active{% endif %}">
+                                <a class="page-link" href="?page={{ page }}{{ url_extension }}">{{ page }}</a>
                             </li>
                         {% endfor %}
 
