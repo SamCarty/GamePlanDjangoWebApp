@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.utils.datetime_safe import datetime
 from django.views.decorators.csrf import ensure_csrf_cookie
 from gatherer.models import Log
+from model_builder.bought_together_builder import recalculate_bought_together_db
 
 
 @ensure_csrf_cookie
@@ -24,6 +25,10 @@ def log_event(request):
             log.user_id = user_id
 
         log.save()
+
+        if event_type == "purchase_event":
+            recalculate_bought_together_db()
+
     else:
         return HttpResponse('Log only possible with a POST request!')
 

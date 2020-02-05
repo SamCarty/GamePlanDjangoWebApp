@@ -1,18 +1,3 @@
-function getTopChartRecommendations() {
-    url = '/recommender/top-charts';
-    $.ajax({
-        type: 'GET',
-        url: url,
-        success: function (result) {
-            if (result.data != null) {
-                Object.values(result.data).forEach(function (key) {
-
-                });
-            }
-        }
-    });
-}
-
 function getContentRecommendations(gameId, element) {
     url = '/recommender/content-based/' + gameId + '/' + 60;
     fetchRecommendations(url, element, gameId);
@@ -41,8 +26,8 @@ function fetchRecommendations(url, section) {
             if (result != null && result.data != null && Object.values(result.data).length > 0) {
                 section.style.display = 'block';
 
-                heading = section.getElementsByTagName('h2')[0];
-                slider = section.getElementsByTagName('div')[0];
+                let heading = section.getElementsByTagName('h2')[0];
+                let slider = section.getElementsByTagName('div')[0];
 
                 if (result.based_on_title != null) {
                     heading.innerHTML = "Because you viewed " + result.based_on_title

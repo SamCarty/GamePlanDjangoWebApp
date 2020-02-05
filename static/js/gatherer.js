@@ -34,6 +34,6 @@ function addEvent(content_id, event_type, csrf_token, session_id) {
         },
         fail: function () {
             console.log('Event failed to log: ' + event_type)
-        }
+        },
     });
 }
