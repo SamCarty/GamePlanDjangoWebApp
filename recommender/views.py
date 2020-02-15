@@ -1,14 +1,13 @@
-import operator
-import random
 import sys
 
-from django.db.models import Avg, Count
+from django.db.models import Avg
 from django.http import JsonResponse
 
 from gameplan.models import Game
 from gatherer.models import Log, UserRating
 from recommender.models import RecommendationPairing
 from recommender_libraries import title_similarity, title_popularity
+from model_builder.user_ratings_builder import calculate_ratings, get_rating_for_user
 
 
 def get_content_based_recommendations_json(request, game_id, n=10):
@@ -107,3 +106,16 @@ def get_similar_to_recent_recommendations(request, n=50):
         }
 
     return JsonResponse(games_return_data, safe=False)
+
+
+def get_recommender_categories(request):
+    cats = dict()
+    if request.user.is_authenticated:
+        # Content-based
+        game_ratings = get_rating_for_user(request.user)
+        content_recs = game_ratings.order_by('-user_rating').select_related().values('game_id', 'game__title')[:5]
+        print(content_recs, sys.stderr)
+        cats['content_based'] = content_recs
+
+
+    return cats

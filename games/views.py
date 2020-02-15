@@ -15,7 +15,6 @@ class GameDetails(TemplateView):
         context = dict()
         context['session_id'] = create_session(request)
         context['genres'] = get_all_genres()
-
         return render(request, self.template_name, context)
 
 

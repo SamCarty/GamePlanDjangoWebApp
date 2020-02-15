@@ -68,15 +68,30 @@
         </section>
 
         <section id="recommendations-section">
+            <!-- Based on what others have bought compared to you... -->
             <section id="section-users-like-you">
                 <h2 class="section-heading heading-underline">People like you enjoyed</h2>
                 <div class="slider"></div>
             </section>
 
+            <!-- Based on last viewed title... -->
             <section id="section-rec-content-based">
-                <h2 class="section-heading heading-underline">Based on your recently viewed titles</h2>
+                <h2 class="section-heading heading-underline">Because you viewed</h2>
                 <div class="slider"></div>
             </section>
+
+            <!-- Based on user most liked titles... -->
+            {% for cat in recommender_categories.content_based %}
+                <section id="section-rec-content-based-{{ cat.game_id }}">
+                    <h2 class="section-heading heading-underline">More like {{ cat.game__title }}</h2>
+                    <div class="slider"></div>
+                </section>
+                <script>
+                    $(document).ready(function () {
+                        getContentRecommendations({{ cat.game_id }}, document.getElementById('section-rec-content-based-{{ cat.game_id }}'));
+                    });
+                </script>
+            {% endfor %}
         </section>
 
     </section>

@@ -68,15 +68,23 @@ def save_ratings(user_ratings, user_id):
 
 
 def calculate_ratings():
+    UserRating.objects.all().delete()
     users = Log.objects.values('user_id').distinct()
     print(users, sys.stderr)
+    user_ratings = list()
     for user in users:
         print("New user " + str(user['user_id']), sys.stderr)
         if user['user_id'] is not None:
             id = user['user_id']
-            user_ratings = calculate_ratings_for_user(id)
+            current_user_rating = calculate_ratings_for_user(id)
+            user_ratings.append(current_user_rating)
+            save_ratings(current_user_rating, id)
 
-            save_ratings(user_ratings, id)
+    return user_ratings
+
+
+def get_rating_for_user(user_id):
+    return UserRating.objects.filter(user_id=user_id)
 
 
 if __name__ == '__main__':

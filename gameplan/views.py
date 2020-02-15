@@ -6,7 +6,7 @@ from django.views.generic import ListView
 from datetime import datetime
 from gameplan.filters import GameFilter
 
-from recommender.views import get_top_charts_recommendations
+from recommender.views import get_top_charts_recommendations, get_recommender_categories
 from gameplan.models import Game, Genre, Platform
 
 
@@ -18,6 +18,7 @@ class HomePageView(TemplateView):
         context['session_id'] = create_session(request)
         context['genres'] = get_all_genres()
         context['top_charts'] = get_top_charts_recommendations(request, 10)
+        context['recommender_categories'] = get_recommender_categories(request)
 
         return render(request, self.template_name, context)
 
