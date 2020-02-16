@@ -14,10 +14,6 @@ from gameplan.models import Game
 
 
 class Similarity(object):
-
-    def __init__(self):
-        self.rake = Rake()
-
     def generate_model(self):
         data_matrix = self.import_data()
         cosine_matrix = self.make_model(data_matrix)

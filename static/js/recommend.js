@@ -18,6 +18,11 @@ function getSimilarToRecentRecommendations(element) {
     fetchRecommendations(url, element)
 }
 
+function getTopGenreRecommendations(genre_id, element) {
+    url = '/recommender/top-genre/' + genre_id + '/' + 50;
+    fetchRecommendations(url, element)
+}
+
 function fetchRecommendations(url, section) {
     $.ajax({
         type: 'GET',

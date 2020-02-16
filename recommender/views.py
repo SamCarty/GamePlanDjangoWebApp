@@ -1,9 +1,10 @@
 import sys
+import random
 
 from django.db.models import Avg
 from django.http import JsonResponse
 
-from gameplan.models import Game
+from gameplan.models import Game, Genre
 from gatherer.models import Log, UserRating
 from recommender.models import RecommendationPairing
 from recommender_libraries import title_similarity, title_popularity
@@ -69,7 +70,7 @@ def get_users_like_you_recommendations(request, n=50):
         events = Log.objects.filter(user_id=uid).order_by('-created').values_list('content_id', flat=True).distinct()
         newest_events = list(events[:20])
 
-        pairings = RecommendationPairing.objects.filter(from_game_id__in=newest_events)\
+        pairings = RecommendationPairing.objects.filter(from_game_id__in=newest_events) \
             .annotate(avg_confidence=Avg('confidence')).order_by('-avg_confidence')
 
         game_data = list()
@@ -93,7 +94,8 @@ def get_similar_to_recent_recommendations(request, n=50):
     uid = request.user.id
     games_return_data = None
     if uid is not None:
-        events = Log.objects.filter(user_id=uid, event_type='detail_view_event').order_by('-created').values_list('content_id', flat=True).distinct()
+        events = Log.objects.filter(user_id=uid, event_type='detail_view_event').order_by('-created') \
+            .values_list('content_id', flat=True).distinct()
         newest_events = list(events[:1])
 
         games = get_content_based_recommendations(request, newest_events[0], n)
@@ -108,14 +110,74 @@ def get_similar_to_recent_recommendations(request, n=50):
     return JsonResponse(games_return_data, safe=False)
 
 
-def get_recommender_categories(request):
-    cats = dict()
-    if request.user.is_authenticated:
-        # Content-based
-        game_ratings = get_rating_for_user(request.user)
-        content_recs = game_ratings.order_by('-user_rating').select_related().values('game_id', 'game__title')[:5]
-        print(content_recs, sys.stderr)
-        cats['content_based'] = content_recs
+def get_top_genre_recommendations(request, genre_id, n=50):
+    uid = request.user.id
+    games_return_data = None
+    if uid is not None:
+        games = list(Game.objects.select_related().filter(genres__genre_id=genre_id).order_by('-popularity')[:n]
+                     .values())
+        games_return_data = {
+            'user_id': uid,
+            'data': games
+        }
 
+    return JsonResponse(games_return_data, safe=False)
+
+
+def get_recommender_categories(request):
+    cats = list()
+    if request.user.is_authenticated:
+        game_ratings = get_rating_for_user(request.user)
+
+        # Content-based
+        content_recs = game_ratings.order_by('-user_rating').select_related() \
+                           .values('game_id', 'game__title').distinct()[:5]
+        for game in content_recs:
+            if game not in cats:
+                dic = dict()
+                dic['content_based'] = game
+                cats.append(dic)
+
+        # Genres
+        content_recs = game_ratings.order_by('-user_rating').select_related() \
+                           .values('game__genres__genre_id', 'game__genres__name').distinct()[:5]
+        for genre in content_recs:
+            if genre not in cats:
+                dic = dict()
+                dic['genre_based'] = genre
+                cats.append(dic)
+
+        random.shuffle(cats)
 
     return cats
+
+
+"""
+    def get_recommender_categories(request):
+    cats = dict()
+    if request.user.is_authenticated:
+        game_ratings = get_rating_for_user(request.user)
+
+        # Content-based
+        content_recs = game_ratings.order_by('-user_rating').select_related() \
+            .values('game_id', 'game__title').distinct()[:5]
+        content_recs_list = list()
+        for game in content_recs:
+            if game not in content_recs_list:
+                content_recs_list.append(game)
+
+        print(content_recs_list, sys.stderr)
+        cats['content_based'] = content_recs_list
+
+        # Genres
+        content_recs = game_ratings.order_by('-user_rating').select_related() \
+                           .values('game__genres__genre_id', 'game__genres__name').distinct()[:5]
+        genres_list = list()
+        for genre in content_recs:
+            if genre not in genres_list:
+                genres_list.append(genre)
+
+        cats['genre_based'] = genres_list
+
+    return cats
+    """

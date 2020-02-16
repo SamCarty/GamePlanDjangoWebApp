@@ -80,20 +80,37 @@
                 <div class="slider"></div>
             </section>
 
-            <!-- Based on user most liked titles... -->
-            {% for cat in recommender_categories.content_based %}
-                <section id="section-rec-content-based-{{ cat.game_id }}">
-                    <h2 class="section-heading heading-underline">More like {{ cat.game__title }}</h2>
-                    <div class="slider"></div>
-                </section>
-                <script>
-                    $(document).ready(function () {
-                        getContentRecommendations({{ cat.game_id }}, document.getElementById('section-rec-content-based-{{ cat.game_id }}'));
-                    });
-                </script>
+            {% for cat in recommender_categories %}
+                {% for key, val in cat.items %}
+                    <!-- Based on user top genres... -->
+                    {% if key == 'genre_based' %}
+                        <section id="section-rec-top-genre-{{ val.game__genres__genre_id }}">
+                            <h2 class="section-heading heading-underline">Because you like {{ val.game__genres__name }}
+                                games</h2>
+                            <div class="slider"></div>
+                        </section>
+                        <script>
+                            $(document).ready(function () {
+                                getTopGenreRecommendations({{ val.game__genres__genre_id }}, document.getElementById('section-rec-top-genre-{{ val.game__genres__genre_id }}'));
+                            });
+                        </script>
+                    {% endif %}
+
+                    <!-- Based on user most liked titles... -->
+                    {% if key == 'content_based' %}
+                        <section id="section-rec-content-based-{{ val.game_id }}">
+                            <h2 class="section-heading heading-underline">More like {{ val.game__title }}</h2>
+                            <div class="slider"></div>
+                        </section>
+                        <script>
+                            $(document).ready(function () {
+                                getContentRecommendations({{ val.game_id }}, document.getElementById('section-rec-content-based-{{ val.game_id }}'));
+                            });
+                        </script>
+                    {% endif %}
+                {% endfor %}
             {% endfor %}
         </section>
-
     </section>
 
     <script>
