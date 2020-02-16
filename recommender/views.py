@@ -9,6 +9,7 @@ from gatherer.models import Log
 from recommender.models import RecommendationPairing
 from recommender_libraries import title_similarity, title_popularity
 from model_builder.user_ratings_builder import get_rating_for_user
+from accounts.views import check_attribute
 
 
 def get_content_based_recommendations_json(request, game_id, n=10):
@@ -30,7 +31,8 @@ def get_content_based_recommendations(request, game_id, n=10):
 
     game_data = list()
     for g_id in games:
-        game_data.append(list(Game.objects.filter(game_id=g_id).values())[0])
+        if not check_attribute(request, 'dislike', g_id):
+            game_data.append(list(Game.objects.filter(game_id=g_id).values())[0])
 
     return game_data
 
@@ -50,14 +52,14 @@ def get_bought_together_recommendations(request, game_id, n=10):
     game_data = list()
     for rec in recs:
         to_game = rec.to_game
-        game_data.append(list(Game.objects.filter(game_id=to_game.game_id).values())[0])
+        if not check_attribute(request, 'dislike', to_game.game_id):
+            game_data.append(list(Game.objects.filter(game_id=to_game.game_id).values())[0])
 
     games_return_data = {
         'original_game_id': game_id,
         'data': game_data
     }
 
-    print(games_return_data, sys.stderr)
     return JsonResponse(games_return_data, safe=False)
 
 
@@ -76,9 +78,10 @@ def get_users_like_you_recommendations(request, n=50):
         game_data = list()
         for rec in pairings:
             to_game = rec.to_game
-            game = list(Game.objects.filter(game_id=to_game.game_id).values())[0]
-            if game not in game_data:
-                game_data.append(game)
+            if not check_attribute(request, 'dislike', to_game.game_id):
+                game = list(Game.objects.filter(game_id=to_game.game_id).values())[0]
+                if game not in game_data:
+                    game_data.append(game)
 
         games_return_data = {
             'user_id': uid,
@@ -116,11 +119,18 @@ def get_top_genre_recommendations(request, genre_id, n=50):
     uid = request.user.id
     games_return_data = None
     if uid is not None:
-        games = list(Game.objects.select_related().filter(genres__genre_id=genre_id).order_by('-popularity')[:n]
-                     .values())
+        games = Game.objects.select_related().filter(genres__genre_id=genre_id).order_by('-popularity')[:n]
+
+        game_data = list()
+        for game in games:
+            print(game, sys.stderr)
+            g_id = game.game_id
+            if not check_attribute(request, 'dislike', g_id):
+                game_data.append(list(Game.objects.filter(game_id=g_id).values())[0])
+
         games_return_data = {
             'user_id': uid,
-            'data': games
+            'data': game_data
         }
 
     return JsonResponse(games_return_data, safe=False)
@@ -136,7 +146,6 @@ def get_recommender_categories(request):
         # 'Because you liked game x...'
         content_recs = game_ratings.order_by('-user_rating').select_related() \
                            .values('game_id', 'game__title')[:5]
-        print(content_recs, sys.stderr)
         for game in content_recs:
             dic = dict()
             dic['content_based'] = game
@@ -146,7 +155,6 @@ def get_recommender_categories(request):
         # 'Because you like genre x...'
         content_recs = game_ratings.order_by('-user_rating').select_related() \
                            .values('game__genres__genre_id', 'game__genres__name')[:5]
-        print(content_recs, sys.stderr)
         for genre in content_recs:
             dic = dict()
             dic['genre_based'] = genre
@@ -157,3 +165,4 @@ def get_recommender_categories(request):
         random.shuffle(cats)
 
     return cats
+
