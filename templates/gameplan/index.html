@@ -75,14 +75,13 @@
             </section>
 
             <!-- Based on last viewed title... -->
-            <section id="section-rec-content-based">
+            <section id="section-rec-last-viewed">
                 <h2 class="section-heading heading-underline">Because you viewed</h2>
                 <div class="slider"></div>
             </section>
 
             {% for cat in recommender_categories %}
                 {% for key, val in cat.items %}
-                    <!-- Based on user top genres... -->
                     {% if key == 'genre_based' %}
                         <section id="section-rec-top-genre-{{ val.game__genres__genre_id }}">
                             <h2 class="section-heading heading-underline">Because you like {{ val.game__genres__name }}
@@ -96,7 +95,6 @@
                         </script>
                     {% endif %}
 
-                    <!-- Based on user most liked titles... -->
                     {% if key == 'content_based' %}
                         <section id="section-rec-content-based-{{ val.game_id }}">
                             <h2 class="section-heading heading-underline">More like {{ val.game__title }}</h2>
@@ -118,7 +116,7 @@
             const likeYouElement = document.getElementById('section-users-like-you');
             getUsersLikeYouRecommendations(likeYouElement);
 
-            const contentBasedElement = document.getElementById('section-rec-content-based');
+            const contentBasedElement = document.getElementById('section-rec-last-viewed');
             getSimilarToRecentRecommendations(contentBasedElement);
         });
     </script>
