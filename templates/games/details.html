@@ -19,9 +19,8 @@
                         <div class="col" id="top-info-table-holder">
                             <div id="top-info-button-holder">
                                 <form class="top-info-form">
-                                    <button aria-haspopup="true" class="btn btn-outline-primary"
-                                            id="add-to-wishlist-button"
-                                            onclick="return addRemoveWishlist()" type="button">Add to wishlist
+                                    <button aria-haspopup="true" class="btn btn-outline-primary" id="wishlist-button"
+                                            onclick="return addRemoveAttribute('wishlist')" type="button">Add to wishlist
                                     </button>
                                 </form>
                                 <form class="top-info-form">
@@ -29,6 +28,11 @@
                                             id="buy-title-button"
                                             onclick="return buyTitle()" type="button">Buy now
                                         <i class="fas fa-shopping-bag" style="margin-left: 8px"></i>
+                                    </button>
+                                </form>
+                                <form class="top-info-form">
+                                    <button aria-haspopup="true" class="btn btn-outline-primary" id="dislike-button"
+                                            onclick="return addRemoveAttribute('dislike')" type="button">Dislike
                                     </button>
                                 </form>
                             </div>
@@ -132,19 +136,20 @@
             getContentRecommendations(gameId, contentElement);
         });
 
-        function addRemoveWishlist() {
+        function addRemoveAttribute(attribute) {
             gameId = {{ request.resolver_match.kwargs.game_id }}
                 $.ajax({
                         type: 'POST',
-                        url: '{% url 'add_remove_wishlist' %}',
+                        url: '{% url 'add_remove_attribute' %}',
                         data: {
                             'game_id': gameId,
+                            'attribute': attribute,
                             'csrfmiddlewaretoken': '{{ csrf_token }}',
                         },
                         success: function (result) {
                             if (result['auth']) {
-                                showHideWishlistIcon(result['on_wishlist']);
-                                if (result['on_wishlist']) logWishlistEvent(gameId, csrftoken, sessionid);
+                                showHideAttributeIcon(attribute, result['is_' + attribute]);
+                                if (attribute === 'wishlist' && result['is_' + attribute]) logWishlistEvent(gameId, csrftoken, sessionid);
                             } else {
                                 window.location.replace('{% url 'login' %}?next={{ request.path }}')
                             }
@@ -154,19 +159,33 @@
             return false;
         }
 
-        function showHideWishlistIcon(show) {
+        function showHideAttributeIcon(attribute, show) {
             icon = document.createElement('i');
             icon.setAttribute('style', 'margin-left: 8px');
-            button = document.getElementById('add-to-wishlist-button');
+            button = document.getElementById(attribute + '-button');
             if (show) {
-                icon.setAttribute('class', 'fas fa-heart');
-                button.setAttribute('title', 'Remove from wishlist');
-                button.innerHTML = "Remove from wishlist";
+                if (attribute === 'wishlist') {
+                    icon.setAttribute('class', 'fas fa-heart');
+                    button.setAttribute('title', 'Remove from wishlist');
+                    button.innerHTML = "Remove from wishlist";
+                }
+                else if (attribute === 'dislike') {
+                    icon.setAttribute('class', 'fas fa-thumbs-down');
+                    button.setAttribute('title', 'Undislike');
+                    button.innerHTML = "Undislike";
+                }
                 button.appendChild(icon);
             } else {
-                icon.setAttribute('class', 'far fa-heart');
-                button.setAttribute('title', 'Add to wishlist');
-                button.innerHTML = "Add to wishlist";
+                if (attribute === 'wishlist') {
+                    icon.setAttribute('class', 'far fa-heart');
+                    button.setAttribute('title', 'Add to wishlist');
+                    button.innerHTML = "Add to wishlist";
+                }
+                else if (attribute === 'dislike') {
+                    icon.setAttribute('class', 'far fa-thumbs-down');
+                    button.setAttribute('title', 'Dislike');
+                    button.innerHTML = "Dislike";
+                }
                 button.appendChild(icon);
             }
         }
@@ -179,7 +198,6 @@
         // DETAILS
         function getGameDetails(gameId) {
             url = '/games/details/' + gameId;
-
             $.getJSON(url, function (game) {
                 if (game != null) {
                     currentTitle = game;
@@ -253,7 +271,6 @@
                             //developerLink.setAttribute('href', '/company/' + game[0]['involved_companies'][i]['company_id']);
                             developerLink.innerHTML = game[0]['involved_companies'][i]['name'];
                             developerTopInfo.appendChild(developerLink);
-
                         }
                         if (game[0]['involved_companies'][i]['is_pub'] === true) {
                             if (publisherTopInfo.innerHTML !== '') publisherTopInfo.innerHTML = publisherTopInfo.innerHTML + ", ";
@@ -323,7 +340,8 @@
                         screenshotsSection.appendChild(carouselItemDiv);
                     }
 
-                    showHideWishlistIcon(game[0]['on_wishlist'])
+                    showHideAttributeIcon('wishlist', game[0]['on_wishlist']);
+                    showHideAttributeIcon('dislike', game[0]['is_disliked']);
                 }
             });
         }

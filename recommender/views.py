@@ -157,29 +157,3 @@ def get_recommender_categories(request):
         random.shuffle(cats)
 
     return cats
-
-
-"""
-    def get_recommender_categories(request):
-    cats = dict()
-    if request.user.is_authenticated:
-        game_ratings = get_rating_for_user(request.user)
-        # Content-based
-        content_recs = game_ratings.order_by('-user_rating').select_related() \
-            .values('game_id', 'game__title').distinct()[:5]
-        content_recs_list = list()
-        for game in content_recs:
-            if game not in content_recs_list:
-                content_recs_list.append(game)
-        print(content_recs_list, sys.stderr)
-        cats['content_based'] = content_recs_list
-        # Genres
-        content_recs = game_ratings.order_by('-user_rating').select_related() \
-                           .values('game__genres__genre_id', 'game__genres__name').distinct()[:5]
-        genres_list = list()
-        for genre in content_recs:
-            if genre not in genres_list:
-                genres_list.append(genre)
-        cats['genre_based'] = genres_list
-    return cats
-    """

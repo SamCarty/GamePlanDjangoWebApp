@@ -9,7 +9,7 @@ from django.utils.decorators import method_decorator
 from django.views import generic
 
 from gameplan.models import Game, Platform
-from accounts.models import Wishlist as WishlistModel
+from accounts.models import Wishlist as WishlistModel, Dislike as DislikeModel
 
 
 class SignUp(generic.CreateView):
@@ -41,37 +41,51 @@ class Wishlist(generic.ListView):
         return games
 
 
+def find_model(attribute):
+    switch = {
+        'wishlist': WishlistModel,
+        'dislike': DislikeModel
+    }
+
+    return switch.get(attribute)
+
 
 @login_required
-def on_wishlist(request, game_id):
+def check_attribute(request, attribute, game_id):
     user = request.user
     user_id = user.id
-    if WishlistModel.objects.filter(user_id=user_id, game_id=game_id).values('game_id').exists():
+
+    model = find_model(attribute)
+
+    if model.objects.filter(user_id=user_id, game_id=game_id).values('game_id').exists():
         return True
     else:
         return False
 
 
-def add_remove_wishlist(request):
+def add_remove_attribute(request):
     if request.user.is_authenticated:
         response_data = {'auth': True}
 
-        game_id = request.POST.get('game_id')
-        user = request.user
-        user_id = user.id
-        game_ids = list(WishlistModel.objects.filter(user_id=user_id, game_id=game_id).values('game_id'))
+        attribute = request.POST.get('attribute')
+        model = find_model(attribute)
 
-        if game_ids:
-            # remove it
-            WishlistModel.objects.filter(user_id=request.user.id, game_id=game_id).delete()
-            response_data['on_wishlist'] = False
-        else:
-            # add it
-            WishlistModel.objects.create(user_id=request.user.id, game_id=game_id)
-            response_data['on_wishlist'] = True
+        if model is not None:
+            game_id = request.POST.get('game_id')
+            user = request.user
+            user_id = user.id
+            game_ids = list(model.objects.filter(user_id=user_id, game_id=game_id).values('game_id'))
+
+            if game_ids:
+                # remove it
+                model.objects.filter(user_id=request.user.id, game_id=game_id).delete()
+                response_data['is_' + attribute] = False
+            else:
+                # add it
+                model.objects.create(user_id=request.user.id, game_id=game_id)
+                response_data['is_' + attribute] = True
 
         return JsonResponse(response_data, safe=False)
     else:
         json.dumps({'auth': False})
         return JsonResponse(json.dumps({'auth': False}), safe=False)
-

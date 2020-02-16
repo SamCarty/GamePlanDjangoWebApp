@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 
 from gameplan.views import get_all_genres
-from accounts.views import on_wishlist
+from accounts.views import check_attribute
 from gameplan.models import Game, Screenshot, InvolvedCompany, Company, Genre, Platform
 from gameplan.views import create_session
 
@@ -26,7 +26,8 @@ def get_game_details(request, game_id):
     details[0]['platform'] = get_platforms_by_game_id(request, game_id)
 
     if request.user.is_authenticated:
-        details[0]['on_wishlist'] = on_wishlist(request, game_id)
+        details[0]['on_wishlist'] = check_attribute(request, 'wishlist', game_id)
+        details[0]['is_disliked'] = check_attribute(request, 'dislike', game_id)
 
     return JsonResponse(details, safe=False)
 
