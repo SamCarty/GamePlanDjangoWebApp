@@ -59,7 +59,6 @@ def calculate_ratings_for_user(user_id):
 
 
 def save_ratings(user_ratings, user_id):
-    print(user_ratings, sys.stderr)
     for game_id, user_rating in user_ratings.items():
         if user_rating > 0:
             user = User.objects.get(id=user_id)
@@ -70,10 +69,8 @@ def save_ratings(user_ratings, user_id):
 def calculate_ratings():
     UserRating.objects.all().delete()
     users = Log.objects.values('user_id').distinct()
-    print(users, sys.stderr)
     user_ratings = list()
     for user in users:
-        print("New user " + str(user['user_id']), sys.stderr)
         if user['user_id'] is not None:
             id = user['user_id']
             current_user_rating = calculate_ratings_for_user(id)
@@ -81,6 +78,14 @@ def calculate_ratings():
             save_ratings(current_user_rating, id)
 
     return user_ratings
+
+
+def update_ratings_for_user(user_id):
+    print('[UR] Updating ratings for user ' + str(user_id), sys.stderr)
+    UserRating.objects.filter(user_id=user_id)
+    current_user_ratings = calculate_ratings_for_user(user_id)
+    save_ratings(current_user_ratings, user_id)
+    print('[UR] Done!')
 
 
 def get_rating_for_user(user_id):

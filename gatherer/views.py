@@ -4,6 +4,7 @@ from django.utils.datetime_safe import datetime
 from django.views.decorators.csrf import ensure_csrf_cookie
 from gatherer.models import Log
 from model_builder.bought_together_builder import recalculate_bought_together_db
+from model_builder.user_ratings_builder import update_ratings_for_user
 
 
 @ensure_csrf_cookie
@@ -23,6 +24,7 @@ def log_event(request):
         if request.user.id is not None:
             user_id = request.user.id
             log.user_id = user_id
+            update_ratings_for_user(user_id)
 
         log.save()
 

@@ -46,9 +46,7 @@ def bought_together(session_trans, min=0.01):
     :returns a sorted list of bought together rules. """
     n = len(session_trans)
     one_sets = get_cumulative_items(session_trans, min)
-    print(one_sets)
     two_sets = get_item_pairings(session_trans, one_sets)
-    print(two_sets)
 
     rules = get_bought_together_rules(one_sets, two_sets, n)
     return sorted(rules)
@@ -135,11 +133,13 @@ def save_results(results):
 
 
 def recalculate_bought_together_db():
+    print('[BT] Rebuilding bought together db...', sys.stderr)
     clear_db()
     e = get_buy_events()
     t = collate_transactions(e)
     b_t = bought_together(t)
     save_results(b_t)
+    print('[BT] Done!', sys.stderr)
 
 
 if __name__ == '__main__':

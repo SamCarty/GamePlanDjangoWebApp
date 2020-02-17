@@ -124,7 +124,6 @@ def get_top_genre_recommendations(request, genre_id, n=50):
 
         game_data = list()
         for game in games:
-            print(game, sys.stderr)
             g_id = game.game_id
             if not check_attribute(request, 'dislike', g_id):
                 game_data.append(list(Game.objects.filter(game_id=g_id).values())[0])
