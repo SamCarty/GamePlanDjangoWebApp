@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e38eafcc-dce6-4a11-98a7-3ff01e46304d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/model_builder/user_profile_builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/import_games.py" beforeDir="false" afterPath="$PROJECT_DIR$/import_games.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -76,7 +79,7 @@
       <recent name="S:\Repos\Games Recommender Files\gameplan\static" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.import_games">
+  <component name="RunManager" selected="Python.user_profile_builder">
     <configuration name="bought_together_builder" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="GR_App" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -143,7 +146,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="title_similarity" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="user_profile_builder" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="GR_App" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -151,12 +154,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/model_builder" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="S:\Repos\Games Recommender Files\gameplan\recommender_libraries\title_similarity.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/model_builder/user_profile_builder.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -187,35 +190,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="views" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="GR_App" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/recommender" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/recommender/views.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.user_profile_builder" />
         <item itemvalue="Python.import_games" />
         <item itemvalue="Python.user_ratings_builder" />
         <item itemvalue="Python.bought_together_builder" />
         <item itemvalue="Python.title_popularity" />
-        <item itemvalue="Python.views" />
       </list>
     </recent_temporary>
   </component>
@@ -283,7 +264,7 @@
       <workItem from="1581338220494" duration="2832000" />
       <workItem from="1581775853066" duration="8654000" />
       <workItem from="1581858366019" duration="19791000" />
-      <workItem from="1581943079506" duration="3890000" />
+      <workItem from="1581943079506" duration="15236000" />
     </task>
     <servers />
   </component>
@@ -303,30 +284,30 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1059" y="455" key="FileChooserDialogImpl/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1581947446258" />
-    <state width="2517" height="467" key="GridCell.Tab.0.bottom" timestamp="1581949699034">
+    <state width="2517" height="321" key="GridCell.Tab.0.bottom" timestamp="1581974783509">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="2517" height="342" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.0.1920.1040/2560.0.3840.2120@0.0.2560.1400" timestamp="1579800737614" />
     <state width="1877" height="68" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1578610701472" />
-    <state width="2517" height="467" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1581949699034" />
-    <state width="2517" height="467" key="GridCell.Tab.0.center" timestamp="1581949699034">
+    <state width="2517" height="321" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1581974783509" />
+    <state width="2517" height="321" key="GridCell.Tab.0.center" timestamp="1581974783509">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="2517" height="342" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.0.1920.1040/2560.0.3840.2120@0.0.2560.1400" timestamp="1579800737614" />
     <state width="1877" height="68" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1578610701472" />
-    <state width="2517" height="467" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1581949699034" />
-    <state width="2517" height="467" key="GridCell.Tab.0.left" timestamp="1581949699034">
+    <state width="2517" height="321" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1581974783509" />
+    <state width="2517" height="321" key="GridCell.Tab.0.left" timestamp="1581974783509">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="2517" height="342" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.0.1920.1040/2560.0.3840.2120@0.0.2560.1400" timestamp="1579800737614" />
     <state width="1877" height="68" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1578610701472" />
-    <state width="2517" height="467" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1581949699034" />
-    <state width="2517" height="467" key="GridCell.Tab.0.right" timestamp="1581949699034">
+    <state width="2517" height="321" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1581974783509" />
+    <state width="2517" height="321" key="GridCell.Tab.0.right" timestamp="1581974783509">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="2517" height="342" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.0.1920.1040/2560.0.3840.2120@0.0.2560.1400" timestamp="1579800737614" />
     <state width="1877" height="68" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1578610701472" />
-    <state width="2517" height="467" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1581949699034" />
+    <state width="2517" height="321" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1581974783509" />
     <state width="1258" height="492" key="GridCell.Tab.1.bottom" timestamp="1579569445833">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -390,10 +371,11 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/gameplan$recommend__1_.coverage" NAME="recommend (1) Coverage Results" MODIFIED="1578613358272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/recommender_libraries" />
     <SUITE FILE_PATH="coverage/gameplan$recommend.coverage" NAME="recommend Coverage Results" MODIFIED="1578341437050" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/gameplan$user_profile_builder.coverage" NAME="user_profile_builder Coverage Results" MODIFIED="1581974783504" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model_builder" />
     <SUITE FILE_PATH="coverage/gameplan$title_popularity.coverage" NAME="title_popularity Coverage Results" MODIFIED="1579437933723" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/recommender_libraries" />
     <SUITE FILE_PATH="coverage/gameplan$user_ratings_builder.coverage" NAME="user_ratings_builder Coverage Results" MODIFIED="1581805600787" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model_builder" />
     <SUITE FILE_PATH="coverage/gameplan$views.coverage" NAME="views Coverage Results" MODIFIED="1579044619776" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/recommender" />
     <SUITE FILE_PATH="coverage/gameplan$bought_together_builder.coverage" NAME="bought_together_builder Coverage Results" MODIFIED="1580826277996" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model_builder" />
-    <SUITE FILE_PATH="coverage/gameplan$import_games.coverage" NAME="import_games Coverage Results" MODIFIED="1581949603489" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/gameplan$import_games.coverage" NAME="import_games Coverage Results" MODIFIED="1581959963138" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

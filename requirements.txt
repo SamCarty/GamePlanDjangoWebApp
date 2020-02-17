@@ -5,3 +5,4 @@ pandas
 scikit-learn
 google-cloud-storage
 django-filter
+nltk
