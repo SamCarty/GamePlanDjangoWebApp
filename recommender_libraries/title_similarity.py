@@ -6,7 +6,6 @@ import numpy
 import pandas
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-from recommender_libraries.lib.rake import Rake
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'gameplan_project.settings')
 django.setup()

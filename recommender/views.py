@@ -28,10 +28,10 @@ def get_content_based_recommendations(request, game_id, n=10):
     """ Gets the n most similar titles to the given game_id
      @:returns a list containing information about each similar game."""
     games = title_similarity.generate_recommendations(game_id, n)
-
+    uid = request.user.id
     game_data = list()
     for g_id in games:
-        if not check_attribute(request, 'dislike', g_id):
+        if uid is None or not check_attribute(request, 'dislike', g_id):
             game_data.append(list(Game.objects.filter(game_id=g_id).values())[0])
 
     return game_data
@@ -49,10 +49,11 @@ def get_bought_together_recommendations(request, game_id, n=10):
     from_game = Game.objects.get(game_id=game_id)
     recs = RecommendationPairing.objects.filter(from_game=from_game).order_by('-confidence')[:n]
 
+    uid = request.user.id
     game_data = list()
     for rec in recs:
         to_game = rec.to_game
-        if not check_attribute(request, 'dislike', to_game.game_id):
+        if uid is None or not check_attribute(request, 'dislike', to_game.game_id):
             game_data.append(list(Game.objects.filter(game_id=to_game.game_id).values())[0])
 
     games_return_data = {

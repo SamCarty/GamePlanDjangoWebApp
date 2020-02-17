@@ -1,12 +1,11 @@
 import json
 import os
+import string
 from functools import reduce
 
 import django
 import pandas
 from django.db import connection
-
-from recommender_libraries.lib.rake import Rake
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'gameplan_project.settings')
 django.setup()
@@ -206,8 +205,31 @@ def combine_dbs():
 def pre_process_games(games):
     """ Cleans data and creates a bag-of-words model of the dataset.
             :return A DataFrame matrix with the ordered keywords added. """
+
+    stopwords = ['a', 'about', 'above', 'after', 'again', 'against', 'all', 'am', 'an',
+     'and', 'any', 'are', "aren't", 'as', 'at', 'be', 'because', 'been',
+     'before', 'being', 'below', 'between', 'both', 'but', 'by', "can't",
+     'cannot', 'could', "couldn't", 'did', "didn't", 'do', 'does', "doesn't",
+     'doing', "don't", 'down', 'during', 'each', 'few', 'for', 'from',
+     'further', 'had', "hadn't", 'has', "hasn't", 'have', "haven't",
+     'having', 'he', "he'd", "he'll", "he's", 'her', 'here', "here's",
+     'hers', 'herself', 'him', 'himself', 'his', 'how', "how's", 'i', "i'd",
+     "i'll", "i'm", "i've", 'if', 'in', 'into', 'is', "isn't", 'it', "it's",
+     'its', 'itself', "let's", 'me', 'more', 'most', "mustn't", 'my',
+     'myself', 'no', 'nor', 'not', 'of', 'off', 'on', 'once', 'only', 'or',
+     'other', 'ought', 'our', 'ours', 'ourselves', 'out', 'over', 'own',
+     'same', "shan't", 'she', "she'd", "she'll", "she's", 'should',
+     "shouldn't", 'so', 'some', 'such', 'than', 'that', "that's", 'the',
+     'their', 'theirs', 'them', 'themselves', 'then', 'there', "there's",
+     'these', 'they', "they'd", "they'll", "they're", "they've", 'this',
+     'those', 'through', 'to', 'too', 'under', 'until', 'up', 'very', 'was',
+     "wasn't", 'we', "we'd", "we'll", "we're", "we've", 'were', "weren't",
+     'what', "what's", 'when', "when's", 'where', "where's", 'which',
+     'while', 'who', "who's", 'whom', 'why', "why's", 'with', "won't",
+     'would', "wouldn't", 'you', "you'd", "you'll", "you're", "you've",
+     'your', 'yours', 'yourself', 'yourselves']
+
     print("Pre-processing data...")
-    rake = Rake()
     games['ordered_keywords'] = ""
     columns = games.columns
     for i, row in games.iterrows():
@@ -215,23 +237,20 @@ def pre_process_games(games):
         for column in columns:
             if column != 'game_id':  # exclude redundant learning points
                 entry = row[column]
-                rake.extract_keywords_from_text(entry)
-                for word in rake.get_word_degrees().keys():
-                    keywords += word + " "
+                entry = entry.translate(str.maketrans('', '', string.punctuation))
+                words = entry.split()
+                for word in words:
+                    word = word.lower()
+                    if word not in stopwords:
+                        keywords += word + ' '
 
-        rake.extract_keywords_from_text(keywords)
-        key_words_dict_scores = rake.get_word_degrees()
-        ordered_keywords = ""
-        for word in key_words_dict_scores.keys():
-            ordered_keywords += word + " "
-
-        Game.objects.filter(game_id=row['game_id']).update(ordered_keywords=ordered_keywords)
+        Game.objects.filter(game_id=row['game_id']).update(ordered_keywords=keywords)
 
 
 if __name__ == '__main__':
     print("Starting game data import...")
-    clear_database()
-    import_file('games_v5.json')
+    #clear_database()
+    #import_file('games_v5.json')
     games = combine_dbs()
     pre_process_games(games)
     print("Import complete!")
