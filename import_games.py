@@ -16,7 +16,7 @@ from gameplan.models import Game, Genre, GameMode, Franchise, GameEngine, Involv
 
 
 def clear_database():
-    print("Purging all entries in database.")
+    print("[IMPORT] Purging all entries in database.")
     Game.objects.all().delete()
     Genre.objects.all().delete()
     GameMode.objects.all().delete()
@@ -33,7 +33,7 @@ def clear_database():
     Website.objects.all().delete()
     PlayerPerspective.objects.all().delete()
 
-    print("Purge complete.")
+    print("[IMPORT] Purge complete.")
 
 
 def import_file(filename):
@@ -45,7 +45,7 @@ def import_file(filename):
         for i in range(0, len(game_data) - 1):
             if len(Game.objects.filter(game_id=game_data[i]['id'])) == 0:
                 game = game_data[i]
-                print("Adding game: " + game['name'])
+                print("[IMPORT] Adding game: " + game['name'])
 
                 game_object = Game.objects.create(game_id=game['id'], title=game['name'])
 
@@ -177,13 +177,13 @@ def import_file(filename):
                 game_object.save()
                 games.append(game_object)
 
-        print(str(len(games)) + " items added to database.")
+        print("[IMPORT] " +  str(len(games)) + " items added to database.")
         return games
 
 
 def combine_dbs():
     """ Imports the dataset and returns the resulting DataFrame matrix. """
-    print("Combining databases...")
+    print("[IMPORT] Combining databases...")
     query = str(Game.objects.all().query)
     games = pandas.read_sql_query(query, connection)
 
@@ -230,7 +230,7 @@ def pre_process_games(games):
      'would', "wouldn't", 'you', "you'd", "you'll", "you're", "you've",
      'your', 'yours', 'yourself', 'yourselves']
 
-    print("Pre-processing data...")
+    print("[IMPORT] Pre-processing data...")
     games['ordered_keywords'] = ""
     columns = games.columns
     for i, row in games.iterrows():
@@ -251,11 +251,11 @@ def pre_process_games(games):
 
 
 if __name__ == '__main__':
-    print("Starting game data import...")
+    print("[IMPORT] Starting game data import...")
     i = input("Press [1] to reimport the entire database (purge). \nPress [2] to just remake the ordered keywords.")
     if i == '1':
         clear_database()
         import_file('games_v5.json')
     games = combine_dbs()
     pre_process_games(games)
-    print("Import complete!")
+    print("[IMPORT] Import complete!")
