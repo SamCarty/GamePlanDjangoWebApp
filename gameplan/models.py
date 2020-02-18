@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import F
 
 
 class Genre(models.Model):
@@ -136,6 +137,9 @@ class Game(models.Model):
     url = models.URLField(max_length=200, null=True)
     videos = models.ManyToManyField(Video, db_table='game_video')
     websites = models.ManyToManyField(Website, db_table='game_website')
+
+    class Meta:
+        ordering = [F('title').asc(nulls_last=True)]
 
     def __str__(self):
         return str(self.title)

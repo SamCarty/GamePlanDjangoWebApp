@@ -77,13 +77,19 @@
 
                 <!-- Based on last viewed title... -->
                 <section id="section-rec-last-viewed">
-                    <h2 class="section-heading heading-underline">Because you viewed</h2>
+                    <h2 class="section-heading heading-underline">Because you recently viewed</h2>
                     <div class="slider"></div>
                 </section>
 
                 <!-- Releasing soon -->
                 <section id="section-rec-releasing-soon">
                     <h2 class="section-heading heading-underline">Releasing soon</h2>
+                    <div class="slider"></div>
+                </section>
+
+                <!-- Top rated ... -->
+                <section id="section-rec-top-rated">
+                    <h2 class="section-heading heading-underline">Best reviewed</h2>
                     <div class="slider"></div>
                 </section>
 
@@ -159,6 +165,9 @@
 
             const comingSoonRecElement = document.getElementById('section-rec-releasing-soon');
             getComingSoonRecommendations(comingSoonRecElement);
+
+            const topRatedRecElement = document.getElementById('section-rec-top-rated');
+            getTopRatedRecommendations(topRatedRecElement);
         });
     </script>
 

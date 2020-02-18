@@ -172,6 +172,22 @@ def get_coming_soon_recommendations(request, n=50):
     return JsonResponse(games_return_data, safe=False)
 
 
+def get_top_rated_recommendations(request, n=50):
+    """ Gets the next releases ordered by released date from today's date.
+         @:returns a JSON response containing information about the upcoming games. """
+    games_qs = Game.objects.order_by('-total_rating').values()[:n]
+
+    game_data = list()
+    for game in games_qs:
+        game_data.append(game)
+
+    games_return_data = {
+        'data': game_data
+    }
+
+    return JsonResponse(games_return_data, safe=False)
+
+
 NUM_LIKED = 5  # 'Because you liked game x...'
 NUM_GENRES = 5  # 'Because you like genre x...'
 NUM_GENRES_GENERIC = 5  # 'Popular genre x games...'

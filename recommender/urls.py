@@ -10,5 +10,6 @@ urlpatterns = [
     path('top-charts', views.get_top_charts_recommendations, name='top_charts'),
     path('top-genre/<str:genre_id>/<int:n>', views.get_top_genre_recommendations, name='top_genre'),
     path('random/<int:n>', views.get_random_recommendations, name='random'),
-    path('coming-soon/<int:n>', views.get_coming_soon_recommendations, name='coming_soon')
+    path('coming-soon/<int:n>', views.get_coming_soon_recommendations, name='coming_soon'),
+    path('top-rated/<int:n>', views.get_top_rated_recommendations, name='top_rated')
 ]

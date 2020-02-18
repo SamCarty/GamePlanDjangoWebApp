@@ -33,6 +33,11 @@ function getComingSoonRecommendations(element) {
     fetchRecommendations(url, element)
 }
 
+function getTopRatedRecommendations(element) {
+    url = '/recommender/top-rated/' + 50;
+    fetchRecommendations(url, element)
+}
+
 function fetchRecommendations(url, section) {
     $.ajax({
         type: 'GET',
