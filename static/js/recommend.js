@@ -23,6 +23,16 @@ function getTopGenreRecommendations(genre_id, element) {
     fetchRecommendations(url, element)
 }
 
+function getRandomRecommendations(element) {
+    url = '/recommender/random/' + 50;
+    fetchRecommendations(url, element)
+}
+
+function getComingSoonRecommendations(element) {
+    url = '/recommender/coming-soon/' + 50;
+    fetchRecommendations(url, element)
+}
+
 function fetchRecommendations(url, section) {
     $.ajax({
         type: 'GET',

@@ -80,6 +80,18 @@
                     <h2 class="section-heading heading-underline">Because you viewed</h2>
                     <div class="slider"></div>
                 </section>
+
+                <!-- Releasing soon -->
+                <section id="section-rec-releasing-soon">
+                    <h2 class="section-heading heading-underline">Releasing soon</h2>
+                    <div class="slider"></div>
+                </section>
+
+                <!-- Random titles... -->
+                <section id="section-rec-random">
+                    <h2 class="section-heading heading-underline">Why not try one of these?</h2>
+                    <div class="slider"></div>
+                </section>
             {% else %}
                 <div class="alert alert-primary my-4">
                     <h2>Login for better recommendations!</h2>
@@ -141,6 +153,12 @@
 
             const contentBasedElement = document.getElementById('section-rec-last-viewed');
             getSimilarToRecentRecommendations(contentBasedElement);
+
+            const randomRecElement = document.getElementById('section-rec-random');
+            getRandomRecommendations(randomRecElement);
+
+            const comingSoonRecElement = document.getElementById('section-rec-releasing-soon');
+            getComingSoonRecommendations(comingSoonRecElement);
         });
     </script>
 

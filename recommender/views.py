@@ -1,6 +1,8 @@
 import sys
 import random
+from datetime import datetime
 
+import pytz
 from django.db.models import Avg, F
 from django.http import JsonResponse
 
@@ -127,6 +129,38 @@ def get_top_genre_recommendations(request, genre_id, n=50):
         g_id = game.game_id
         if (uid is not None and not check_attribute(request, 'dislike', g_id)) or uid is None:
             game_data.append(list(Game.objects.filter(game_id=g_id).values())[0])
+
+    games_return_data = {
+        'data': game_data
+    }
+
+    return JsonResponse(games_return_data, safe=False)
+
+
+def get_random_recommendations(request, n=50):
+    games_qs = Game.objects.order_by('?').values()[:n]
+
+    game_data = list()
+    for game in games_qs:
+        game_data.append(game)
+
+    games_return_data = {
+        'data': game_data
+    }
+
+    return JsonResponse(games_return_data, safe=False)
+
+
+def get_coming_soon_recommendations(request, n=50):
+    date = datetime.now(pytz.utc)
+    unix_time = date.timestamp()
+    print(unix_time, sys.stderr)
+
+    games_qs = Game.objects.filter(first_release_date__gt=unix_time).order_by('first_release_date').values()[:n]
+
+    game_data = list()
+    for game in games_qs:
+        game_data.append(game)
 
     games_return_data = {
         'data': game_data
