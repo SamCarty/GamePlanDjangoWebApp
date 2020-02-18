@@ -154,7 +154,6 @@ def get_random_recommendations(request, n=50):
 def get_coming_soon_recommendations(request, n=50):
     date = datetime.now(pytz.utc)
     unix_time = date.timestamp()
-    print(unix_time, sys.stderr)
 
     games_qs = Game.objects.filter(first_release_date__gt=unix_time).order_by('first_release_date').values()[:n]
 
@@ -193,7 +192,6 @@ def get_recommender_categories(request):
         # 'Because you like genre x...'
         genres_qs = game_ratings.order_by('-user_rating').select_related() \
                         .values(genre_id=F('game__genres__genre_id'), name=F('game__genres__name'))[:NUM_GENRES]
-        print(genres_qs, sys.stderr)
         for genre in genres_qs:
             genre['name'] = genre['name'].lower()
             dic = dict()
