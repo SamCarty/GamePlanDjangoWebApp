@@ -6,7 +6,7 @@ class Genre(models.Model):
     name = models.CharField(max_length=64)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 
 class Cover(models.Model):
@@ -18,20 +18,32 @@ class Franchise(models.Model):
     franchise_id = models.CharField(max_length=16, unique=True, primary_key=True)
     name = models.CharField(max_length=128)
 
+    def __str__(self):
+        return str(self.name)
+
 
 class GameEngine(models.Model):
     game_engine_id = models.CharField(max_length=16, unique=True, primary_key=True)
     name = models.CharField(max_length=128)
+
+    def __str__(self):
+        return str(self.name)
 
 
 class GameMode(models.Model):
     game_mode_id = models.CharField(max_length=16, unique=True, primary_key=True)
     name = models.CharField(max_length=128)
 
+    def __str__(self):
+        return str(self.name)
+
 
 class Company(models.Model):
     company_id = models.CharField(max_length=16, unique=True, primary_key=True)
     name = models.CharField(max_length=128)
+
+    def __str__(self):
+        return str(self.name)
 
 
 class InvolvedCompany(models.Model):
@@ -40,18 +52,24 @@ class InvolvedCompany(models.Model):
     developer = models.BooleanField()
     publisher = models.BooleanField()
 
+    def __str__(self):
+        return str(self.company.name)
+
 
 class Platform(models.Model):
     platform_id = models.CharField(max_length=16, unique=True, primary_key=True)
     name = models.CharField(max_length=128)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 
 class PlayerPerspective(models.Model):
     player_perspective_id = models.CharField(max_length=16, unique=True, primary_key=True)
     name = models.CharField(max_length=128)
+
+    def __str__(self):
+        return str(self.name)
 
 
 class ReleaseDate(models.Model):
@@ -61,18 +79,24 @@ class ReleaseDate(models.Model):
     platform = models.ForeignKey(Platform, on_delete=models.CASCADE)
     region = models.IntegerField(null=True)
 
+    def __str__(self):
+        return str(self.human)
+
 
 class Screenshot(models.Model):
     screenshot_id = models.CharField(max_length=16, unique=True, primary_key=True)
     url = models.URLField(max_length=200)
 
     def __str__(self):
-        return self.url
+        return str(self.url)
 
 
 class Theme(models.Model):
     theme_id = models.CharField(max_length=16, unique=True, primary_key=True)
     name = models.CharField(max_length=128)
+
+    def __str__(self):
+        return str(self.name)
 
 
 class Video(models.Model):
@@ -114,4 +138,4 @@ class Game(models.Model):
     websites = models.ManyToManyField(Website, db_table='game_website')
 
     def __str__(self):
-        return self.title
+        return str(self.title)

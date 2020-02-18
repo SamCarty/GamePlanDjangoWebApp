@@ -138,6 +138,8 @@ def get_top_genre_recommendations(request, genre_id, n=50):
 
 
 def get_random_recommendations(request, n=50):
+    """ Gets n random titles.
+         @:returns a JSON response containing information about the randomly selected games. """
     games_qs = Game.objects.order_by('?').values()[:n]
 
     game_data = list()
@@ -152,6 +154,8 @@ def get_random_recommendations(request, n=50):
 
 
 def get_coming_soon_recommendations(request, n=50):
+    """ Gets the next releases ordered by released date from today's date.
+         @:returns a JSON response containing information about the upcoming games. """
     date = datetime.now(pytz.utc)
     unix_time = date.timestamp()
 
