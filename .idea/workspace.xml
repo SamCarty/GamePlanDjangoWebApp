@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e38eafcc-dce6-4a11-98a7-3ff01e46304d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/import_games.py" beforeDir="false" afterPath="$PROJECT_DIR$/import_games.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recommender_libraries/title_similarity.py" beforeDir="false" afterPath="$PROJECT_DIR$/recommender_libraries/title_similarity.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recommender/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/gameplan/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gameplan/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -264,7 +264,8 @@
       <workItem from="1581775853066" duration="8654000" />
       <workItem from="1581858366019" duration="19791000" />
       <workItem from="1581943079506" duration="16963000" />
-      <workItem from="1581977799848" duration="914000" />
+      <workItem from="1581977799848" duration="1505000" />
+      <workItem from="1582026888496" duration="5026000" />
     </task>
     <servers />
   </component>
@@ -332,10 +333,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="781" y="343" key="SettingsEditor/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578309127154" />
-    <state x="561" y="514" key="com.intellij.ide.util.TipDialog" timestamp="1581943183247">
+    <state x="561" y="514" key="com.intellij.ide.util.TipDialog" timestamp="1582026888791">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="561" y="514" key="com.intellij.ide.util.TipDialog/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1581943183247" />
+    <state x="561" y="514" key="com.intellij.ide.util.TipDialog/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1582026888791" />
     <state x="-1920" y="0" width="1936" height="1019" key="dock-window-1" timestamp="1578758673726">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
@@ -350,10 +351,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="247" y="195" width="1936" height="1019" key="dock-window-3/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578702977886" />
-    <state x="561" y="376" width="944" height="966" key="find.popup" timestamp="1581980813916">
+    <state x="561" y="376" width="944" height="966" key="find.popup" timestamp="1582028671893">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="561" y="376" width="944" height="966" key="find.popup/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1581980813916" />
+    <state x="561" y="376" width="944" height="966" key="find.popup/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1582028671893" />
     <state x="1021" y="344" key="refactoring.ChangeSignatureDialog" timestamp="1579451914599">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>

@@ -1,10 +1,10 @@
 import sys
 import random
 
-from django.db.models import Avg
+from django.db.models import Avg, F
 from django.http import JsonResponse
 
-from gameplan.models import Game
+from gameplan.models import Game, Genre
 from gatherer.models import Log
 from recommender.models import RecommendationPairing
 from recommender_libraries import title_similarity, title_popularity
@@ -100,16 +100,18 @@ def get_similar_to_recent_recommendations(request, n=50):
     if uid is not None:
         events = Log.objects.filter(user_id=uid, event_type='detail_view_event').order_by('-created') \
             .values_list('content_id', flat=True).distinct()
-        newest_events = list(events[:1])
 
-        games = get_content_based_recommendations(request, newest_events[0], n)
+        if len(events) > 0:
+            newest_events = list(events[:1])
 
-        based_on_title = Game.objects.get(game_id=newest_events[0]).title
-        games_return_data = {
-            'user_id': uid,
-            'based_on_title': based_on_title,
-            'data': games
-        }
+            games = get_content_based_recommendations(request, newest_events[0], n)
+
+            based_on_title = Game.objects.get(game_id=newest_events[0]).title
+            games_return_data = {
+                'user_id': uid,
+                'based_on_title': based_on_title,
+                'data': games
+            }
 
     return JsonResponse(games_return_data, safe=False)
 
@@ -118,34 +120,36 @@ def get_top_genre_recommendations(request, genre_id, n=50):
     """ Gets the most popular games for a given genre id.
      @:returns a JSON response containing information about the most popular games. """
     uid = request.user.id
-    games_return_data = None
-    if uid is not None:
-        games = Game.objects.select_related().filter(genres__genre_id=genre_id).order_by('-popularity')[:n]
+    games = Game.objects.select_related().filter(genres__genre_id=genre_id).order_by('-popularity')[:n]
 
-        game_data = list()
-        for game in games:
-            g_id = game.game_id
-            if not check_attribute(request, 'dislike', g_id):
-                game_data.append(list(Game.objects.filter(game_id=g_id).values())[0])
+    game_data = list()
+    for game in games:
+        g_id = game.game_id
+        if (uid is not None and not check_attribute(request, 'dislike', g_id)) or uid is None:
+            game_data.append(list(Game.objects.filter(game_id=g_id).values())[0])
 
-        games_return_data = {
-            'user_id': uid,
-            'data': game_data
-        }
+    games_return_data = {
+        'data': game_data
+    }
 
     return JsonResponse(games_return_data, safe=False)
+
+
+NUM_LIKED = 5  # 'Because you liked game x...'
+NUM_GENRES = 5  # 'Because you like genre x...'
+NUM_GENRES_GENERIC = 5  # 'Popular genre x games...'
 
 
 def get_recommender_categories(request):
     """ Generates the categories of recommendations.
      @:returns """
     cats = list()
-    if request.user.is_authenticated:
+    if request.user.is_authenticated:  # show personalised recs
         game_ratings = get_rating_for_user(request.user)
 
         # 'Because you liked game x...'
         content_recs = game_ratings.order_by('-user_rating').select_related() \
-                           .values('game_id', 'game__title')[:5]
+                           .values('game_id', 'game__title')[:NUM_LIKED]
         for game in content_recs:
             dic = dict()
             dic['content_based'] = game
@@ -153,16 +157,23 @@ def get_recommender_categories(request):
                 cats.append(dic)
 
         # 'Because you like genre x...'
-        content_recs = game_ratings.order_by('-user_rating').select_related() \
-                           .values('game__genres__genre_id', 'game__genres__name')[:5]
-        for genre in content_recs:
+        genres_qs = game_ratings.order_by('-user_rating').select_related() \
+                        .values(genre_id=F('game__genres__genre_id'), name=F('game__genres__name'))[:NUM_GENRES]
+        print(genres_qs, sys.stderr)
+        for genre in genres_qs:
+            genre['name'] = genre['name'].lower()
             dic = dict()
             dic['genre_based'] = genre
             if dic not in cats:
                 cats.append(dic)
 
-        # Randomise the order of recommendations
-        random.shuffle(cats)
+    genres_qs = Genre.objects.order_by('?').values()[:NUM_GENRES_GENERIC]
+    for genre in genres_qs:
+        genre['name'] = genre['name'].lower()
+        dic = dict()
+        dic['genre_based_generic'] = genre
+        if dic not in cats:
+            cats.append(dic)
 
+    random.shuffle(cats)  # Randomise the order of recommendations
     return cats
-

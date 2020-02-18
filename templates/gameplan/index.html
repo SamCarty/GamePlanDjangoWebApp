@@ -68,29 +68,38 @@
         </section>
 
         <section id="recommendations-section">
-            <!-- Based on what others have bought compared to you... -->
-            <section id="section-users-like-you">
-                <h2 class="section-heading heading-underline">People like you enjoyed</h2>
-                <div class="slider"></div>
-            </section>
+            {% if user.is_authenticated %}
+                <!-- Based on what others have bought compared to you... -->
+                <section id="section-users-like-you">
+                    <h2 class="section-heading heading-underline">People like you enjoyed</h2>
+                    <div class="slider"></div>
+                </section>
 
-            <!-- Based on last viewed title... -->
-            <section id="section-rec-last-viewed">
-                <h2 class="section-heading heading-underline">Because you viewed</h2>
-                <div class="slider"></div>
-            </section>
+                <!-- Based on last viewed title... -->
+                <section id="section-rec-last-viewed">
+                    <h2 class="section-heading heading-underline">Because you viewed</h2>
+                    <div class="slider"></div>
+                </section>
+            {% else %}
+                <div class="alert alert-primary my-4">
+                    <h2>Login for better recommendations!</h2>
+                    GamePlan works best when you
+                        <a href="{% url 'login' %}"><strong>log in</strong></a>. Don't have an account?
+                        <a href="{% url 'signup' %}"><strong>Create one!</strong></a>
+                </div>
+            {% endif %}
 
             {% for cat in recommender_categories %}
                 {% for key, val in cat.items %}
                     {% if key == 'genre_based' %}
-                        <section id="section-rec-top-genre-{{ val.game__genres__genre_id }}">
-                            <h2 class="section-heading heading-underline">Because you like {{ val.game__genres__name }}
+                        <section id="section-rec-top-genre-{{ val.genre_id }}">
+                            <h2 class="section-heading heading-underline">Because you like {{ val.name }}
                                 games</h2>
                             <div class="slider"></div>
                         </section>
                         <script>
                             $(document).ready(function () {
-                                getTopGenreRecommendations({{ val.game__genres__genre_id }}, document.getElementById('section-rec-top-genre-{{ val.game__genres__genre_id }}'));
+                                getTopGenreRecommendations({{ val.genre_id }}, document.getElementById('section-rec-top-genre-{{ val.genre_id }}'));
                             });
                         </script>
                     {% endif %}
@@ -106,6 +115,20 @@
                             });
                         </script>
                     {% endif %}
+
+                    {% if key == 'genre_based_generic' %}
+                        <section id="section-rec-top-genre-generic-{{ val.genre_id }}">
+                            <h2 class="section-heading heading-underline">Popular {{ val.name }}
+                                games</h2>
+                            <div class="slider"></div>
+                        </section>
+                        <script>
+                            $(document).ready(function () {
+                                getTopGenreRecommendations({{ val.genre_id }}, document.getElementById('section-rec-top-genre-generic-{{ val.genre_id }}'));
+                            });
+                        </script>
+                    {% endif %}
+
                 {% endfor %}
             {% endfor %}
         </section>
