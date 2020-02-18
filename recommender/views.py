@@ -201,31 +201,30 @@ def get_recommender_categories(request):
         game_ratings = get_rating_for_user(request.user)
 
         # 'Because you liked game x...'
-        content_recs = game_ratings.order_by('-user_rating').select_related() \
-                           .values('game_id', 'game__title')[:NUM_LIKED]
-        for game in content_recs:
-            dic = dict()
-            dic['content_based'] = game
-            if dic not in cats:
-                cats.append(dic)
+        content_qs = game_ratings.order_by('-user_rating').select_related() \
+            .values('game_id', 'game__title')[:NUM_LIKED]
+        cats.extend(process_qs_to_list(content_qs, 'content_based'))
 
         # 'Because you like genre x...'
         genres_qs = game_ratings.order_by('-user_rating').select_related() \
-                        .values(genre_id=F('game__genres__genre_id'), name=F('game__genres__name'))[:NUM_GENRES]
-        for genre in genres_qs:
-            genre['name'] = genre['name'].lower()
-            dic = dict()
-            dic['genre_based'] = genre
-            if dic not in cats:
-                cats.append(dic)
+            .values(genre_id=F('game__genres__genre_id'), name=F('game__genres__name')).distinct()[:NUM_GENRES]
+        cats.extend(process_qs_to_list(genres_qs, 'genre_based'))
 
     genres_qs = Genre.objects.order_by('?').values()[:NUM_GENRES_GENERIC]
-    for genre in genres_qs:
-        genre['name'] = genre['name'].lower()
-        dic = dict()
-        dic['genre_based_generic'] = genre
-        if dic not in cats:
-            cats.append(dic)
+    cats.extend(process_qs_to_list(genres_qs, 'genre_based_generic'))
 
     random.shuffle(cats)  # Randomise the order of recommendations
     return cats
+
+
+def process_qs_to_list(qs, cat):
+    ls = list()
+    for item in qs:
+        if cat == 'genre_based' or cat == 'genre_based_generic':
+            item['name'] = item['name'].lower()
+        dic = dict()
+        dic[cat] = item
+        if dic not in ls:
+            ls.append(dic)
+
+    return ls
