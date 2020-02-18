@@ -5,7 +5,6 @@ from functools import reduce
 
 import django
 import pandas
-import nltk
 from django.db import connection
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'gameplan_project.settings')
@@ -243,8 +242,6 @@ def pre_process_games(games):
                     word = word.lower()
                     word = ''.join(char for char in word if not char in string.punctuation)
                     if word not in stopwords:
-                        stemmer = nltk.stem.porter.PorterStemmer()
-                        word = stemmer.stem(word)
                         keywords += word + ' '
 
         Game.objects.filter(game_id=row['game_id']).update(ordered_keywords=keywords)
@@ -255,7 +252,7 @@ if __name__ == '__main__':
     i = input("Press [1] to reimport the entire database (purge). \nPress [2] to just remake the ordered keywords.")
     if i == '1':
         clear_database()
-        import_file('games_v5.json')
+        import_file('games.json')
     games = combine_dbs()
     pre_process_games(games)
     print("[IMPORT] Import complete!")

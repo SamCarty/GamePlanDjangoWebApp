@@ -17,11 +17,11 @@
                             </a>
                         </div>
                         <div class="carousel-item">
-                            <a href="/games/9066">
+                            <a href="/games/1877">
                                 <img class="w-100 d-block"
-                                     src="https://images.igdb.com/igdb/image/upload/t_original/dwhwyahob4d4zsnjztmo.jpg"
+                                     src="https://images.igdb.com/igdb/image/upload/t_screenshot_big/quphnww1axg2mmsvxfux.jpg"
                                      alt="Slide Image">
-                                <h1 class="featured-title-name">Cities Skylines</h1>
+                                <h1 class="featured-title-name">Cyberpunk 2077</h1>
                             </a>
                         </div>
                         <div class="carousel-item">
@@ -80,32 +80,32 @@
                     <h2 class="section-heading heading-underline">Because you recently viewed</h2>
                     <div class="slider"></div>
                 </section>
-
-                <!-- Releasing soon -->
-                <section id="section-rec-releasing-soon">
-                    <h2 class="section-heading heading-underline">Releasing soon</h2>
-                    <div class="slider"></div>
-                </section>
-
-                <!-- Top rated ... -->
-                <section id="section-rec-top-rated">
-                    <h2 class="section-heading heading-underline">Best reviewed</h2>
-                    <div class="slider"></div>
-                </section>
-
-                <!-- Random titles... -->
-                <section id="section-rec-random">
-                    <h2 class="section-heading heading-underline">Why not try one of these?</h2>
-                    <div class="slider"></div>
-                </section>
             {% else %}
                 <div class="alert alert-primary my-4">
                     <h2>Login for better recommendations!</h2>
                     GamePlan works best when you
-                        <a href="{% url 'login' %}"><strong>log in</strong></a>. Don't have an account?
-                        <a href="{% url 'signup' %}"><strong>Create one!</strong></a>
+                    <a href="{% url 'login' %}"><strong>log in</strong></a>. Don't have an account?
+                    <a href="{% url 'signup' %}"><strong>Create one!</strong></a>
                 </div>
             {% endif %}
+
+            <!-- Releasing soon -->
+            <section id="section-rec-releasing-soon">
+                <h2 class="section-heading heading-underline">Releasing soon</h2>
+                <div class="slider"></div>
+            </section>
+
+            <!-- Top rated ... -->
+            <section id="section-rec-top-rated">
+                <h2 class="section-heading heading-underline">Best reviewed</h2>
+                <div class="slider"></div>
+            </section>
+
+            <!-- Random titles... -->
+            <section id="section-rec-random">
+                <h2 class="section-heading heading-underline">Why not try one of these?</h2>
+                <div class="slider"></div>
+            </section>
 
             {% for cat in recommender_categories %}
                 {% for key, val in cat.items %}
