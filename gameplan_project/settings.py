@@ -40,8 +40,9 @@ INSTALLED_APPS = [
     'gameplan',
     'gatherer',
     'recommender',
-    'django_filters',
-    'accounts.apps.AccountsConfig'
+    'accounts',
+    'games',
+    'django_filters'
 ]
 
 MIDDLEWARE = [
