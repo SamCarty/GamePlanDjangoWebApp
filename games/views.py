@@ -1,3 +1,6 @@
+import json
+import sys
+
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView
@@ -15,21 +18,23 @@ class GameDetails(TemplateView):
         context = dict()
         context['session_id'] = create_session(request)
         context['genres'] = get_all_genres()
+
+        game_id = self.kwargs['game_id']
+        context['game_details'] = Game.objects.filter(game_id=game_id).values()[0]
+
+        if (context['game_details']['total_rating_count']) is None:
+            context['game_details']['total_rating_count'] = 0
+
+        context['screenshots'] = get_screenshots_by_game_id(request, game_id)
+        context['involved_companies'] = get_involved_companies_by_game_id(request, game_id)
+        context['game_genres'] = get_genres_by_game_id(request, game_id)
+        context['platforms'] = get_platforms_by_game_id(request, game_id)
+
+        if request.user.is_authenticated:
+            context['on_wishlist'] = json.dumps(check_attribute(request, 'wishlist', game_id))
+            context['is_disliked'] = json.dumps(check_attribute(request, 'dislike', game_id))
+
         return render(request, self.template_name, context)
-
-
-def get_game_details(request, game_id):
-    details = list(Game.objects.filter(game_id=game_id).values())
-    details[0]['screenshots'] = get_screenshots_by_game_id(request, game_id)
-    details[0]['involved_companies'] = get_involved_companies_by_game_id(request, game_id)
-    details[0]['genres'] = get_genres_by_game_id(request, game_id)
-    details[0]['platform'] = get_platforms_by_game_id(request, game_id)
-
-    if request.user.is_authenticated:
-        details[0]['on_wishlist'] = check_attribute(request, 'wishlist', game_id)
-        details[0]['is_disliked'] = check_attribute(request, 'dislike', game_id)
-
-    return JsonResponse(details, safe=False)
 
 
 def get_screenshots_by_game_id(request, game_id):

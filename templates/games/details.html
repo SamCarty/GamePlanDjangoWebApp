@@ -2,17 +2,17 @@
 {% load static %}
 
 {% block content %}
-    <section id="top-image"></section>
+    <section id="top-image" style="background-image: url('https://{{ screenshots.0.url }}')"></section>
 
     <div class="container">
         <section id="top-info-section">
             <div class="row d-flex flex-row" id="top-info-box">
-                <div class="col-12 col-lg-3"><img id="top-cover-img">
+                <div class="col-12 col-lg-3"><img id="top-cover-img" src="https://{{ game_details.cover }}">
                 </div>
                 <div class="col-12 col-lg-9 flex-column" id="top-info-text-holder">
                     <div class="row">
                         <div class="col">
-                            <h1 id="game-name-heading"></h1>
+                            <h1 id="game-name-heading">{{ game_details.title }}</h1>
                         </div>
                     </div>
                     <div class="row" id="top-info-text">
@@ -20,7 +20,8 @@
                             <div id="top-info-button-holder">
                                 <form class="top-info-form">
                                     <button aria-haspopup="true" class="btn btn-outline-primary" id="wishlist-button"
-                                            onclick="return addRemoveAttribute('wishlist')" type="button">Add to wishlist
+                                            onclick="return addRemoveAttribute('wishlist')" type="button">Add to
+                                        wishlist
                                     </button>
                                 </form>
                                 <form class="top-info-form">
@@ -84,7 +85,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <h2 class="section-heading heading-underline">Summary</h2>
-                    <p id="body-summary"></p>
+                    <p id="body-summary">{{ game_details.summary }}</p>
                 </div>
                 <div class="col-lg-6">
                     <h2 class="section-heading heading-underline">Screenshots</h2>
@@ -126,8 +127,15 @@
         let currentTitle;
 
         $(document).ready(function () {
-            getGameDetails(gameId);
             logDetailViewEvent(gameId, csrftoken, sessionid);
+
+            showCompanies();
+            showGenres();
+            showPlatforms();
+            showReleaseDate();
+            showRating();
+            showScreenshots();
+            updateAttributes();
 
             const boughtTogetherElement = document.getElementById('section-rec-bought-together');
             getBoughtTogetherRecommendations(gameId, boughtTogetherElement);
@@ -168,8 +176,7 @@
                     icon.setAttribute('class', 'fas fa-heart');
                     button.setAttribute('title', 'Remove from wishlist');
                     button.innerHTML = "Remove from wishlist";
-                }
-                else if (attribute === 'dislike') {
+                } else if (attribute === 'dislike') {
                     icon.setAttribute('class', 'fas fa-thumbs-down');
                     button.setAttribute('title', 'Show me this game in recommendations');
                     button.innerHTML = "Undislike";
@@ -180,8 +187,7 @@
                     icon.setAttribute('class', 'far fa-heart');
                     button.setAttribute('title', 'Add to wishlist');
                     button.innerHTML = "Add to wishlist";
-                }
-                else if (attribute === 'dislike') {
+                } else if (attribute === 'dislike') {
                     icon.setAttribute('class', 'far fa-thumbs-down');
                     button.setAttribute('title', 'Don\'t show me this game in recommendations');
                     button.innerHTML = "Dislike";
@@ -195,155 +201,137 @@
             alert("Game purchased");
         }
 
-        // DETAILS
-        function getGameDetails(gameId) {
-            let url = '/games/details/' + gameId;
-            $.getJSON(url, function (game) {
-                if (game != null) {
-                    currentTitle = game;
+        function showCompanies() {
+            let developerTopInfo = document.getElementById('top-info-developer');
+            let publisherTopInfo = document.getElementById('top-info-publisher');
+            {% for involved_company in involved_companies %}
+                {% if involved_company.is_dev %}
+                    if (developerTopInfo.innerHTML !== '') developerTopInfo.innerHTML = developerTopInfo.innerHTML + ", ";
+                    developerLink = document.createElement('a');
+                    developerLink.innerHTML = '{{ involved_company.name }}';
+                    developerTopInfo.appendChild(developerLink);
+                {% endif %}
+                {% if involved_company.is_pub %}
+                    if (publisherTopInfo.innerHTML !== '') publisherTopInfo.innerHTML = publisherTopInfo.innerHTML + ", ";
+                    publisherLink = document.createElement('a');
+                    publisherLink.innerHTML = '{{ involved_company.name }}';
+                    publisherTopInfo.appendChild(publisherLink);
+                {% endif %}
+            {% endfor %}
 
-                    // TOP IMAGE
-                    let topImage = document.getElementById('top-image');
-                    topImage.setAttribute('style', 'background-image: url(https://' + game[0]['screenshots'][0]['url'] + ')');
+            if (developerTopInfo.innerHTML === '') {
+                developerTopInfo.innerHTML = 'Unknown'
+            }
 
-                    // COVER IMAGE
-                    let coverImage = document.getElementById('top-cover-img');
-                    coverImage.setAttribute('src', 'https://' + game[0]['cover']);
+            if (publisherTopInfo.innerHTML === '') {
+                publisherTopInfo.innerHTML = 'Unknown'
+            }
+        }
 
-                    // TITLE
-                    let gameNameHeading = document.getElementById('game-name-heading');
-                    gameNameHeading.innerHTML = game[0]['title'];
-                    document.title = game[0]['title'] + ' | GamePlan';
+        function showGenres() {
+            let genresTopInfo = document.getElementById('top-info-genres');
+            {% for genre in game_genres %}
+                if (genresTopInfo.innerHTML !== '') genresTopInfo.innerHTML = genresTopInfo.innerHTML + ", ";
+                genreLink = document.createElement('a');
+                genreLink.setAttribute('href', '/search/?q=&genres={{ genre.genre_id}}');
+                genreLink.innerHTML = '{{ genre.name }}';
+                genresTopInfo.appendChild(genreLink);
+            {% endfor %}
+        }
 
-                    // RATING
-                    let ratingCount = game[0]['total_rating_count'];
+        function showPlatforms() {
+            let platformsTopInfo = document.getElementById('top-info-platforms');
+            {% for platform in platforms %}
+                if (platformsTopInfo.innerHTML !== '') platformsTopInfo.innerHTML = platformsTopInfo.innerHTML + ", ";
+                platformLink = document.createElement('a');
+                platformLink.setAttribute('href', '/search/?q=&platforms={{ platform.platform_id}}');
+                platformLink.innerHTML = '{{ platform.name }}';
+                platformsTopInfo.appendChild(platformLink);
+            {% endfor %}
+        }
 
-                    if (ratingCount != null && ratingCount > 0) {
-                        let rating = game[0]['total_rating'];
-                        rating = Math.round(rating);
+        function showReleaseDate() {
+            let releaseDateTopInfo = document.getElementById('top-info-release-date');
+            let unixTime = {{ game_details.first_release_date }};
+            let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
+                'November', 'December'];
+            let date = new Date(unixTime * 1000); // Converting to millis
+            let day = date.getDate();
+            let month = months[date.getMonth()];
+            let year = date.getFullYear();
+            releaseDateTopInfo.innerHTML = day + ' ' + month + ' ' + year;
+        }
 
-                        let ratingCountTopInfo = document.getElementById('top-info-rating-count');
-                        ratingCountTopInfo.innerHTML = rating + '% positive (' + ratingCount + ' reviews)';
+        function showRating() {
+            let ratingCount = {{ game_details.total_rating_count }};
 
-                        let ratingTopInfo = document.getElementById('top-info-rating');
-                        let stars = ratingTopInfo.children;
-                        if (rating > 5) {
-                            stars[0].setAttribute('class', 'fas fa-star-half-alt');
-                        }
-                        if (rating > 15) {
-                            stars[0].setAttribute('class', 'fas fa-star');
-                        }
-                        if (rating > 25) {
-                            stars[1].setAttribute('class', 'fas fa-star-half-alt');
-                        }
-                        if (rating > 35) {
-                            stars[1].setAttribute('class', 'fas fa-star');
-                        }
-                        if (rating > 45) {
-                            stars[2].setAttribute('class', 'fas fa-star-half-alt');
-                        }
-                        if (rating > 55) {
-                            stars[2].setAttribute('class', 'fas fa-star');
-                        }
-                        if (rating > 65) {
-                            stars[3].setAttribute('class', 'fas fa-star-half-alt');
-                        }
-                        if (rating > 75) {
-                            stars[3].setAttribute('class', 'fas fa-star');
-                        }
-                        if (rating > 85) {
-                            stars[4].setAttribute('class', 'fas fa-star-half-alt');
-                        }
-                        if (rating > 95) {
-                            stars[4].setAttribute('class', 'fas fa-star');
-                        }
-                    } else {
-                        document.getElementById('rating-top-section').setAttribute('style', 'display: none;');
-                    }
+            if (ratingCount != null && ratingCount > 0) {
+                let rating = {{ game_details.total_rating }};
+                rating = Math.round(rating);
 
-                    // COMPANIES
-                    let developerTopInfo = document.getElementById('top-info-developer');
-                    let publisherTopInfo = document.getElementById('top-info-publisher');
-                    for (let i = 0; i < game[0]['involved_companies'].length; i++) {
-                        if (game[0]['involved_companies'][i]['is_dev'] === true) {
-                            if (developerTopInfo.innerHTML !== '') developerTopInfo.innerHTML = developerTopInfo.innerHTML + ", ";
-                            let developerLink = document.createElement('a');
-                            //developerLink.setAttribute('href', '/company/' + game[0]['involved_companies'][i]['company_id']);
-                            developerLink.innerHTML = game[0]['involved_companies'][i]['name'];
-                            developerTopInfo.appendChild(developerLink);
-                        }
-                        if (game[0]['involved_companies'][i]['is_pub'] === true) {
-                            if (publisherTopInfo.innerHTML !== '') publisherTopInfo.innerHTML = publisherTopInfo.innerHTML + ", ";
-                            let publisherLink = document.createElement('a');
-                            //publisherLink.setAttribute('href', '/company/' + game[0]['involved_companies'][i]['company_id']);
-                            publisherLink.innerHTML = game[0]['involved_companies'][i]['name'];
-                            publisherTopInfo.appendChild(publisherLink);
-                        }
-                    }
+                let ratingCountTopInfo = document.getElementById('top-info-rating-count');
+                ratingCountTopInfo.innerHTML = rating + '% positive (' + ratingCount + ' reviews)';
 
-                    // GENRES
-                    let genresTopInfo = document.getElementById('top-info-genres');
-                    for (var i = 0; i < game[0]['genres'].length; i++) {
-                        if (genresTopInfo.innerHTML !== '') genresTopInfo.innerHTML = genresTopInfo.innerHTML + ", ";
-                        genreLink = document.createElement('a');
-                        genreLink.setAttribute('href', '/search/?q=&genres=' + game[0]['genres'][i]['genre_id']);
-                        genreLink.innerHTML = game[0]['genres'][i]['name'];
-                        genresTopInfo.appendChild(genreLink);
-                    }
-
-                    // PLATFORMS
-                    let platformsTopInfo = document.getElementById('top-info-platforms');
-                    for (let i = 0; i < game[0]['platform'].length; i++) {
-                        if (platformsTopInfo.innerHTML !== '') platformsTopInfo.innerHTML = platformsTopInfo.innerHTML + ", ";
-                        platformLink = document.createElement('a');
-                        platformLink.setAttribute('href', '/search/?q=&platforms=' + game[0]['platform'][i]['platform_id']);
-                        platformLink.innerHTML = game[0]['platform'][i]['name'];
-                        platformsTopInfo.appendChild(platformLink);
-                    }
-
-                    // RELEASE DATE
-                    let releaseDateTopInfo = document.getElementById('top-info-release-date');
-                    let unixTime = game[0]['first_release_date'];
-                    let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
-                        'November', 'December'];
-                    let date = new Date(unixTime * 1000); // Converting to millis
-                    let day = date.getDate();
-                    let month = months[date.getMonth()];
-                    let year = date.getFullYear();
-                    releaseDateTopInfo.innerHTML = day + ' ' + month + ' ' + year;
-
-                    if (developerTopInfo.innerHTML === '') {
-                        developerTopInfo.innerHTML = 'Unknown'
-                    }
-
-                    if (publisherTopInfo.innerHTML === '') {
-                        publisherTopInfo.innerHTML = 'Unknown'
-                    }
-
-                    // SUMMARY
-                    let summaryInfo = document.getElementById('body-summary');
-                    summaryInfo.innerHTML = game[0]['summary'];
-
-                    // SCREENSHOTS
-                    screenshotsSection = document.getElementById('carousel-inner');
-                    for (let i = 0; i < game[0]['screenshots'].length; i++) {
-                        let carouselItemDiv = document.createElement('div');
-                        if (i === 0) carouselItemDiv.setAttribute('class', 'carousel-item active');
-                        else carouselItemDiv.setAttribute('class', 'carousel-item');
-
-                        carouselItemImg = document.createElement('img');
-                        carouselItemImg.setAttribute('class', 'w-100 d-block');
-                        carouselItemImg.setAttribute('src', 'https://' + game[0]['screenshots'][i]['url']);
-                        carouselItemImg.setAttribute('title', game[0]['title']);
-
-                        carouselItemDiv.appendChild(carouselItemImg);
-                        screenshotsSection.appendChild(carouselItemDiv);
-                    }
-
-                    showHideAttributeIcon('wishlist', game[0]['on_wishlist']);
-                    showHideAttributeIcon('dislike', game[0]['is_disliked']);
+                let ratingTopInfo = document.getElementById('top-info-rating');
+                let stars = ratingTopInfo.children;
+                if (rating > 5) {
+                    stars[0].setAttribute('class', 'fas fa-star-half-alt');
                 }
-            });
+                if (rating > 15) {
+                    stars[0].setAttribute('class', 'fas fa-star');
+                }
+                if (rating > 25) {
+                    stars[1].setAttribute('class', 'fas fa-star-half-alt');
+                }
+                if (rating > 35) {
+                    stars[1].setAttribute('class', 'fas fa-star');
+                }
+                if (rating > 45) {
+                    stars[2].setAttribute('class', 'fas fa-star-half-alt');
+                }
+                if (rating > 55) {
+                    stars[2].setAttribute('class', 'fas fa-star');
+                }
+                if (rating > 65) {
+                    stars[3].setAttribute('class', 'fas fa-star-half-alt');
+                }
+                if (rating > 75) {
+                    stars[3].setAttribute('class', 'fas fa-star');
+                }
+                if (rating > 85) {
+                    stars[4].setAttribute('class', 'fas fa-star-half-alt');
+                }
+                if (rating > 95) {
+                    stars[4].setAttribute('class', 'fas fa-star');
+                }
+            } else {
+                document.getElementById('rating-top-section').setAttribute('style', 'display: none;');
+            }
+        }
+
+        function showScreenshots() {
+            let screenshotsSection = document.getElementById('carousel-inner');
+            {% for screenshot in screenshots %}
+                carouselItemDiv = document.createElement('div');
+                {% if forloop.first %}
+                    carouselItemDiv.setAttribute('class', 'carousel-item active');
+                {% else %}
+                    carouselItemDiv.setAttribute('class', 'carousel-item');
+                {% endif %}
+
+                carouselItemImg = document.createElement('img');
+                carouselItemImg.setAttribute('class', 'w-100 d-block');
+                carouselItemImg.setAttribute('src', 'https://{{screenshot.url}}');
+                carouselItemImg.setAttribute('title', '{{ game_details.title }}');
+
+                carouselItemDiv.appendChild(carouselItemImg);
+                screenshotsSection.appendChild(carouselItemDiv);
+            {% endfor %}
+        }
+
+        function updateAttributes() {
+            showHideAttributeIcon('wishlist', {{ on_wishlist }});
+            showHideAttributeIcon('dislike', {{ is_disliked }});
         }
 
     </script>

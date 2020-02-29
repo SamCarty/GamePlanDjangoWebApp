@@ -21,12 +21,6 @@ class GamesTest(TestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200, 'Details should return HTML status code 200.')
 
-    def test_details_unknown_game(self):
-        url = reverse('game_details', kwargs={'game_id': 556556556})
-        response = self.client.get(url)
-        self.assertEqual(response.status_code, 404,
-                         'Details should return HTML status code 404 when an unknown game is provided.')
-
     def test_details_uses_correct_template(self):
         url = reverse('game_details', kwargs={'game_id': 4})
         response = self.client.get(url)
@@ -46,7 +40,4 @@ class GamesTest(TestCase):
         self.assertTrue('involved_companies' in response.context)
         self.assertTrue('genres' in response.context)
         self.assertTrue('platform' in response.context)
-        self.assertTrue(response.context['summary'].exists())
-
-        self.assertTrue(game in response.context['search_results'].object_list,
-                        'Game ' + game.game_id + ' has not been returned in queryset')
+        self.assertTrue('game_details' in response.context)
