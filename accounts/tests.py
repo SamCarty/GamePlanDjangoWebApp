@@ -1,5 +1,3 @@
-import sys
-
 from django.contrib.auth.models import User
 from django.test import TestCase, Client
 from django.urls import reverse
@@ -27,7 +25,7 @@ class AccountsTest(TestCase):
         self.client.post('/accounts/add-or-remove-attribute/', data)
 
         exists = Wishlist.objects.filter(user_id=self.user.id, game_id=self.game1.game_id).values('game_id').exists()
-        self.assertTrue(exists, "Title not added to wishlist.")
+        self.assertTrue(exists, 'Title not added to wishlist.')
 
     def test_remove_from_wishlist(self):
         data = {'game_id': self.game1.game_id,
@@ -38,7 +36,7 @@ class AccountsTest(TestCase):
         self.client.post('/accounts/add-or-remove-attribute/', data)
 
         exists = Wishlist.objects.filter(user_id=self.user.id, game_id=self.game1.game_id).values('game_id').exists()
-        self.assertFalse(exists, "Title not removed from wishlist.")
+        self.assertFalse(exists, 'Title not removed from wishlist.')
 
     def test_add_to_disliked(self):
         data = {'game_id': self.game1.game_id,
@@ -46,7 +44,7 @@ class AccountsTest(TestCase):
         self.client.post('/accounts/add-or-remove-attribute/', data)
 
         exists = Dislike.objects.filter(user_id=self.user.id, game_id=self.game1.game_id).values('game_id').exists()
-        self.assertTrue(exists, "Title not added to disliked.")
+        self.assertTrue(exists, 'Title not added to disliked.')
 
     def test_remove_from_disliked(self):
         data = {'game_id': self.game1.game_id,
@@ -57,17 +55,17 @@ class AccountsTest(TestCase):
         self.client.post('/accounts/add-or-remove-attribute/', data)
 
         exists = Dislike.objects.filter(user_id=self.user.id, game_id=self.game1.game_id).values('game_id').exists()
-        self.assertFalse(exists, "Title not removed from disliked.")
+        self.assertFalse(exists, 'Title not removed from disliked.')
 
     def test_wishlist_url(self):
         url = reverse('wishlist')
         response = self.client.get(url)
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 200, 'Wishlist should return HTML status code 200.')
 
     def test_wishlist_uses_correct_template(self):
         url = reverse('wishlist')
         response = self.client.get(url)
-        self.assertTemplateUsed(response, 'accounts/wishlist.html')
+        self.assertTemplateUsed(response, 'accounts/wishlist.html', 'Wishlist does not use wishlist template.')
 
     def test_wishlist_queryset(self):
         data = {'game_id': self.game1.game_id,
@@ -89,4 +87,4 @@ class AccountsTest(TestCase):
     def test_signup_url(self):
         url = reverse('signup')
         response = self.client.get(url)
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 200, 'Signup should return HTML status code 200.')

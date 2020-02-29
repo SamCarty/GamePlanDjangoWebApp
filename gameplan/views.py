@@ -104,5 +104,4 @@ class SearchResultsView(ListView):
                 g += '&genres=' + genre
 
         q = '&q=' + request.GET.get('q')
-
         return q + p + g
