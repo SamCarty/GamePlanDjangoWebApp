@@ -81,8 +81,10 @@ class AccountsTest(TestCase):
         response = self.client.get(url)
 
         self.assertTrue('game_list' in response.context_data)
-        self.assertTrue(response.context_data['game_list'].filter(game_id=self.game1.game_id).exists(), "Wishlisted game 1 have not been returned in queryset")
-        self.assertTrue(response.context_data['game_list'].filter(game_id=self.game1.game_id).exists(), "Wishlisted game 2 have not been returned in queryset")
+        self.assertTrue(response.context_data['game_list'].filter(game_id=self.game1.game_id).exists(),
+                        "Wishlisted game 1 have not been returned in queryset")
+        self.assertTrue(response.context_data['game_list'].filter(game_id=self.game1.game_id).exists(),
+                        "Wishlisted game 2 have not been returned in queryset")
 
     def test_signup_url(self):
         url = reverse('signup')
