@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e38eafcc-dce6-4a11-98a7-3ff01e46304d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/accounts/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/tests.py" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/templates/gameplan/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gameplan/base.html" afterDir="false" />
+>>>>>>> 108eff41f558444908d7b0c56ccfccadb934c2a0
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="db" type="feb32156:DbDataSourceImpl" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="gameplan" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/import_games.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="138">
+              <caret line="54" selection-start-line="54" selection-end-line="54" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/gameplan/base.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="275">
+              <caret line="77" column="28" selection-start-line="77" selection-start-column="28" selection-end-line="77" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/import_games.py" />
+        <option value="$PROJECT_DIR$/templates/gameplan/base.html" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="295" />
+    <option name="y" value="-10" />
+    <option name="width" value="1510" />
+    <option name="height" value="880" />
+  </component>
+  <component name="ProjectId" id="1W15HtgGRVE3AY5LiAKnNOdflkn" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="GamesRecommenderDjangoApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GamesRecommenderDjangoApp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GamesRecommenderDjangoApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GamesRecommenderDjangoApp" type="462c0819:PsiDirectoryNode" />
+              <item name="gameplan" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GamesRecommenderDjangoApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GamesRecommenderDjangoApp" type="462c0819:PsiDirectoryNode" />
+              <item name="games" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GamesRecommenderDjangoApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GamesRecommenderDjangoApp" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GamesRecommenderDjangoApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GamesRecommenderDjangoApp" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="gameplan" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="S:\Repos\Games Recommender Files\gameplan" />
+      <recent name="S:\Repos\Games Recommender Files\gameplan\static\img" />
+      <recent name="S:\Repos\Games Recommender Files\gameplan\static" />
+      <recent name="S:\Repos\Games Recommender Files\gameplan\recommender" />
+      <recent name="S:\Repos\Games Recommender Files\gameplan\gameplan" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="S:\Repos\Games Recommender Files\gameplan\templates\gameplan" />
+      <recent name="S:\Repos\Games Recommender Files\gameplan\static\css" />
+      <recent name="S:\Repos\Games Recommender Files\gameplan\templates\search" />
+      <recent name="S:\Repos\Games Recommender Files\gameplan\static\img" />
+      <recent name="S:\Repos\Games Recommender Files\gameplan\static" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Django tests.Test: accounts.tests.AccountsTest">
+    <configuration name="Test: accounts.tests.AccountsTest" type="DjangoTestsConfigurationType" temporary="true">
+      <module name="GR_App" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="accounts.tests.AccountsTest" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test: accounts.tests.AccountsTest.test_add_to_wishlist_adds" type="DjangoTestsConfigurationType" temporary="true">
+      <module name="GR_App" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="accounts.tests.AccountsTest.test_add_to_wishlist_adds" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test: accounts.tests.AccountsTest.test_new_user_created" type="DjangoTestsConfigurationType" temporary="true">
+      <module name="GR_App" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="accounts.tests.AccountsTest.test_new_user_created" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test: model_builder.tests.RecommenderTest" type="DjangoTestsConfigurationType" temporary="true">
+      <module name="GR_App" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="model_builder.tests.RecommenderTest" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test: model_builder.tests.RecommenderTest.setup_test_data" type="DjangoTestsConfigurationType" temporary="true">
+      <module name="GR_App" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="model_builder.tests.RecommenderTest.setup_test_data" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Django tests.Test: accounts.tests.AccountsTest" />
+        <item itemvalue="Django tests.Test: accounts.tests.AccountsTest.test_new_user_created" />
+        <item itemvalue="Django tests.Test: accounts.tests.AccountsTest.test_add_to_wishlist_adds" />
+        <item itemvalue="Django tests.Test: model_builder.tests.RecommenderTest" />
+        <item itemvalue="Django tests.Test: model_builder.tests.RecommenderTest.setup_test_data" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e38eafcc-dce6-4a11-98a7-3ff01e46304d" name="Default Changelist" comment="" />
+      <created>1578304175420</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1578304175420</updated>
+      <workItem from="1578304177546" duration="358000" />
+      <workItem from="1578304570229" duration="1296000" />
+      <workItem from="1578305879294" duration="37922000" />
+      <workItem from="1578358359102" duration="180000" />
+      <workItem from="1578359103946" duration="209000" />
+      <workItem from="1578359388913" duration="1343000" />
+      <workItem from="1578402921454" duration="30280000" />
+      <workItem from="1578442421235" duration="217000" />
+      <workItem from="1578488128235" duration="21775000" />
+      <workItem from="1578569996850" duration="28721000" />
+      <workItem from="1578611285210" duration="2329000" />
+      <workItem from="1578613715307" duration="130000" />
+      <workItem from="1578658979868" duration="11666000" />
+      <workItem from="1578683687385" duration="2306000" />
+      <workItem from="1578700063565" duration="4657000" />
+      <workItem from="1578747557465" duration="12609000" />
+      <workItem from="1578862590288" duration="4981000" />
+      <workItem from="1578872383706" duration="4732000" />
+      <workItem from="1578919039700" duration="25158000" />
+      <workItem from="1579005505052" duration="22647000" />
+      <workItem from="1579273994298" duration="2675000" />
+      <workItem from="1579351641611" duration="3549000" />
+      <workItem from="1579434918308" duration="12011000" />
+      <workItem from="1579462672762" duration="29000" />
+      <workItem from="1579462755523" duration="84000" />
+      <workItem from="1579466317220" duration="2230000" />
+      <workItem from="1579519434594" duration="25175000" />
+      <workItem from="1579700949579" duration="12904000" />
+      <workItem from="1579777007148" duration="27536000" />
+      <workItem from="1579870152060" duration="8981000" />
+      <workItem from="1579891825520" duration="5100000" />
+      <workItem from="1580121790589" duration="18551000" />
+      <workItem from="1580156116331" duration="1181000" />
+      <workItem from="1580170293064" duration="298000" />
+      <workItem from="1580209127676" duration="1502000" />
+      <workItem from="1580215496969" duration="11220000" />
+      <workItem from="1580317628124" duration="1505000" />
+      <workItem from="1580811011452" duration="8054000" />
+      <workItem from="1580920065673" duration="2032000" />
+      <workItem from="1581338220494" duration="2832000" />
+      <workItem from="1581775853066" duration="8654000" />
+      <workItem from="1581858366019" duration="19791000" />
+      <workItem from="1581943079506" duration="16963000" />
+      <workItem from="1581977799848" duration="1505000" />
+      <workItem from="1582026888496" duration="16079000" />
+      <workItem from="1582683991020" duration="1385000" />
+<<<<<<< HEAD
+      <workItem from="1582718734614" duration="8867000" />
+      <workItem from="1582988805900" duration="6642000" />
+=======
+      <workItem from="1582718734614" duration="8239000" />
+      <workItem from="1582798497142" duration="1033000" />
+      <workItem from="1582880203830" duration="501000" />
+>>>>>>> 108eff41f558444908d7b0c56ccfccadb934c2a0
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="1534000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2533512" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.49787837" />
+      <window_info anchor="bottom" id="Python Console" order="12" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="734" y="355" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582753169191">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="734" y="355" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1582753169191" />
+    <state x="1039" y="503" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1578436031054">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1039" y="503" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578436031054" />
+    <state x="1010" y="447" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1581949698941">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1010" y="447" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1581949698941" />
+    <state x="1059" y="455" key="FileChooserDialogImpl" timestamp="1581947446258">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1059" y="455" key="FileChooserDialogImpl/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1581947446258" />
+    <state width="1236" height="405" key="GridCell.Tab.0.bottom" timestamp="1582997088640">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="342" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.0.1920.1040/2560.0.3840.2120@0.0.2560.1400" timestamp="1579800737614" />
+    <state width="1877" height="68" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1578610701472" />
+    <state width="1236" height="405" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1582997088640" />
+    <state width="1236" height="405" key="GridCell.Tab.0.center" timestamp="1582997088640">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="342" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.0.1920.1040/2560.0.3840.2120@0.0.2560.1400" timestamp="1579800737614" />
+    <state width="1877" height="68" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1578610701472" />
+    <state width="1236" height="405" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1582997088640" />
+    <state width="1236" height="405" key="GridCell.Tab.0.left" timestamp="1582997088640">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="342" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.0.1920.1040/2560.0.3840.2120@0.0.2560.1400" timestamp="1579800737614" />
+    <state width="1877" height="68" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1578610701472" />
+    <state width="1236" height="405" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1582997088640" />
+    <state width="1236" height="405" key="GridCell.Tab.0.right" timestamp="1582997088640">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="342" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.0.1920.1040/2560.0.3840.2120@0.0.2560.1400" timestamp="1579800737614" />
+    <state width="1877" height="68" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1578610701472" />
+    <state width="1236" height="405" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1582997088640" />
+    <state width="1236" height="656" key="GridCell.Tab.1.bottom" timestamp="1582997078743">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1236" height="656" key="GridCell.Tab.1.bottom/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1582997078743" />
+    <state width="1236" height="656" key="GridCell.Tab.1.center" timestamp="1582997078743">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1236" height="656" key="GridCell.Tab.1.center/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1582997078743" />
+    <state width="1236" height="656" key="GridCell.Tab.1.left" timestamp="1582997078743">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1236" height="656" key="GridCell.Tab.1.left/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1582997078743" />
+    <state width="1236" height="656" key="GridCell.Tab.1.right" timestamp="1582997078743">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1236" height="656" key="GridCell.Tab.1.right/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1582997078743" />
+    <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1578604532112">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="196" height="457" key="HiddenNamespacesPopup/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578604532112" />
+    <state x="781" y="343" key="SettingsEditor" timestamp="1578309127154">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="781" y="343" key="SettingsEditor/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578309127154" />
+    <state x="561" y="514" key="com.intellij.ide.util.TipDialog" timestamp="1582989779116">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="561" y="514" key="com.intellij.ide.util.TipDialog/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1582989779116" />
+    <state x="-1920" y="0" width="1936" height="1019" key="dock-window-1" timestamp="1578758673726">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1920" y="0" width="1936" height="1019" key="dock-window-1/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578758673726" />
+    <state x="833" y="145" width="1145" height="863" key="dock-window-1/0.0.2560.1440/-1920.0.1920.1080@0.0.2560.1440" timestamp="1578666163549" />
+    <state x="495" y="170" width="1145" height="863" key="dock-window-1/0.30.2560.1410/-1920.30.1920.1050@0.30.2560.1410" timestamp="1578665842805" />
+    <state x="-1920" y="3" width="1936" height="1019" key="dock-window-2" timestamp="1578701132963">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1920" y="3" width="1936" height="1019" key="dock-window-2/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578701132963" />
+    <state x="247" y="195" width="1936" height="1019" key="dock-window-3" timestamp="1578702977886">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="247" y="195" width="1936" height="1019" key="dock-window-3/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578702977886" />
+    <state x="561" y="376" width="944" height="966" key="find.popup" timestamp="1582058412203">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="561" y="376" width="944" height="966" key="find.popup/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1582058412203" />
+    <state x="1021" y="344" key="refactoring.ChangeSignatureDialog" timestamp="1579451914599">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1021" y="344" key="refactoring.ChangeSignatureDialog/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1579451914599" />
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1579548096972">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1579548096972" />
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400/-1920.0.1920.1080@0.0.2560.1400" timestamp="1578943772927" />
+    <state x="1002" y="612" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1578870333965">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1002" y="612" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1578870333965" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/gameplan$user_ratings_builder.coverage" NAME="user_ratings_builder Coverage Results" MODIFIED="1581805600787" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model_builder" />
+    <SUITE FILE_PATH="coverage/gameplan$Test__accounts_tests_AccountsTest_test_new_user_created.coverage" NAME="Test: accounts.tests.AccountsTest.test_new_user_created Coverage Results" MODIFIED="1582756587690" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/gameplan$recommend.coverage" NAME="recommend Coverage Results" MODIFIED="1578341437050" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/gameplan$Test__model_builder_tests_RecommenderTest_setup_test_data.coverage" NAME="Test: model_builder.tests.RecommenderTest.setup_test_data Coverage Results" MODIFIED="1582753280143" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/gameplan$recommend__1_.coverage" NAME="recommend (1) Coverage Results" MODIFIED="1578613358272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/recommender_libraries" />
+    <SUITE FILE_PATH="coverage/gameplan$Test__accounts_tests_AccountsTest.coverage" NAME="Test: accounts.tests.AccountsTest Coverage Results" MODIFIED="1582756614983" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/gameplan$user_profile_builder.coverage" NAME="user_profile_builder Coverage Results" MODIFIED="1581974783504" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model_builder" />
+    <SUITE FILE_PATH="coverage/gameplan$bought_together_builder.coverage" NAME="bought_together_builder Coverage Results" MODIFIED="1580826277996" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model_builder" />
+    <SUITE FILE_PATH="coverage/gameplan$title_popularity.coverage" NAME="title_popularity Coverage Results" MODIFIED="1579437933723" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/recommender_libraries" />
+    <SUITE FILE_PATH="coverage/gameplan$Test__model_builder_tests_RecommenderTest_user_ratings_calculated_correctly.coverage" NAME="Test: model_builder.tests.RecommenderTest.user_ratings_calculated_correctly Coverage Results" MODIFIED="1582753177868" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/gameplan$views.coverage" NAME="views Coverage Results" MODIFIED="1579044619776" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/recommender" />
+    <SUITE FILE_PATH="coverage/gameplan$Test__accounts_tests_AccountsTest_test_add_to_wishlist_adds.coverage" NAME="Test: accounts.tests.AccountsTest.test_add_to_wishlist_adds Coverage Results" MODIFIED="1582754701090" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/gameplan$import_games.coverage" NAME="import_games Coverage Results" MODIFIED="1582737876773" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+<<<<<<< HEAD
+    <SUITE FILE_PATH="coverage/gameplan$recommend.coverage" NAME="recommend Coverage Results" MODIFIED="1578341437050" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/gameplan$Test__accounts_tests_AccountsTest.coverage" NAME="Test: accounts.tests.AccountsTest Coverage Results" MODIFIED="1582997088632" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/gameplan$Test__model_builder_tests_RecommenderTest_setup_test_data.coverage" NAME="Test: model_builder.tests.RecommenderTest.setup_test_data Coverage Results" MODIFIED="1582753280143" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/gameplan$bought_together_builder.coverage" NAME="bought_together_builder Coverage Results" MODIFIED="1580826277996" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model_builder" />
+=======
+    <SUITE FILE_PATH="coverage/gameplan$Test__model_builder_tests_RecommenderTest.coverage" NAME="Test: model_builder.tests.RecommenderTest Coverage Results" MODIFIED="1582753888317" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/import_games.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="54" selection-start-line="54" selection-end-line="54" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/gameplan/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="77" column="28" selection-start-line="77" selection-start-column="28" selection-end-line="77" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> 108eff41f558444908d7b0c56ccfccadb934c2a0
+  </component>
+</project>
