@@ -43,7 +43,7 @@ def import_file(filename, n):
         game_data = data['games']
         games = list()
         for i in range(0, len(game_data) - 1):
-            if i == -1 or i < n:
+            if n == -1 or i < n:
                 if len(Game.objects.filter(game_id=game_data[i]['id'])) == 0:
                     game = game_data[i]
                     print("[IMPORT] Adding game: " + game['name'])
