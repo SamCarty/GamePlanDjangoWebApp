@@ -42,7 +42,6 @@ class RecommenderTest(TestCase):
 
         import_max_range(20)
 
-
     def test_user_ratings_calculated_correctly(self):
         user = User.objects.get(username='Test')
         ratings = user_ratings_builder.calculate_ratings_for_user(user.id)
