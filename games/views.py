@@ -1,7 +1,5 @@
 import json
-import sys
 
-from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
