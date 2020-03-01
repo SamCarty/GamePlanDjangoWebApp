@@ -19,14 +19,12 @@ def log_event(request):
             created=date,
             event_type=event_type,
             content_id=content_id,
-            session_id=session_id)
+            session_id=session_id,
+            user_id=request.user.id)\
+            .save()
 
         if request.user.id is not None:
-            user_id = request.user.id
-            log.user_id = user_id
-            update_ratings_for_user(user_id)
-
-        log.save()
+            update_ratings_for_user(request.user.id)
 
         if event_type == "purchase_event":
             recalculate_bought_together_db()

@@ -121,14 +121,18 @@ def get_bought_together_rules(one_sets, two_sets, n):
 
 def save_results(results):
     """ Saves the pairings to the database. """
-    for i in range(0, len(results) - 1):
+    for i in range(0, len(results)):
         item = results[i]
         created = datetime.now(pytz.utc)
         from_game = Game.objects.get(game_id=item[0])
         to_game = Game.objects.get(game_id=item[1])
 
-        rec_object = RecommendationPairing.objects.create(created=created, from_game=from_game, to_game=to_game,
-                                                          confidence=item[2], support=item[3], )
+        rec_object = RecommendationPairing.objects.get_or_create(from_game=from_game, to_game=to_game)[0]
+
+        rec_object.created = created
+        rec_object.confidence = item[2]
+        rec_object.support = item[3]
+
         rec_object.save()
 
 

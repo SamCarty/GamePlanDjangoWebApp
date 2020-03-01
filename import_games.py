@@ -266,3 +266,6 @@ if __name__ == '__main__':
 
 def import_max_range(n):
     import_file('games.json', n)
+    games = combine_dbs()
+    pre_process_games(games)
+    print("[IMPORT] Import complete!")
