@@ -51,14 +51,14 @@ class Similarity(object):
         scores = pandas.Series(cos_mat[matching_index]).sort_values(ascending=False)
         recommended_titles = list(scores.iloc[1:n + 1].index)
 
-        return recommended_titles
+        return recommended_titles, round(scores.iloc[1:n + 1], 3)
 
 
 def generate_recommendations(game_id, n):
     sim = Similarity()
     cos, data = sim.generate_model()
 
-    prediction_indexes = sim.make_predictions(game_id, data, cos, n)
+    prediction_indexes, scores = sim.make_predictions(game_id, data, cos, n)
 
     prediction_ids = list()
     for item in prediction_indexes:
@@ -71,8 +71,10 @@ if __name__ == '__main__':
     print("[SIM] Beginning recommendation process...")
     sim = Similarity()
     cos, data = sim.generate_model()
-    prediction_indexes = sim.make_predictions("119177", data, cos, 10)
 
-    print("[SIM] Recommendations: ")
-    for item in prediction_indexes:
-        print("[SIM] " + data["title"].loc[item])
+    target = Game.objects.get(game_id=11582)
+    prediction_indexes, scores = sim.make_predictions(target.game_id, data, cos, 10)
+
+    print("[SIM] Similar to " + target.title)
+    for index, item in enumerate(prediction_indexes):
+        print("[SIM] " + data["title"].loc[item] + ": " + str(scores.iloc[index]))

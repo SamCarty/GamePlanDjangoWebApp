@@ -84,12 +84,14 @@ def import_file(filename, n):
                         for game_engine in game['game_engines']:
                             if not isinstance(game_engine, int):
                                 game_engine = \
-                                    GameEngine.objects.get_or_create(game_engine_id=game_engine['id'], name=game_engine['name'])[0]
+                                    GameEngine.objects.get_or_create(game_engine_id=game_engine['id'],
+                                                                     name=game_engine['name'])[0]
                                 game_object.game_engines.add(game_engine)
 
                     if 'game_modes' in game:
                         for gamemode in game['game_modes']:
-                            gamemode = GameMode.objects.get_or_create(game_mode_id=gamemode['id'], name=gamemode['name'])[0]
+                            gamemode = \
+                            GameMode.objects.get_or_create(game_mode_id=gamemode['id'], name=gamemode['name'])[0]
                             game_object.game_modes.add(gamemode)
 
                     if 'hypes' in game:
@@ -100,10 +102,11 @@ def import_file(filename, n):
                             company = Company.objects.get_or_create(company_id=involved_company['company']['id'],
                                                                     name=involved_company['company']['name'])[0]
 
-                            involved_company = InvolvedCompany.objects.get_or_create(involved_company_id=involved_company['id'],
-                                                                                     developer=involved_company['developer'],
-                                                                                     publisher=involved_company['publisher'],
-                                                                                     company=company)[0]
+                            involved_company = \
+                            InvolvedCompany.objects.get_or_create(involved_company_id=involved_company['id'],
+                                                                  developer=involved_company['developer'],
+                                                                  publisher=involved_company['publisher'],
+                                                                  company=company)[0]
                             game_object.involved_companies.add(involved_company)
 
                     if 'keywords' in game:
@@ -115,13 +118,15 @@ def import_file(filename, n):
 
                     if 'platforms' in game:
                         for platform in game['platforms']:
-                            platform = Platform.objects.get_or_create(platform_id=platform['id'], name=platform['name'])[0]
+                            platform = \
+                            Platform.objects.get_or_create(platform_id=platform['id'], name=platform['name'])[0]
                             game_object.platforms.add(platform)
 
                     if 'player_perspectives' in game:
                         for perspective in game['player_perspectives']:
-                            perspective = PlayerPerspective.objects.get_or_create(player_perspective_id=perspective['id'],
-                                                                                  name=perspective['name'])[0]
+                            perspective = \
+                            PlayerPerspective.objects.get_or_create(player_perspective_id=perspective['id'],
+                                                                    name=perspective['name'])[0]
                             game_object.player_perspectives.add(perspective)
 
                     if 'popularity' in game:
@@ -131,7 +136,8 @@ def import_file(filename, n):
                         for date in game['release_dates']:
                             platform = Platform.objects.get_or_create(platform_id=date['platform']['id'],
                                                                       name=date['platform']['name'])[0]
-                            date_to_add = ReleaseDate.objects.get_or_create(release_date_id=date['id'], platform=platform)[0]
+                            date_to_add = \
+                            ReleaseDate.objects.get_or_create(release_date_id=date['id'], platform=platform)[0]
 
                             if 'date' in date:
                                 date_to_add.date = date['date']
@@ -178,7 +184,7 @@ def import_file(filename, n):
                     game_object.save()
                     games.append(game_object)
 
-        print("[IMPORT] " +  str(len(games)) + " items added to database.")
+        print("[IMPORT] " + str(len(games)) + " items added to database.")
         return games
 
 
@@ -209,29 +215,29 @@ def pre_process_games(games):
             :return A DataFrame matrix with the ordered keywords added. """
 
     stopwords = ['a', 'about', 'above', 'after', 'again', 'against', 'all', 'am', 'an',
-     'and', 'any', 'are', "aren't", 'as', 'at', 'be', 'because', 'been',
-     'before', 'being', 'below', 'between', 'both', 'but', 'by', "can't",
-     'cannot', 'could', "couldn't", 'did', "didn't", 'do', 'does', "doesn't",
-     'doing', "don't", 'down', 'during', 'each', 'few', 'for', 'from',
-     'further', 'had', "hadn't", 'has', "hasn't", 'have', "haven't",
-     'having', 'he', "he'd", "he'll", "he's", 'her', 'here', "here's",
-     'hers', 'herself', 'him', 'himself', 'his', 'how', "how's", 'i', "i'd",
-     "i'll", "i'm", "i've", 'if', 'in', 'into', 'is', "isn't", 'it', "it's",
-     'its', 'itself', "let's", 'me', 'more', 'most', "mustn't", 'my',
-     'myself', 'no', 'nor', 'not', 'of', 'off', 'on', 'once', 'only', 'or',
-     'other', 'ought', 'our', 'ours', 'ourselves', 'out', 'over', 'own',
-     'same', "shan't", 'she', "she'd", "she'll", "she's", 'should',
-     "shouldn't", 'so', 'some', 'such', 'than', 'that', "that's", 'the',
-     'their', 'theirs', 'them', 'themselves', 'then', 'there', "there's",
-     'these', 'they', "they'd", "they'll", "they're", "they've", 'this',
-     'those', 'through', 'to', 'too', 'under', 'until', 'up', 'very', 'was',
-     "wasn't", 'we', "we'd", "we'll", "we're", "we've", 'were', "weren't",
-     'what', "what's", 'when', "when's", 'where', "where's", 'which',
-     'while', 'who', "who's", 'whom', 'why', "why's", 'with', "won't",
-     'would', "wouldn't", 'you', "you'd", "you'll", "you're", "you've",
-     'your', 'yours', 'yourself', 'yourselves', 'ios', 'reimagined', 'remastered',
-     'redesigned', 'remake', 'xbox', 'pc', 'windows', 'version', 'original', 'game',
-     'update', 'playstation', 'ps4']
+                 'and', 'any', 'are', "aren't", 'as', 'at', 'be', 'because', 'been',
+                 'before', 'being', 'below', 'between', 'both', 'but', 'by', "can't",
+                 'cannot', 'could', "couldn't", 'did', "didn't", 'do', 'does', "doesn't",
+                 'doing', "don't", 'down', 'during', 'each', 'few', 'for', 'from',
+                 'further', 'had', "hadn't", 'has', "hasn't", 'have', "haven't",
+                 'having', 'he', "he'd", "he'll", "he's", 'her', 'here', "here's",
+                 'hers', 'herself', 'him', 'himself', 'his', 'how', "how's", 'i', "i'd",
+                 "i'll", "i'm", "i've", 'if', 'in', 'into', 'is', "isn't", 'it', "it's",
+                 'its', 'itself', "let's", 'me', 'more', 'most', "mustn't", 'my',
+                 'myself', 'no', 'nor', 'not', 'of', 'off', 'on', 'once', 'only', 'or',
+                 'other', 'ought', 'our', 'ours', 'ourselves', 'out', 'over', 'own',
+                 'same', "shan't", 'she', "she'd", "she'll", "she's", 'should',
+                 "shouldn't", 'so', 'some', 'such', 'than', 'that', "that's", 'the',
+                 'their', 'theirs', 'them', 'themselves', 'then', 'there', "there's",
+                 'these', 'they', "they'd", "they'll", "they're", "they've", 'this',
+                 'those', 'through', 'to', 'too', 'under', 'until', 'up', 'very', 'was',
+                 "wasn't", 'we', "we'd", "we'll", "we're", "we've", 'were', "weren't",
+                 'what', "what's", 'when', "when's", 'where', "where's", 'which',
+                 'while', 'who', "who's", 'whom', 'why', "why's", 'with', "won't",
+                 'would', "wouldn't", 'you', "you'd", "you'll", "you're", "you've",
+                 'your', 'yours', 'yourself', 'yourselves', 'ios', 'reimagined', 'remastered',
+                 'redesigned', 'remake', 'xbox', 'pc', 'windows', 'version', 'original', 'game',
+                 'update', 'playstation', 'ps4', '™']
 
     print("[IMPORT] Pre-processing data...")
     games['ordered_keywords'] = ""
