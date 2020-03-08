@@ -69,27 +69,19 @@
             <ul class="nav navbar-nav ml-auto" id="login-nav">
                 {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a href="{% url 'wishlist' %}" aria-label="wishlist">
-                            <button class="btn btn-primary" type="button" title="wishlist"
-                                    aria-label="wishlist"><i class="fas fa-heart nav-icon"></i>Wishlist
-                            </button>
+                        <a href="{% url 'wishlist' %}" class="btn btn-primary" aria-label="wishlist"><i class="fas fa-heart nav-icon"></i>Wishlist
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" onclick='alert("Feature not yet implemented");' aria-label="account">
-                            <button class="btn btn-primary" type="button" title="account"
-                                    aria-label="account"><i class="fas fa-unlock nav-icon"></i>Account
-                            </button>
+                        <a href="#" onclick='alert("Feature not yet implemented");' class="btn btn-primary"  aria-label="account">
+                            <i class="fas fa-unlock nav-icon"></i>Account
                         </a>
                     </li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'logout' %}" aria-label="log out">Log out</a>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'logout' %}" aria-label="sign up">Log out</a>
                     </li>
                 {% else %}
                     <li class="nav-item">
-                        <a href="{% url 'login' %}" aria-label="login">
-                            <button class="btn btn-primary" type="button" title="login"
-                                    aria-label="login"><i class="fas fa-unlock nav-icon"></i>Login
-                            </button>
+                        <a href="{% url 'login' %}" class="btn btn-primary" aria-label="login"><i class="fas fa-unlock nav-icon"></i>Login
                         </a>
                     </li>
                     <li id="sign-up-link" class="nav-item" role="presentation"><a class="nav-link" href="{% url 'signup' %}"
