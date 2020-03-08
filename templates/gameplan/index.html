@@ -9,37 +9,38 @@
                 <div class="carousel slide" data-ride="carousel" id="index-carousel" data-interval="6000">
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active">
-                            <a href="/games/7331">
+                            <a href="/games/7331" aria-label="Uncharted 4: A Thief's End">
                                 <img class="w-100 d-block"
                                      src="https://images.igdb.com/igdb/image/upload/t_original/qwytrspu8brvow9x9y15.jpg"
-                                     alt="Slide Image">
+                                     alt="Uncharted 4 landscape image">
                                 <h1 class="featured-title-name">Uncharted 4: A Thief's End</h1>
                             </a>
                         </div>
                         <div class="carousel-item">
-                            <a href="/games/1877">
+                            <a href="/games/1877" aria-label="Cyberpunk 2077">
                                 <img class="w-100 d-block"
                                      src="https://images.igdb.com/igdb/image/upload/t_screenshot_big/quphnww1axg2mmsvxfux.jpg"
-                                     alt="Slide Image">
+                                     alt="Cyberpunk 2077 landscape image">
                                 <h1 class="featured-title-name">Cyberpunk 2077</h1>
                             </a>
                         </div>
                         <div class="carousel-item">
-                            <a href="/games/19130">
+                            <a href="/games/19130" aria-label="Civilization VI">
                                 <img class="w-100 d-block"
                                      src="https://images.igdb.com/igdb/image/upload/t_original/ar66f.jpg"
-                                     alt="Slide Image">
+                                     alt="Civilization VI landscape image">
                                 <h1 class="featured-title-name">Civilization VI</h1>
                             </a>
                         </div>
                     </div>
                     <div>
-                        <a class="carousel-control-prev" href="#index-carousel" role="button" data-slide="prev">
+                        <a class="carousel-control-prev" href="#index-carousel" role="button" data-slide="prev" aria-labelledby="carousel-prev-button">
                             <span class="carousel-control-prev-icon"></span>
-                            <span class="sr-only">Previous</span>
+                            <span id="carousel-prev-button" class="sr-only">Previous</span>
                         </a>
-                        <a class="carousel-control-next" href="#index-carousel" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon"></span><span class="sr-only">Next</span>
+                        <a class="carousel-control-next" href="#index-carousel" role="button" data-slide="next" aria-labelledby="carousel-next-button">
+                            <span class="carousel-control-next-icon"></span>
+                            <span id="carousel-prev-button" class="sr-only">Next</span>
                         </a>
                     </div>
                     <ol class="carousel-indicators">
@@ -58,7 +59,7 @@
                                 <img class="top-chart-item-image" src="http://{{ game.cover }}"
                                      alt="{{ game.title }}">
                                 <div class="top-chart-item-body">
-                                    <a href="{% url 'game_details' game_id=game.game_id %}">{{ game.title }}</a>
+                                    <a href="{% url 'game_details' game_id=game.game_id %}" aria-label="{{ game.title }}">{{ game.title }}</a>
                                 </div>
                             </li>
                         {% endfor %}
@@ -84,8 +85,8 @@
                 <div class="alert alert-primary my-4">
                     <h2>Login for better recommendations!</h2>
                     GamePlan works best when you
-                    <a href="{% url 'login' %}"><strong>log in</strong></a>. Don't have an account?
-                    <a href="{% url 'signup' %}"><strong>Create one!</strong></a>
+                    <a href="{% url 'login' %}" aria-label="login"><strong>log in</strong></a>. Don't have an account?
+                    <a href="{% url 'signup' %}" aria-label="sign up"><strong>Create one!</strong></a>
                 </div>
             {% endif %}
 

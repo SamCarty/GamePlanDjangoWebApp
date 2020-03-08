@@ -1,10 +1,10 @@
 <form action="{% url 'search_results' %}" onsubmit="return validateSearch()" id="search-form">
     <div class="input-group">
-        <input name="q" class="form-control" type="search" id="search-titles"
+        <input name="q" class="form-control" type="search" title="search for a game title" id="search-titles"
                placeholder="Enter a game title">
         <div class="input-group-append">
-            <button class="btn btn-primary" id="search-button" type="submit">
-                <i class="fas fa-search"></i>
+            <button class="btn btn-primary" id="search-button" type="submit" title="search" aria-label="search">
+                <i class="fas fa-search" aria-labelledby="search-button"></i>
             </button>
         </div>
         <div id="search-overlay">
