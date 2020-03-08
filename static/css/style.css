@@ -287,3 +287,11 @@ body, html {
 }
 
 
+
+/* Change the default Bootstrap colours to make them adhere to WCAG 2.1 guidelines (4.5:1 contrast ratio) */
+.btn-primary {
+    background-color: #006CE0 !important;
+    border-color: #006CE0 !important;
+}
+
+
