@@ -1,6 +1,10 @@
 {% extends "gameplan/base.html" %}
 {% load static %}
 
+{% block title %}
+    {{ game_details.title }} details | GamePlan
+{% endblock %}
+
 {% block content %}
     <section id="top-image" style="background-image: url('https://{{ screenshots.0.url }}')"></section>
 
@@ -19,20 +23,23 @@
                         <div class="col" id="top-info-table-holder">
                             <div id="top-info-button-holder">
                                 <form class="top-info-form">
-                                    <button aria-haspopup="true" class="btn btn-outline-primary" id="wishlist-button"
+                                    <button title="Add to wishlist" aria-label="add to wishlist" aria-haspopup="true"
+                                            class="btn btn-outline-primary" id="wishlist-button"
                                             onclick="return addRemoveAttribute('wishlist')" type="button">Add to
                                         wishlist
                                     </button>
                                 </form>
                                 <form class="top-info-form">
-                                    <button title="Buy now" aria-haspopup="true" class="btn btn-outline-primary"
+                                    <button title="Buy now" aria-label="buy now" aria-haspopup="true"
+                                            class="btn btn-outline-primary"
                                             id="buy-title-button"
                                             onclick="return buyTitle()" type="button">Buy now
                                         <i class="fas fa-shopping-bag" style="margin-left: 8px"></i>
                                     </button>
                                 </form>
                                 <form class="top-info-form">
-                                    <button aria-haspopup="true" class="btn btn-outline-primary" id="dislike-button"
+                                    <button title="Dislike" aria-label="dislike" aria-haspopup="true"
+                                            class="btn btn-outline-primary" id="dislike-button"
                                             onclick="return addRemoveAttribute('dislike')" type="button">Dislike
                                     </button>
                                 </form>

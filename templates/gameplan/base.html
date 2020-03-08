@@ -46,8 +46,8 @@
             GamePlan
         </a>
         <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1" title="toggle navigation"
-                aria-labelledby="toggle-nav-text">
-            <span id="toggle-nav-text" class="sr-only">Toggle navigation</span>
+                aria-label="toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navcol-1">
@@ -58,7 +58,7 @@
                 <li class="nav-item" role="presentation">
                     <div class="btn-group-vertical" role="group">
                         <button id="dropdown-genres-button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" title="genres"
-                                aria-labelledby="dropdown-genres-button" aria-haspopup="true"
+                                aria-label="show genres" aria-haspopup="true"
                                 type="button"><i class="fas fa-book nav-icon" aria-hidden="true"></i>Genres
                         </button>
                         <div class="dropdown-menu dropdown-menu-right" id="genres-dropdown">
@@ -69,31 +69,31 @@
             <ul class="nav navbar-nav ml-auto" id="login-nav">
                 {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a href="{% url 'wishlist' %}" aria-labelledby="wishlist-button">
-                            <button id="wishlist-button" class="btn btn-primary" type="button" title="wishlist"
-                                    aria-labelledby="wishlist"><i class="fas fa-heart nav-icon"></i>Wishlist
+                        <a href="{% url 'wishlist' %}" aria-label="wishlist">
+                            <button class="btn btn-primary" type="button" title="wishlist"
+                                    aria-label="wishlist"><i class="fas fa-heart nav-icon"></i>Wishlist
                             </button>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" onclick='alert("Feature not yet implemented");' aria-labelledby="account-button">
-                            <button id="account-button" class="btn btn-primary" type="button" title="account"
-                                    aria-labelledby="account"><i class="fas fa-unlock nav-icon"></i>Account
+                        <a href="#" onclick='alert("Feature not yet implemented");' aria-label="account">
+                            <button class="btn btn-primary" type="button" title="account"
+                                    aria-label="account"><i class="fas fa-unlock nav-icon"></i>Account
                             </button>
                         </a>
                     </li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'logout' %}">Log out</a>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'logout' %}" aria-label="log out">Log out</a>
                     </li>
                 {% else %}
                     <li class="nav-item">
-                        <a href="{% url 'login' %}" aria-labelledby="login-button">
-                            <button id="login-button" class="btn btn-primary" type="button" title="login"
-                                    aria-labelledby="login-button"><i class="fas fa-unlock nav-icon"></i>Login
+                        <a href="{% url 'login' %}" aria-label="login">
+                            <button class="btn btn-primary" type="button" title="login"
+                                    aria-label="login"><i class="fas fa-unlock nav-icon"></i>Login
                             </button>
                         </a>
                     </li>
                     <li id="sign-up-link" class="nav-item" role="presentation"><a class="nav-link" href="{% url 'signup' %}"
-                                                                aria-labelledby="sign-up-link">Sign up</a>
+                                                                aria-label="sign up">Sign up</a>
                     </li>
                 {% endif %}
             </ul>
