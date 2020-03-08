@@ -16,28 +16,31 @@
                 <form method="GET">
                     <div class="card mb-4">
                         <button type="submit" class="btn btn-primary m-2">APPLY FILTER</button>
-                        <h5 class="p-3 border-top border-bottom">{{ filter.form.q.label_tag }}</h5>
+                        <h5 class="border-top border-bottom"><label for="search-query"
+                                                                    class="p-3">{{ filter.form.q.label_tag }}</label>
+                        </h5>
                         <div class="py-2 px-3">
-                            <label class="p-0 mt-0 d-flex align-items-center">
-                                <span class="ml-2">{{ filter.form.q }}</span>
-                            </label>
+                            <span id="search-query"
+                                  class="ml-2 p-0 mt-0 d-flex align-items-center">{{ filter.form.q }}</span>
                         </div>
 
-                        <h5 class="m-0 p-3 border-top border-bottom">{{ filter.form.platforms.label_tag }}</h5>
+                        <h5 class="border-top border-bottom"><label for="platform-choice"
+                                                                    class="m-0 p-3">{{ filter.form.platforms.label_tag }}</label>
+                        </h5>
                         <div class="py-2 px-3">
                             {% for choice in filter.form.platforms %}
-                                <label class="p-0 m-0 d-flex align-items-center">
-                                    <span class="ml-2">{{ choice }}</span>
-                                </label>
+                                <span id="platform-choice"
+                                      class="p-0 ml-2 d-flex align-items-center">{{ choice }}</span>
                             {% endfor %}
                         </div>
 
-                        <h5 class="m-0 p-3 border-top border-bottom">{{ filter.form.genres.label_tag }}</h5>
+                        <h5 class="border-top border-bottom">
+                            <label for="genre-choice"
+                                   class="m-0 p-3">{{ filter.form.genres.label_tag }}</label>
+                        </h5>
                         <div class="py-2 px-3 border-bottom">
                             {% for choice in filter.form.genres %}
-                                <label class="p-0 m-0 d-flex align-items-center">
-                                    <span class="ml-2">{{ choice }}</span>
-                                </label>
+                                <span id="genre-choice" class="p-0 ml-2 d-flex align-items-center">{{ choice }}</span>
                             {% endfor %}
                         </div>
 
@@ -91,7 +94,8 @@
                             <li class="page-item">
                                 <a class="page-link" href="?page=1{{ url_extension }}">&laquo;first</a></li>
                             <li class="page-item">
-                                <a class="page-link" href="?page={{ search_results.previous_page_number }}{{ url_extension }}">previous</a>
+                                <a class="page-link" href="?page=
+                                        {{ search_results.previous_page_number }}{{ url_extension }}">previous</a>
                             </li>
                         {% endif %}
 
@@ -102,10 +106,12 @@
                         {% endfor %}
 
                         {% if search_results.has_next %}
-                            <li class="page-item"><a class="page-link" href="?page={{ search_results.next_page_number }}{{ url_extension }}">next</a>
+                            <li class="page-item"><a class="page-link" href="?page=
+                                    {{ search_results.next_page_number }}{{ url_extension }}">next</a>
                             </li>
                             <li class="page-item">
-                                <a class="page-link" href="?page={{ search_results.paginator.num_pages }}{{ url_extension }}">last&raquo;</a>
+                                <a class="page-link" href="?page=
+                                        {{ search_results.paginator.num_pages }}{{ url_extension }}">last&raquo;</a>
                             </li>
                         {% endif %}
                     </ul>
