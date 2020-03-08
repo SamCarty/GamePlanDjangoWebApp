@@ -24,23 +24,20 @@
                                   class="ml-2 p-0 mt-0 d-flex align-items-center">{{ filter.form.q }}</span>
                         </div>
 
-                        <h5 class="border-top border-bottom"><label for="platform-choice"
-                                                                    class="m-0 p-3">{{ filter.form.platforms.label_tag }}</label>
+                        <h5 class="border-top border-bottom"><label class="m-0 p-3">{{ filter.form.platforms.label_tag }}</label>
                         </h5>
                         <div class="py-2 px-3">
                             {% for choice in filter.form.platforms %}
-                                <span id="platform-choice"
-                                      class="p-0 ml-2 d-flex align-items-center">{{ choice }}</span>
+                                <span class="p-0 ml-2 d-flex align-items-center">{{ choice }}</span>
                             {% endfor %}
                         </div>
 
                         <h5 class="border-top border-bottom">
-                            <label for="genre-choice"
-                                   class="m-0 p-3">{{ filter.form.genres.label_tag }}</label>
+                            <label class="m-0 p-3">{{ filter.form.genres.label_tag }}</label>
                         </h5>
                         <div class="py-2 px-3 border-bottom">
                             {% for choice in filter.form.genres %}
-                                <span id="genre-choice" class="p-0 ml-2 d-flex align-items-center">{{ choice }}</span>
+                                <span class="p-0 ml-2 d-flex align-items-center">{{ choice }}</span>
                             {% endfor %}
                         </div>
 
