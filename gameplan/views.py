@@ -1,3 +1,5 @@
+import os
+
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
 from django.views.generic import TemplateView
@@ -105,3 +107,10 @@ class SearchResultsView(ListView):
 
         q = '&q=' + request.GET.get('q')
         return q + p + g
+
+
+def loader_validation(request):
+    """ Used for loader.io validation only. """
+    from django.views.static import serve
+    filepath = './loaderio-9810f09c6dab96eb6166d196409169e0.txt'
+    return serve(request, os.path.basename(filepath), os.path.dirname(filepath))
