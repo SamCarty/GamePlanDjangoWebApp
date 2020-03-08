@@ -41,11 +41,12 @@
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container" id="navbar-container">
-        <a class="navbar-brand" href="{% url 'index' %}" aria-label="Home page">
-        <img id="navbar-branding-img" src="{% static 'img/game-controller-64px.png' %}" alt="GamePlan logo"/>
-        GamePlan
-    </a>
-        <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1" title="toggle navigation" aria-labelledby="toggle-nav-text">
+        <a class="navbar-brand" href="{% url 'index' %}" aria-labelledby="navbar-branding-img">
+            <img id="navbar-branding-img" src="{% static 'img/game-controller-64px.png' %}" alt="GamePlan logo"/>
+            GamePlan
+        </a>
+        <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1" title="toggle navigation"
+                aria-labelledby="toggle-nav-text">
             <span id="toggle-nav-text" class="sr-only">Toggle navigation</span>
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -56,8 +57,9 @@
                 </li>
                 <li class="nav-item" role="presentation">
                     <div class="btn-group-vertical" role="group">
-                        <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" title="genres" aria-label="genres" aria-haspopup="true"
-                                type="button"><i class="fas fa-book nav-icon"></i>Genres
+                        <button id="dropdown-genres-button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" title="genres"
+                                aria-labelledby="dropdown-genres-button" aria-haspopup="true"
+                                type="button"><i class="fas fa-book nav-icon" aria-hidden="true"></i>Genres
                         </button>
                         <div class="dropdown-menu dropdown-menu-right" id="genres-dropdown">
                         </div>
@@ -69,14 +71,14 @@
                     <li class="nav-item">
                         <a href="{% url 'wishlist' %}" aria-labelledby="wishlist-button">
                             <button id="wishlist-button" class="btn btn-primary" type="button" title="wishlist"
-                                    aria-label="wishlist"><i class="fas fa-heart nav-icon"></i>Wishlist
+                                    aria-labelledby="wishlist"><i class="fas fa-heart nav-icon"></i>Wishlist
                             </button>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" onclick='alert("Feature not yet implemented");' aria-labelledby="account-button">
                             <button id="account-button" class="btn btn-primary" type="button" title="account"
-                                    aria-label="account"><i class="fas fa-unlock nav-icon"></i>Account
+                                    aria-labelledby="account"><i class="fas fa-unlock nav-icon"></i>Account
                             </button>
                         </a>
                     </li>
@@ -86,11 +88,12 @@
                     <li class="nav-item">
                         <a href="{% url 'login' %}" aria-labelledby="login-button">
                             <button id="login-button" class="btn btn-primary" type="button" title="login"
-                                    aria-label="login"><i class="fas fa-unlock nav-icon"></i>Login
+                                    aria-labelledby="login-button"><i class="fas fa-unlock nav-icon"></i>Login
                             </button>
                         </a>
                     </li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'signup' %}" aria-label="sign up">Sign up</a>
+                    <li id="sign-up-link" class="nav-item" role="presentation"><a class="nav-link" href="{% url 'signup' %}"
+                                                                aria-labelledby="sign-up-link">Sign up</a>
                     </li>
                 {% endif %}
             </ul>
