@@ -54,7 +54,10 @@ def find_model(attribute):
 def check_attribute(request, attribute, game_id):
     user = request.user
     user_id = user.id
+    return check(user_id, attribute, game_id)
 
+
+def check(user_id, attribute, game_id):
     model = find_model(attribute)
 
     if model.objects.filter(user_id=user_id, game_id=game_id).values('game_id').exists():

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'recommender',
     'accounts',
     'games',
+    'evaluation',
     'django_filters'
 ]
 

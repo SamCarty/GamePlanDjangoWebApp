@@ -10,7 +10,7 @@ from gatherer.models import Log
 from recommender.models import RecommendationPairing
 from recommender_libraries import title_similarity, title_popularity
 from model_builder.user_ratings_builder import get_rating_for_user
-from accounts.views import check_attribute
+from accounts.views import check
 
 
 def get_content_based_recommendations_json(request, game_id, n=10):
@@ -32,7 +32,7 @@ def get_content_based_recommendations(request, game_id, n=10):
     uid = request.user.id
     game_data = list()
     for g_id in games:
-        if uid is None or not check_attribute(request, 'dislike', g_id):
+        if uid is None or not check(uid, 'dislike', g_id):
             game_data.append(list(Game.objects.filter(game_id=g_id).values())[0])
 
     return game_data
@@ -54,7 +54,7 @@ def get_bought_together_recommendations(request, game_id, n=10):
     game_data = list()
     for rec in recs:
         to_game = rec.to_game
-        if uid is None or not check_attribute(request, 'dislike', to_game.game_id):
+        if uid is None or not check(uid, 'dislike', to_game.game_id):
             game_data.append(list(Game.objects.filter(game_id=to_game.game_id).values())[0])
 
     games_return_data = {
@@ -69,6 +69,10 @@ def get_users_like_you_recommendations(request, n=50):
     """ Get n number of games based on users similar to the logged-in user.
      @:returns a JSON response containing information about 'like you' game. """
     uid = request.user.id
+    return JsonResponse(users_like_you(uid, n), safe=False)
+
+
+def users_like_you(uid, n):
     games_return_data = None
     if uid is not None:
         events = Log.objects.filter(user_id=uid).order_by('-created').values_list('content_id', flat=True).distinct()
@@ -80,7 +84,7 @@ def get_users_like_you_recommendations(request, n=50):
         game_data = list()
         for rec in pairings:
             to_game = rec.to_game
-            if not check_attribute(request, 'dislike', to_game.game_id):
+            if not check(uid, 'dislike', to_game.game_id):
                 game = list(Game.objects.filter(game_id=to_game.game_id).values())[0]
                 if game not in game_data:
                     game_data.append(game)
@@ -90,7 +94,7 @@ def get_users_like_you_recommendations(request, n=50):
             'data': game_data[:n]
         }
 
-    return JsonResponse(games_return_data, safe=False)
+    return games_return_data
 
 
 def get_similar_to_recent_recommendations(request, n=50):
@@ -126,7 +130,7 @@ def get_top_genre_recommendations(request, genre_id, n=50):
     game_data = list()
     for game in games:
         g_id = game.game_id
-        if (uid is not None and not check_attribute(request, 'dislike', g_id)) or uid is None:
+        if (uid is not None and not check(uid, 'dislike', g_id)) or uid is None:
             game_data.append(list(Game.objects.filter(game_id=g_id).values())[0])
 
     games_return_data = {
