@@ -82,16 +82,20 @@ def users_like_you(uid, n):
             .annotate(avg_confidence=Avg('confidence')).order_by('-avg_confidence')
 
         game_data = list()
+        confidence = list()
         for rec in pairings:
             to_game = rec.to_game
             if not check(uid, 'dislike', to_game.game_id):
                 game = list(Game.objects.filter(game_id=to_game.game_id).values())[0]
                 if game not in game_data:
+                    confidence.append(rec.confidence)
                     game_data.append(game)
 
         games_return_data = {
             'user_id': uid,
+            'confidence': confidence[:n],
             'data': game_data[:n]
+
         }
 
     return games_return_data
