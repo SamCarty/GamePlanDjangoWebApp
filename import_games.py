@@ -2,7 +2,7 @@ import json
 import os
 import string
 from functools import reduce
-from nltk import WordNetLemmatizer, PorterStemmer
+from nltk import WordNetLemmatizer
 
 import django
 import pandas
@@ -267,8 +267,8 @@ def pre_process_games(games):
                     word = word.lower()
                     if word not in stopwords:
                         word = ''.join(char for char in word if not char in string.punctuation)
-                        #lemmatizer = PorterStemmer()
-                        #word = lemmatizer.stem(word)
+                        lemmatizer = WordNetLemmatizer()
+                        word = lemmatizer.lemmatize(word)
                         keywords += word + ' '
 
         Game.objects.filter(game_id=row['game_id']).update(ordered_keywords=keywords)
