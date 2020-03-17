@@ -66,7 +66,7 @@ class Platform(models.Model):
 
 
 class PlayerPerspective(models.Model):
-    player_perspective_id = models.CharField(max_length=16, unique=True, primary_key=True)
+    playerperspective_id = models.CharField(max_length=16, unique=True, primary_key=True)
     name = models.CharField(max_length=128)
 
     def __str__(self):

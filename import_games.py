@@ -2,7 +2,7 @@ import json
 import os
 import string
 from functools import reduce
-from nltk import WordNetLemmatizer
+from nltk import WordNetLemmatizer, PorterStemmer
 
 import django
 import pandas
@@ -125,7 +125,7 @@ def import_file(filename, n):
                     if 'player_perspectives' in game:
                         for perspective in game['player_perspectives']:
                             perspective = \
-                            PlayerPerspective.objects.get_or_create(player_perspective_id=perspective['id'],
+                            PlayerPerspective.objects.get_or_create(playerperspective_id=perspective['id'],
                                                                     name=perspective['name'])[0]
                             game_object.player_perspectives.add(perspective)
 
@@ -196,15 +196,30 @@ def combine_dbs():
 
     query = str(Game.genres.through.objects.all().query)
     genres = pandas.read_sql_query(query, connection)
-
     query = str(Genre.objects.all().query)
     genre_names = pandas.read_sql_query(query, connection)
-
     genres = pandas.merge(genres, genre_names, on='genre_id', how='outer')
-
-    pandas.options.display.width = 0
     games = reduce(lambda x, y: pandas.merge(x, y, on='game_id', how='outer'), [games, genres])
     games = games.fillna('').groupby(['game_id', 'title', 'summary', 'storyline'])['name'].apply(
+        ' '.join).reset_index()
+
+    query = str(Game.themes.through.objects.all().query)
+    themes = pandas.read_sql_query(query, connection)
+    query = str(Theme.objects.all().query)
+    theme_names = pandas.read_sql_query(query, connection)
+    themes = pandas.merge(themes, theme_names, on='theme_id', how='outer')
+    games = reduce(lambda x, y: pandas.merge(x, y, on='game_id', how='outer'), [games, themes])
+    games = games.fillna('').groupby(['game_id', 'title', 'summary', 'storyline', 'name_x'])['name_y'].apply(
+        ' '.join).reset_index()
+
+
+    query = str(Game.player_perspectives.through.objects.all().query)
+    perspectives = pandas.read_sql_query(query, connection)
+    query = str(PlayerPerspective.objects.all().query)
+    perspective_names = pandas.read_sql_query(query, connection)
+    perspectives = pandas.merge(perspectives, perspective_names, on='playerperspective_id', how='outer')
+    games = reduce(lambda x, y: pandas.merge(x, y, on='game_id', how='outer'), [games, perspectives])
+    games = games.fillna('').groupby(['game_id', 'title', 'summary', 'storyline', 'name_x', 'name_y'])['name'].apply(
         ' '.join).reset_index()
 
     return games
@@ -252,8 +267,8 @@ def pre_process_games(games):
                     word = word.lower()
                     if word not in stopwords:
                         word = ''.join(char for char in word if not char in string.punctuation)
-                        lemmatizer = WordNetLemmatizer()
-                        word = lemmatizer.lemmatize(word)
+                        #lemmatizer = PorterStemmer()
+                        #word = lemmatizer.stem(word)
                         keywords += word + ' '
 
         Game.objects.filter(game_id=row['game_id']).update(ordered_keywords=keywords)
