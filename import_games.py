@@ -37,6 +37,10 @@ def clear_database():
 
 
 def import_file(filename, n):
+    """ Opens the JSON file containing the IGDB games to be parsed and converts these to Django model objects.
+     @:param filename the file URI to be parsed.
+     @:param n the number of games to import (from index 0). -1 if we should import all games in file.
+     @:return DataFrame matrix of all added games. """
     with open(filename, encoding='utf-8') as file:
         data = json.loads(file.read())
 
@@ -91,7 +95,7 @@ def import_file(filename, n):
                     if 'game_modes' in game:
                         for gamemode in game['game_modes']:
                             gamemode = \
-                            GameMode.objects.get_or_create(game_mode_id=gamemode['id'], name=gamemode['name'])[0]
+                                GameMode.objects.get_or_create(game_mode_id=gamemode['id'], name=gamemode['name'])[0]
                             game_object.game_modes.add(gamemode)
 
                     if 'hypes' in game:
@@ -103,10 +107,10 @@ def import_file(filename, n):
                                                                     name=involved_company['company']['name'])[0]
 
                             involved_company = \
-                            InvolvedCompany.objects.get_or_create(involved_company_id=involved_company['id'],
-                                                                  developer=involved_company['developer'],
-                                                                  publisher=involved_company['publisher'],
-                                                                  company=company)[0]
+                                InvolvedCompany.objects.get_or_create(involved_company_id=involved_company['id'],
+                                                                      developer=involved_company['developer'],
+                                                                      publisher=involved_company['publisher'],
+                                                                      company=company)[0]
                             game_object.involved_companies.add(involved_company)
 
                     if 'keywords' in game:
@@ -119,14 +123,14 @@ def import_file(filename, n):
                     if 'platforms' in game:
                         for platform in game['platforms']:
                             platform = \
-                            Platform.objects.get_or_create(platform_id=platform['id'], name=platform['name'])[0]
+                                Platform.objects.get_or_create(platform_id=platform['id'], name=platform['name'])[0]
                             game_object.platforms.add(platform)
 
                     if 'player_perspectives' in game:
                         for perspective in game['player_perspectives']:
                             perspective = \
-                            PlayerPerspective.objects.get_or_create(playerperspective_id=perspective['id'],
-                                                                    name=perspective['name'])[0]
+                                PlayerPerspective.objects.get_or_create(playerperspective_id=perspective['id'],
+                                                                        name=perspective['name'])[0]
                             game_object.player_perspectives.add(perspective)
 
                     if 'popularity' in game:
@@ -137,7 +141,7 @@ def import_file(filename, n):
                             platform = Platform.objects.get_or_create(platform_id=date['platform']['id'],
                                                                       name=date['platform']['name'])[0]
                             date_to_add = \
-                            ReleaseDate.objects.get_or_create(release_date_id=date['id'], platform=platform)[0]
+                                ReleaseDate.objects.get_or_create(release_date_id=date['id'], platform=platform)[0]
 
                             if 'date' in date:
                                 date_to_add.date = date['date']
@@ -189,7 +193,8 @@ def import_file(filename, n):
 
 
 def combine_dbs():
-    """ Imports the dataset and returns the resulting DataFrame matrix. """
+    """ Combines dataset tables and returns the resulting DataFrame matrix.
+     @:return DataFrame containing the games with the other database entries. """
     print("[IMPORT] Combining databases...")
     query = str(Game.objects.all().query)
     games = pandas.read_sql_query(query, connection)
@@ -211,7 +216,6 @@ def combine_dbs():
     games = reduce(lambda x, y: pandas.merge(x, y, on='game_id', how='outer'), [games, themes])
     games = games.fillna('').groupby(['game_id', 'title', 'summary', 'storyline', 'name_x'])['name_y'].apply(
         ' '.join).reset_index()
-
 
     query = str(Game.player_perspectives.through.objects.all().query)
     perspectives = pandas.read_sql_query(query, connection)
